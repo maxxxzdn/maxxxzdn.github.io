@@ -113,6 +113,7 @@ blockquote {
 
 .profile {
   width: 100%;
+  position: relative;
 
   .address {
     margin-bottom: 5px;
@@ -124,6 +125,69 @@ blockquote {
       margin: 0;
     }
   }
+
+  .contact-info {
+    display: flex;
+    margin-top: 5px;
+    align-items: center;
+    font-family: monospace;
+
+    p {
+      display: inline-block;
+      margin: 0;
+    }
+  }
+  
+  .description {
+    margin-bottom: 0px;
+    margin-top: -10px;
+    font-family: monospace;
+
+    p {
+      display: inline-block;
+      margin: 0;
+    }
+  }
+}
+
+.contact-info a::before {
+  content: '';
+  position: absolute;
+  width: 175px;
+  height: 4px;
+  border-radius: 4px;
+  background-color: #18272F;
+  bottom: -5px;
+  left: 0;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform .3s ease-in-out;
+}
+
+.contact-info a:hover::before {
+transform-origin: left;
+transform: scaleX(1);
+}
+
+.fa-envelope {
+  margin-right: 5px;
+}
+
+@keyframes pulse {
+  0% {
+      transform: scale(1);
+  }
+  50% {
+      transform: scale(1.2);
+  }
+  100% {
+      transform: scale(1);
+  }
+}
+
+.contact-info:hover .fa-envelope {
+  animation: pulse 0.5s infinite;
+  transform: scale(1.1);
 }
 
 .profile.float-right {
@@ -134,16 +198,60 @@ blockquote {
   margin-right: 1rem;
 }
 
-@media (min-width: 576px) {
-  .profile {
-    width: 30%;
 
-    .address {
-      p {
-        display: block;
-      }
-    }
+@media (max-width: 1200px) {
+  .column1 {
+    position: fixed;
+    width: 40%;
+    max-width: 300px;
+    height: auto;
+    top: 125px;
+    left: 100px;
+    bottom: auto;
+    margin-left: auto;
+    margin-top: 0;
   }
+  
+  .column2 {
+    position: fixed;
+    width: calc(100% - 300px - 175px);
+    margin-left: 175px; /* Add 30px margin from column1 */
+    margin-top: 0;
+  }
+}
+@media (max-width: 800px) {
+  .column1 {
+    position: relative;
+    width: 50%;
+    max-width: 200px;
+    height: auto;
+    top: 0;
+    left: 0;
+    bottom: auto;
+    margin: 0 auto;
+  }
+
+  .column2 {
+    position: relative;
+    width: 100%;
+    margin: 20px 0;
+    left: 0;
+    margin-left: 0;
+    margin-top: 0;
+    clear: both; /* Add clear property to ensure text appears below column1 */
+  }
+}
+
+.rectangle {
+  position: absolute; /* Position the rectangle relative to its parent */
+  top: -5px; /* Adjust as needed */
+  left: 5px; /* Adjust the left offset as needed */
+  width: 100%; /* Set width to 100% to match the width of the parent container */
+  height: 0; /* Set height to 0 initially */
+  padding-bottom: 134%; /* Use padding to set height to 150% of the width of the parent container */
+  border-radius: 3px;
+  background-color: $blue-color; /* Change the color as desired */
+  z-index: -1; /* Set z-index to -1 to position the rectangle behind the image */
 }
 
 .post-description {

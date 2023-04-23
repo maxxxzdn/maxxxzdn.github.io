@@ -1,12 +1,7 @@
-github_users:
-  - torvalds
-  - alshedivat
-
 github_repos:
-  - alshedivat/al-folio
-  - twbs/bootstrap
-  - jekyll/jekyll
-  - jquery/jquery
-  - FortAwesome/Font-Awesome
-  - jpswalsh/academicons
-  - mathjax/MathJax
+  - maxxxzdn/EEGCN
+  - Photon-AI-Research/NeuralSolvers
+  - maxxxzdn/eegVAE
+
+github_users:
+  - maxxxzdn

@@ -2,11 +2,9 @@
   type: map
   contents:
     - name: Full Name
-      value: Albert Einstein
-    - name: Date of Birth
-      value: 14th March 1879
+      value: Maksim Zhdanov
     - name: Languages
-      value: English, German
+      value: English, German, Russian
 
 - title: Education
   type: time_table
