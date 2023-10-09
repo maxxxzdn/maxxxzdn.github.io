@@ -9,7 +9,7 @@
   <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG"/>
   <meta property="og:url" content="URL OF THE WEBSITE"/>
   <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
-  <meta property="og:image" content="static/image/your_banner_image.png" />
+  <meta property="og:image" content="../assets/ImplicitSteerableKernels_/static/image/your_banner_image.png" />
   <meta property="og:image:width" content="1200"/>
   <meta property="og:image:height" content="630"/>
 
@@ -17,7 +17,7 @@
   <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
   <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
   <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
-  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+  <meta name="twitter:image" content="../assets/ImplicitSteerableKernels_/static/images/your_twitter_banner_image.png">
   <meta name="twitter:card" content="summary_large_image">
   <!-- Keywords for your paper to be indexed by-->
   <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
@@ -29,24 +29,24 @@
 
 
   <title>Academic Project Page</title>
-  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="../assets/ImplicitSteerableKernels_/static/images/favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
   rel="stylesheet">
 
-  <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="../assets/ImplicitSteerableKernels_/static/css/bulma.min.css">
+  <link rel="stylesheet" href="../assets/ImplicitSteerableKernels_/static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="../assets/ImplicitSteerableKernels_/static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="../assets/ImplicitSteerableKernels_/static/css/fontawesome.all.min.css">
   <link rel="stylesheet"
   href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="static/css/index.css">
+  <link rel="stylesheet" href="../assets/ImplicitSteerableKernels_/static/css/index.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
-  <script defer src="static/js/fontawesome.all.min.js"></script>
-  <script src="static/js/bulma-carousel.min.js"></script>
-  <script src="static/js/bulma-slider.min.js"></script>
-  <script src="static/js/index.js"></script>
+  <script defer src="../assets/ImplicitSteerableKernels_/static/js/fontawesome.all.min.js"></script>
+  <script src="../assets/ImplicitSteerableKernels_/static/js/bulma-carousel.min.js"></script>
+  <script src="../assets/ImplicitSteerableKernels_/static/js/bulma-slider.min.js"></script>
+  <script src="../assets/ImplicitSteerableKernels_/static/js/index.js"></script>
 
   <style>
 
@@ -178,7 +178,7 @@
     <div class="hero-body">
       <video poster="" id="tree" autoplay controls muted loop height="100%">
         <!-- Your video here -->
-        <source src="static/videos/movie_inf.mp4"
+        <source src="../assets/ImplicitSteerableKernels_/static/videos/movie_inf.mp4"
         type="video/mp4">
       </video>
       <h2 class="subtitle has-text-centered">
@@ -227,8 +227,8 @@
             
             <figure>
               <div class="img-container">
-                  <img src="static/images/equiv.png" alt="Image 1 description">
-                  <img src="static/images/vectorfield.gif" alt="Image 2 description">
+                  <img src="../assets/ImplicitSteerableKernels_/static/images/equiv.png" alt="Image 1 description">
+                  <img src="../assets/ImplicitSteerableKernels_/static/images/vectorfield.gif" alt="Image 2 description">
               </div>
               <figcaption>Equivariance of a CNN w.r.t translation (left) and rotation (right). 
                 Transforming the image before and after a convolutional layer yields the same result.</figcaption>
@@ -246,7 +246,7 @@
             and generalize them to collections of fields with different types (e.g. \(N\) scalar channels, \(M\) vector channels).
             <br>
             <figure style="margin-bottom: 5px;">
-              <img src="static/images/feature_fields.png"/>
+              <img src="../assets/ImplicitSteerableKernels_/static/images/feature_fields.png"/>
               <figcaption> Examples of fields of different types and their transformation under rotation. </figcaption>
             </figure>
             <br>
@@ -298,7 +298,7 @@
           i.e. convolutional kernels implemented as continuous functions parameterized by MLPs:
           <br>
           <figure>
-            <img src="static/images/inf_kernels.png" width="75%"/>
+            <img src="../assets/ImplicitSteerableKernels_/static/images/inf_kernels.png" width="75%"/>
             <figcaption> Implicit steerable kernels for a point convolution. \(G\)-equivariant MLP takes arbitrary steerable features as input
               (here: the relative position (vector) and the mass of the central node (scalar)) and outputs a kernel value. </figcaption>
           </figure>
@@ -336,7 +336,7 @@
             </div>
           </body>
             <figure>
-              <img src="static/images/exp2.png" style="border: 1px solid #000; padding: 10px 20px 10px 20px; background-color: white;" width=400px/>
+              <img src="../assets/ImplicitSteerableKernels_/static/images/exp2.png" style="border: 1px solid #000; padding: 10px 20px 10px 20px; background-color: white;" width=400px/>
               <figcaption> Performance comparison of Steerable CNNs with implicit kernels (orange) and non-implicit
                 steerable kernels (<a href="https://openreview.net/forum?id=WE4qe9xlnQw" ><font color="#2874a6"> Cesa et al. </font></a>) (blue) on the rotated ModelNet-40 dataset for different \(G\). 
                 </figcaption>
@@ -359,8 +359,8 @@
           </body>
           <figure>
               <div class="img-container2">
-                  <img src="static/images/animation.gif" style="border: 1px solid #000; background-color: white;"/>
-                  <img src="static/images/exp3.png" style="border: 1px solid #000; padding: 10px 20px 10px 20px; background-color: white;"/>
+                  <img src="../assets/ImplicitSteerableKernels_/static/images/animation.gif" style="border: 1px solid #000; background-color: white;"/>
+                  <img src="../assets/ImplicitSteerableKernels_/static/images/exp3.png" style="border: 1px solid #000; padding: 10px 20px 10px 20px; background-color: white;"/>
               </div>
               <figcaption>
                 Using implicit kernels instead of standard steerable and injecting them with bond and atom properties 
