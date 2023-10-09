@@ -7,4 +7,3 @@ description: Blog post about Implicit Convolutional Kernels for Steerable CNNs
 redirect: /assets/ImplicitSteerableKernels/index.html
 ---
 
-Redirecting to another page.
