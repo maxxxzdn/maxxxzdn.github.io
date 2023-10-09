@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Our paper "Implicit Convolutional Kernels for Steerable CNNs" has been accepted to NeurIPS 2023! We developed a simple and efficient way to parameterize group equivariant convolutional kernels using implicit neural representation, which greatly simplifies the design of steerable CNNs.
+Our paper "Implicit Convolutional Kernels for Steerable CNNs" has been accepted to NeurIPS 2023! We developed a simple and efficient way to parameterize group equivariant convolutional kernels using implicit neural representation, which greatly simplifies the design of steerable CNNs. Check out the (../blog/implicit_kernels.html)[blog post] for details.
