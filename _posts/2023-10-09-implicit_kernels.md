@@ -9,3 +9,7 @@ related_publications: https://doi.org/10.48550/arxiv.2212.06096
 ---
 
 Redirecting...
+
+<script>
+    window.location.href = "/blog/implicit_kernels.html";
+</script>
