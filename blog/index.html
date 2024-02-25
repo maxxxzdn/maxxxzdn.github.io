@@ -22,6 +22,12 @@ pagination:
     right: 125px;
   }
 
+  .post {
+    margin-left: 5%; /* Shifts the content 5% from the left */
+    width: 90%; /* Adjusts the width to keep the overall width consistent */
+    max-width: 1080px; /* You can set a max-width to prevent the content from becoming too wide on large screens */
+  }
+
   .post-list li {
     background-color: var(--global-card-bg-color);
     border-radius: 10px;  /* rounded corners */
@@ -52,7 +58,7 @@ pagination:
   </style>
   
   <!-- page.html -->
-<div class="post custom-width">
+<div class="post">
   {% if site.display_tags %}
   <div class="tag-list">
     <ul class="p-0 m-0">
