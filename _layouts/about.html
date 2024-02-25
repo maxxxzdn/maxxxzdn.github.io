@@ -43,21 +43,23 @@ layout: default
           <i class="fa fa-envelope"></i>
           <a href="mailto:{{ page.profile.email }}">{{ page.profile.email }}</a>
         </div>
+
+          <!-- Social -->
+          {%- if page.social %}
+          <div class="social">
+            <div class="contact-icons">
+              {% include social.html %}
+            </div>
+
+            <div class="contact-note">
+              {{ site.contact_note }}
+            </div>
+
+          </div>
+          {%- endif %}
+
       </div>
     {%- endif %}
-    <!-- Social -->
-    {%- if page.social %}
-    <div class="social">
-      <div class="contact-icons">
-        {% include social.html %}
-      </div>
-
-      <div class="contact-note">
-        {{ site.contact_note }}
-      </div>
-
-    </div>
-  {%- endif %}
     </div>
     <div class="column2">
       <div class="scrollable-content">
