@@ -67,18 +67,21 @@ layout: default
           {% if page.profile.align == 'left' -%}
               {{ content }}
             </div>
+            <div style="margin-bottom: 20px;"></div>
           {% endif -%}
         </div>
         
         <!-- News -->
         {% if page.news -%}
           <h2><a href="{{ '/news/' | relative_url }}" style="color: inherit;">news</a></h2>
+          <div style="margin-bottom: 20px;"></div>
           {%- include news.html %}
         {%- endif %}
 
         <!-- Latest posts -->
         {% if page.latest_posts -%}
           <h2><a href="{{ '/blog/' | relative_url }}" style="color: inherit;">latest posts</a></h2>
+          <div style="margin-bottom: 20px;"></div>
           {%- include latest_posts.html %}
         {%- endif %}
 
@@ -87,6 +90,7 @@ layout: default
           <h2><a href="{{ '/publications/' | relative_url }}" style="color: inherit;">selected publications</a></h2>
           {%- include selected_papers.html %}
         {%- endif %}
+
       </div>
   </article>
 </body>
