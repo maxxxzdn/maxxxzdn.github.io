@@ -35,11 +35,16 @@ pagination:
     box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* subtle shadow for depth */
   }
 
+  .image-container {
+  display: flex;
+  justify-content: center; /* Centers content horizontally */
+  align-items: center; /* Centers content vertically */
+}
+
   .post-image {
   width: 50%; /* Makes the image take the full width of its container */
   height: auto; /* Maintains the aspect ratio of the image */
   border-radius: 10px; /* Optional: if you want to match the border radius of the box */
-  display: block; /* Ensures the image is treated as a block-level element */
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -97,7 +102,9 @@ pagination:
       </h3>
 
       {% if post.image %}
-      <img class="post-image" src="{{ post.image | prepend: '/assets/blog_heads/' }}" alt="{{ post.title }}">
+      <div class="image-container">
+        <img class="post-image" src="{{ post.image | prepend: '/assets/blog_heads/' }}" alt="{{ post.title }}">
+      </div>
       {% endif %}
 
       <p>{{ post.description }}</p>
