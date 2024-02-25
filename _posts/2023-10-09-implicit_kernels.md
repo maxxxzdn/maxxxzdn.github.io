@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Implicit Convolutional Kernels for Steerable CNNs
+title: Implicit Kernels for Steerable CNNs
 date: 2023-10-09 23:59:59
 tags: deeplearning equivariance steerableCNNs
 image: inf_kernels.png
