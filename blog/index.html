@@ -18,25 +18,18 @@ pagination:
 <style>
   .post {
     margin-left: 0%; /* Shifts the content 5% from the left */
-    width: 120%; /* Adjusts the width to keep the overall width consistent */
+    width: 100%; /* Adjusts the width to keep the overall width consistent */
     max-width: auto; /* Maximum width of the block */
   }
 
   .post-list {
     display: grid;
-    grid-template-columns: repeat(3, 33.33%); /* 3 columns, each 33.33% wide */
+    grid-template-columns: repeat(2, 50%); /* 3 columns, each 33.33% wide */
     grid-gap: 20px;
     background-color: var(--global-card-bg-color);
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  }
-
-  /* For medium screens, switch to 2 columns */
-  @media (max-width: 768px) {
-    .post-list {
-      grid-template-columns: repeat(2, 50%); /* 2 columns, each 50% wide */
-    }
   }
 
   /* For small screens, switch to a single column */
