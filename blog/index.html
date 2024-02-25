@@ -86,6 +86,11 @@ pagination:
           {% endif %}
         {% endif %}
       </h3>
+
+      {% if post.image %}
+      <img src="{{ post.image | prepend: site.baseurl }}" alt="{{ post.title }}">
+      {% endif %}
+
       <p>{{ post.description }}</p>
       <p class="post-meta">
         {{ read_time }} min read &nbsp; &middot; &nbsp;
