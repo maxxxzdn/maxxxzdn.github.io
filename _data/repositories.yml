@@ -1,7 +1,5 @@
 github_repos:
-  - maxxxzdn/EEGCN
+  - maxxxzdn/clifford-group-equivariant-cnns
+  - maxxxzdn/implicit-steerable-kernels
   - Photon-AI-Research/NeuralSolvers
   - maxxxzdn/eegVAE
-
-github_users:
-  - maxxxzdn
