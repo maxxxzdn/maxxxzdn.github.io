@@ -22,13 +22,13 @@ pagination:
     max-width: 768px; /* Maximum width of the block */
   }
 
+
+
   .post-list {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Creates a 4-column layout, each 25% wide */
-    grid-gap: 20px; /* Adjust the space between grid items */
-    margin-left: 5%;
-    margin-right: 5%;
-    max-width: 1080px; /* Adjust as needed */
+    grid-template-columns: repeat(4, 1fr); /* 4 columns, each taking up 25% of the width */
+    grid-gap: 20px; /* Space between grid items */
+    /* Add other styling as needed */
   }
 
   .post-list li {
@@ -37,30 +37,21 @@ pagination:
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 
-    /* Make the items square */
-    aspect-ratio: 1 / 1;
-
-    /* Remove margins used for centering in the previous layout */
-    margin-left: 0;
-    margin-right: 0;
+    width: 25%; /* Width of each box is 25% of the container width */
+    aspect-ratio: 1 / 1; /* Maintain a square aspect ratio */
+    /* Remove or adjust margin and max-width as necessary */
   }
 
   /* Responsive adjustments for smaller screens */
   @media (max-width: 1024px) {
     .post-list {
-      grid-template-columns: repeat(3, 1fr); /* 3 columns for medium screens */
+      grid-template-columns: repeat(2, 1fr); /* 2 columns for medium screens */
     }
   }
 
   @media (max-width: 768px) {
     .post-list {
-      grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller screens */
-    }
-  }
-
-  @media (max-width: 480px) {
-    .post-list {
-      grid-template-columns: 1fr; /* 1 column for very small screens */
+      grid-template-columns: 1fr; /* 1 column for small screens */
     }
   }
 
