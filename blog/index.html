@@ -88,7 +88,7 @@ pagination:
       </h3>
 
       {% if post.image %}
-      <img src="{{ post.image | prepend: site.baseurl }}" alt="{{ post.title }}">
+      <img src="{{ post.image | prepend: '/assets/blog_heads/' }}" alt="{{ post.title }}">
       {% endif %}
 
       <p>{{ post.description }}</p>
