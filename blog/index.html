@@ -16,29 +16,43 @@ pagination:
 ---
 
 <style>
-  .custom-width {
-    width: auto;
-    height: auto;
-    right: 125px;
-  }
-
   .post {
     margin-left: 0%; /* Shifts the content 5% from the left */
     width: 90%; /* Adjusts the width to keep the overall width consistent */
     max-width: 768px; /* Maximum width of the block */
   }
 
+  .post-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Creates a 3-column layout */
+    grid-gap: 20px; /* Adjust the space between grid items */
+    margin-left: 5%;
+    margin-right: 5%;
+    max-width: 1080px; /* Adjust as needed */
+  }
+
   .post-list li {
     background-color: var(--global-card-bg-color);
-    border-radius: 10px;  /* rounded corners */
+    border-radius: 10px;
     padding: 20px;
-    margin-bottom: 20px;  /* spacing between posts */
-    margin-top: 20px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* subtle shadow for depth */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 
-    margin-left: auto;  /* Center the block horizontally */
-    margin-right: auto; /* Center the block horizontally */
-    max-width: 600px; /* Maximum width of the block */
+    /* Remove margins used for centering in the previous layout */
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /* Responsive adjustments for smaller screens */
+  @media (max-width: 768px) {
+    .post-list {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller screens */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .post-list {
+      grid-template-columns: 1fr; /* 1 column for very small screens */
+    }
   }
 
   .image-container {
