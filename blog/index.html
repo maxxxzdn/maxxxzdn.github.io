@@ -17,20 +17,23 @@ pagination:
 
 <style>
   .post {
-    margin-left: 0%; /* Shifts the content 5% from the left */
-    width: 100%; /* Adjusts the width to keep the overall width consistent */
-    max-width: auto; /* Maximum width of the block */
-  }
+  margin-left: 0%;
+  width: 100%;
+  max-width: auto;
+}
 
-  .post-list {
-    display: grid;
-    grid-template-columns: repeat(2, 50%); /* 3 columns, each 33.33% wide */
-    grid-gap: 20px;
-    background-color: var(--global-card-bg-color);
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  }
+.post-list {
+  display: grid;
+  grid-template-columns: repeat(2, 50%); /* 2 columns for larger screens */
+  grid-gap: 20px;
+}
+
+.post-list li {
+  background-color: var(--global-card-bg-color); /* Sets the individual post background color */
+  border-radius: 10px; /* Rounds the corners of the individual post */
+  padding: 20px; /* Pads the inside of the individual post */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Shadow for individual post */
+}
 
   /* For small screens, switch to a single column */
   @media (max-width: 360px) {
