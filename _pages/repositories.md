@@ -2,7 +2,7 @@
 layout: page
 permalink: /repositories/
 title: repositories
-description: A list of relevant repositories which I have contributed to.
+description: a list of relevant repositories which I have contributed to.
 nav: true
 nav_order: 3
 ---
