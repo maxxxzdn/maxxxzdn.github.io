@@ -22,38 +22,27 @@ pagination:
     max-width: auto; /* Maximum width of the block */
   }
 
-
-
   .post-list {
     display: grid;
-    grid-template-columns: repeat(3, 25%); /* 3 columns for large screens */
-    grid-gap: 20px; /* Space between grid items */
-    /* Add other styling as needed */
+    grid-template-columns: repeat(3, 33.33%); /* 3 columns, each 33.33% wide */
+    grid-gap: 20px;
   }
 
-  .post-list li {
-    background-color: var(--global-card-bg-color);
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-
-    width: 100%; /* Width of each box is 25% of the container width */
-    aspect-ratio: 1 / 1; /* Maintain a square aspect ratio */
-    /* Remove or adjust margin and max-width as necessary */
-  }
-
-  /* Responsive adjustments for smaller screens */
+  /* For medium screens, switch to 2 columns */
   @media (max-width: 768px) {
     .post-list {
-      grid-template-columns: repeat(2, 1fr); /* 2 columns for medium screens */
+      grid-template-columns: repeat(2, 50%); /* 2 columns, each 50% wide */
     }
   }
 
+  /* For small screens, switch to a single column */
   @media (max-width: 360px) {
     .post-list {
-      grid-template-columns: 1fr; /* 1 column for small screens */
+      grid-template-columns: 1fr; /* 1 column taking full width */
     }
   }
+
+
 
 
 
