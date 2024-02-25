@@ -53,11 +53,21 @@ pagination:
   margin-top: 10px;
   margin-bottom: 10px;
 }
-</style>
 
-
-<div class="post">
-
+  .custom-width {
+    width: auto;
+    height: auto;
+    top: 125px;
+    left: 0px;
+    bottom: auto;
+    margin-left: auto;
+    margin-top: 0;
+    margin-bottom: 30px;
+  }
+  </style>
+  
+  <!-- page.html -->
+<div class="post custom-width">
   {% if site.display_tags %}
   <div class="tag-list">
     <ul class="p-0 m-0">
