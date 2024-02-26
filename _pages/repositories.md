@@ -6,11 +6,20 @@ description: a list of relevant repositories which I have contributed to.
 nav: true
 nav_order: 3
 ---
+<style>
+  .grey-block {
+    background-color: grey; /* or any shade of grey you prefer */
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+</style>
 
 {% if site.data.repositories.github_repos %}
-<div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
+<div class="repositories grey-block d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
   {% for repo in site.data.repositories.github_repos %}
-    {% include repository/repo.html repository=repo %}
+    <div class="grey-block">
+      {% include repository/repo.html repository=repo %}
+    </div>
   {% endfor %}
 </div>
 {% endif %}
