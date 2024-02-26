@@ -6,15 +6,7 @@
   {% assign show_owner = true %}
 {% endif %}
 
-<style>
-  .grey-block {
-    background-color: var(--global-card-bg-color);
-    border-radius: 10px; 
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  }
-</style>
-
-<div class="repo p-2 text-center grey-block">
+<div class="repo p-2 text-center">
   <a href="https://github.com/{{ include.repository }}">
     <img class="repo-img-light w-100" alt="{{ include.repository }}" src="https://github-readme-stats.vercel.app/api/pin/?username={{ repo_url[0] }}&repo={{ repo_url[1] }}&theme={{ site.repo_theme_light }}&show_owner={{ show_owner }}">
     <img class="repo-img-dark w-100" alt="{{ include.repository }}" src="https://github-readme-stats.vercel.app/api/pin/?username={{ repo_url[0] }}&repo={{ repo_url[1] }}&theme={{ site.repo_theme_dark }}&show_owner={{ show_owner }}">
