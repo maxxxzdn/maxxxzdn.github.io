@@ -7,6 +7,7 @@ image: inf_kernels.png
 description: Using implicit parameterization of G-steerable kernels greatly simplifies the design of steerable CNNs. Let me show you how.
 redirect: /blog/implicit_kernels.html
 related_publications: https://doi.org/10.48550/arxiv.2212.06096
+read_time: 10
 ---
 
 Redirecting...
