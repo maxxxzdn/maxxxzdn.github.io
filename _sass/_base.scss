@@ -153,11 +153,11 @@ blockquote {
 .contact-info a::before {
   content: '';
   position: absolute;
-  width: 175px;
+  width: 100%;
   height: 4px;
   border-radius: 4px;
-  background-color: #18272F;
-  bottom: -5px;
+  background-color: #18272F; /* Change the color as needed */
+  bottom: -2px; /* Adjust as needed */
   left: 0;
   transform-origin: right;
   transform: scaleX(0);
@@ -165,8 +165,8 @@ blockquote {
 }
 
 .contact-info a:hover::before {
-transform-origin: left;
-transform: scaleX(1);
+  transform-origin: left;
+  transform: scaleX(1);
 }
 
 .fa-envelope {
