@@ -1,8 +1,8 @@
 github_repos:
   - maxxxzdn/clifford-group-equivariant-cnns
   - maxxxzdn/implicit-steerable-kernels
+  - maxxxzdn/jax-geometric
   - Photon-AI-Research/NeuralSolvers
-  - maxxxzdn/eegVAE
 
 github_users:
   - maxxxzdn
