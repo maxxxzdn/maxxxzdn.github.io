@@ -17,8 +17,19 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-Hi! I am a PhD candidate at [AMLab](http://amlab.science.uva.nl/) supervised by Max Welling, Jan-Willem van de Meent and Alfons Hoekstra. I am trying to learn PDEs from data using deep learning. Before joining the University of Amsterdam, I was a research assistant at Helmholtz AI, where I worked on applications of machine learning for material science. I also spent some time working on graph neural networks and generative modelling with applications in neuroscience. Long ago, I developed statistical models of clinical treatment at TU Dresden.
+Hi!
 
-Overall, my research interests revolve around `physics-inspired deep learning` and `geometric deep learning`. I am also interested in AI4Science and the applications of machine learning to physics.
+> ```python
+> print(self.status)
+> ```
+PhD candidate at [AMLab](http://amlab.science.uva.nl/)
 
-In my free time, I enjoy reading, playing basketball and testing gravity when skateboarding.
+> ```python
+> print(self.supervisors)
+> ```
+> Max Welling, Jan-Willem van de Meent, and Alfons Hoekstra
+
+> ```python
+> print(self.research_interests)
+> ```
+> physics-inspired deep learning, geometric deep learning
