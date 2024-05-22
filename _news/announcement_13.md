@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Clifford-steerable CNNs was `accepted` to ICML 2024! See you all in Vienna!
+Clifford-Steerable CNNs was `accepted` to ICML 2024! See you all in Vienna!

@@ -22,7 +22,7 @@ Hi!
 > ```python
 > print(self.status)
 > ```
-PhD candidate at [AMLab](http://amlab.science.uva.nl/)
+2nd year PhD student at [AMLab](http://amlab.science.uva.nl/)
 
 > ```python
 > print(self.supervisors)
