@@ -20,16 +20,16 @@ social: true  # includes social icons at the bottom of the page
 Hi!
 
 > ```python
-> print(self.status)
+> >>> print(self.status)
 > ```
 2nd year PhD student at [AMLab](http://amlab.science.uva.nl/)
 
 > ```python
-> print(self.supervisors)
+> >>> print(self.supervisors)
 > ```
-> Max Welling, Jan-Willem van de Meent, and Alfons Hoekstra
+Max Welling, Jan-Willem van de Meent, and Alfons Hoekstra
 
 > ```python
-> print(self.research_interests)
+> >>> print(self.research_interests)
 > ```
-> physics-inspired deep learning, geometric deep learning
+physics-inspired deep learning, geometric deep learning
