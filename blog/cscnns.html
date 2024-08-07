@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriately as they are your "business card" -->
+  <meta name="description" content="CSCNNs blog">
+  <meta property="og:title" content="Clifford-Steerable Convolutional Neural Networks"/>
+  <meta property="og:description" content="Blog post"/>
+  <meta property="og:url" content="maxxxzdn.github.io"/>
+  <meta property="og:image" content="../assets/CSCNNs_/static/images/cscnns_main.png" />
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="725"/>
+
+  <meta name="twitter:title" content="maxxxzdn">
+  <meta name="twitter:description" content="blog">
+  <meta name="keywords" content="deep learning, equivariance, symmetry, spacetime">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.js"></script>
+
+  <title>Clifford-Steerable Convolutional Neural Networks</title>
+  <link rel="icon" type="image/x-icon" href="../assets/CSCNNs_/static/images/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/CSCNNs_/static/css/bulma.min.css">
+  <link rel="stylesheet" href="../assets/CSCNNs_/static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="../assets/CSCNNs_/static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="../assets/CSCNNs_/static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="../assets/CSCNNs_/static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="../assets/CSCNNs_/static/js/fontawesome.all.min.js"></script>
+  <script src="../assets/CSCNNs_/static/js/bulma-carousel.min.js"></script>
+  <script src="../assets/CSCNNs_/static/js/bulma-slider.min.js"></script>
+  <script src="../assets/CSCNNs_/static/js/index.js"></script>
+
+  <style>
+    .img-container2 {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 90%;
+        margin-left: 15px;
+    }
+
+    .hero.is-custom-light {
+        background-color: #FFF5E1
+    }
+
+    .footer {
+        background-color: #f5f5f5;
+        padding: 20px 0;
+    }
+
+    .img-container2 img {
+        height: 220px;
+    }
+
+    .img-container2 img:first-child {
+        height: 220px;
+        margin-right: 50px;
+    }
+
+    .img-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 80%;
+        margin-left: -20px;
+    }
+
+    .img-container img {
+        height: 170px;
+        max-height: 200px;
+    }
+
+    .img-container img:first-child {
+        height: 170px;
+        margin-right: 50px;
+    }
+
+    .teaser-image {
+        width: 100%;
+        max-width: 600px;
+        padding: 20px;
+        background-color: white;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .theorem-box {
+        border: 2px solid black;
+        padding: 10px;
+        margin: 20px 0;
+        background-color: #f5f5f5;
+    }
+
+    .theorem-box strong {
+        color: darkred;
+    }
+
+    .content-columns {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .content-column {
+        flex: 1;
+        padding: 20px;
+    }
+
+    .text-column {
+        width: 60%;
+        padding-right: 10px;
+    }
+
+    .image-column {
+        width: 40%;
+        padding-left: 10px;
+        padding-top: 30px;
+    }
+
+    .image-column img {
+        margin-bottom: 20px;
+        width: 100%;
+        height: auto;
+    }
+
+  </style>
+</head>
+<body>
+  <section class="hero is-custom-light">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Clifford-Steerable Convolutional Neural Networks</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://maxxxzdn.github.io/" target="_blank">Maksim Zhdanov</a><sup>1</sup>,
+                <a href="https://davidruhe.github.io/" target="_blank">David Ruhe</a><sup>*,1,2,3</sup>,
+                <a href="https://maxxxzdn.github.io/" target="_blank">Maurice Weiler</a><sup>*,1</sup>,
+                <a href="https://maxxxzdn.github.io/" target="_blank">Ana Lucic</a><sup>4</sup>,
+                <a href="https://maxxxzdn.github.io/" target="_blank">Johannes Brandstetter</a><sup>5,6</sup>,
+                <a href="https://maxxxzdn.github.io/" target="_blank">Patrick Forré</a><sup>1,2</sup>
+              </span>
+            </div>
+            <div class="is-size-6 publication-authors">
+              <span class="author-block">
+                  <sup>*</sup>equal contribution,
+                  <sup>1</sup>AMLab, University of Amsterdam,
+                  <sup>2</sup>AI4Science Lab, University of Amsterdam,
+                  <sup>3</sup>Anton Pannekoek Institute for Astronomy,
+                  <sup>4</sup>AI4Science, Microsoft Research,
+                  <sup>5</sup>ELLIS Unit Linz,
+                  <sup>6</sup>NXAI GmbH
+              </span>
+            </div>
+            <div class="is-size-4 publication-authors">
+              <br>ICML 2024
+            </div>
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="https://arxiv.org/pdf/2402.14730.pdf" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/maxxxzdn/clifford-group-equivariant-cnns" target="_blank"
+                class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="fab fa-github"></i>
+                </span>
+                <span>Code</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="https://arxiv.org/abs/2402.14730" target="_blank"
+              class="external-link button is-normal is-rounded is-dark">
+              <span class="icon">
+                <i class="ai ai-arxiv"></i>
+              </span>
+              <span>arXiv</span>
+            </a>
+          </span>
+          <span class="link-block">
+            <a href="https://github.com/maxxxzdn/clifford-group-equivariant-cnns/blob/main/playbook.ipynb" target="_blank"
+            class="external-link button is-normal is-rounded is-dark">
+            <span class="icon">
+              <i class="fas fa-laptop-code"></i>
+            </span>
+            <span>Demo</span>
+          </a>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+<section class="section hero is-normal">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered content-columns">
+      <div class="column text-column">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            We present Clifford-Steerable Convolutional Neural Networks (CS-CNNs), a novel class of \(E(p, q)\)-equivariant CNNs. CS-CNNs process multivector fields on pseudo-Euclidean spaces. They cover, for instance, \(E(3)\)-equivariance and Poincaré-equivariance on Minkowski spacetime. Our approach is based on an implicit parametrization of \(O(p,q)\)-steerable kernels via Clifford group equivariant neural networks. We significantly and consistently outperform baseline methods on fluid dynamics as well as relativistic electrodynamics forecasting tasks.
+          </p>
+        </div>
+      </div>
+      <div class="column image-column">
+        <img src="../assets/CSCNNs_/static/images/cscnns_main.png" alt="Title Image" class="teaser-image">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section hero is-custom-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered content-columns">
+      <div class="column image-column">
+        <div style="text-align: center; margin-bottom: 40px;">
+          <img src="../assets/CSCNNs_/static/images/sl6a.png" style="border: 1px solid #000; margin-top: 40px; padding: 10px 20px 10px 20px; background-color: white; width: 400px;" alt="pseudo-Euclidean spaces">
+          <p style="margin-top: -15px;">Clocks moving with different velocities in a rod.</p>
+        </div>
+        <div style="text-align: center; margin-bottom: 40px;">
+          <img src="../assets/CSCNNs_/static/images/sl6b.png" style="border: 1px solid #000; padding: 10px 20px 10px 20px; background-color: white; width: 400px;" alt="pseudo-Euclidean spaces">
+          <p style="margin-top: -15px;">Spacetime diagram: where the clocks end up showing the same time.</p>
+        </div>
+      </div>
+      
+      <div class="column text-column">
+        <h2 class="title is-3">Spacetime</h2>
+        <div class="content has-text-justified">
+          <p>
+            In classical physics, space and time are treated as separate entities:
+            space is described using Euclidean geometry, and time is considered a continuous one-dimensional flow.
+            This separation leads to different notions of distance in space and time.
+            In space, to measure how far apart two points are from each other, we use the Euclidean distance:
+            \[
+            d^2 = \Delta x^2 + \Delta y^2 + \Delta z^2
+            \]
+            On the other hand, there is time which is thought to be absolute: 
+            if we were to place two clocks at different locations,
+            they will read the same time, regardless of their spatial separation or relative motion.
+            In other words, the timing of events is assumed to be the same for all observers.
+          </p>
+          <p>
+            In relativistic physics, the situation is different. 
+            There, space and time are unified into a single entity - spacetime. 
+            It is described by Minkowski geometry, where the distance between two points is given by:
+            \[
+            d^2 = c^2 \Delta t^2 - (\Delta x^2 + \Delta y^2 + \Delta z^2)
+            \]
+            where \(c\) is the speed of light. 
+
+            To better build an intution, let us imagine four clocks moving with different velocities in a rod, 
+            and velocities are close to the speed of light.
+            As time is compressed in the direction of motion at high velocities, 
+            the clocks have to travel longer distances to show the same time.
+            If we now draw the trajectories of the clocks in spacetime, we would see that they end up on the same hyperbola.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section hero is-custom-normal">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered content-columns">
+      
+      <div class="column text-column">
+        <h2 class="title is-3">Pseudo-Euclidean spaces</h2>
+        <div class="content has-text-justified">
+          <p>
+          From the previous example, we saw that events at the same spacetime distance from an origin form a hyperbola in spacetime. 
+          It is different from the Euclidean geometry, where objects at the same distance form a circle (or a sphere in 3D). 
+          In the right figure, you can visually compare the two geometries, 
+          with different colors representing loci of points at the same distance from the origin.
+          </p>
+          <p>
+          Minkowski spacetime is different from the Euclidean space in a way that the distance can be negative. 
+          Mathematically, it falls under the umbrella of pseudo-Euclidean spaces - 
+          a generalization of Euclidean spaces to include negative distances. 
+          Pseudo-Euclidean spaces are denoted as \(\mathbb{R}^{p,q}\),
+          where \(p\) is the number of time-like dimensions and \(q\) is the number of space-like dimensions,
+          and the tuple \((p,q)\) is called the signature of the space. 
+          Note that when \(p=0\) and \(q=3\), we obtain the Euclidean space, and when \(p=1\) and \(q=3\), we obtain Minkowski spacetime.
+          <!-- Note that the signature defines the inner product of the space, which is reflected in the distance formula:
+          \[
+          d^2 = (+1) c^2 \Delta t^2 + (-1) \Delta x^2 + (-1) \Delta y^2 + (-1) \Delta z^2
+          \] -->
+          </p>
+        </div>
+      </div>
+
+      <div class="column image-column">
+        <div style="text-align: center; margin-top: 40px; margin-bottom: 40px; margin-left: 20px;">
+          <img src="../assets/CSCNNs_/static/images/o_pq_orbits.png" style="margin-top: 40px; padding: 10px 20px 10px 20px; background-color: white; width: 400px;" alt="pseudo-Euclidean spaces">
+          <p style="margin-top: -15px;"> Euclidean space (left) and Minkowski spacetime (right). 
+            Colors depict different loci of points at the same distance from the origin.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section hero is-custom-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered content-columns">
+
+      <div class="column image-column">
+        <div style="text-align: center; margin-top: 20px; margin-bottom: 0px; margin-left: 20px;">
+          <img src="../assets/CSCNNs_/static/images/opq_transform.png" style="border: 1px solid #000; margin-top: 40px; padding: 10px 20px 10px 20px; background-color: white; width: 400px;" alt="pseudo-Euclidean spaces">
+          <p style="margin-top: -15px;"> Isometry transformations of the Euclidean space (top) and Minkowski spacetime (bottom). 
+            Colors depict different loci of points at the same distance from the origin.</p>
+        </div>
+      </div>
+      
+      <div class="column text-column">
+        <h2 class="title is-3">Isometries</h2>
+        <div class="content has-text-justified">
+          <p>
+          We can now look at the transformations that preserve the distance in pseudo-Euclidean spaces - isometries.
+          For Euclidean spaces, these are rotations, translations, and reflections which consitute the Euclidean group \(E(n)\).
+          For pseudo-Euclidean spaces, the set of isometries includes translations, spatial rotations, 
+          reflections and also boosts between inertial frames. 
+          They constitute the pseudo-Euclidean group \(E(p,q)\), 
+          which as a special case includes the Poincaré group for Minkowski spacetime \(E(1,3)\) 
+          and the Euclidean group \(E(0,n)\).
+          </p>
+          <p>
+          Mathematically, the pseudo-Euclidean group is defined as a semidirect product of the pseudo-orthogonal group \(O(p,q)\) 
+          and the translation group \( (\mathbb{R}^{p+q}, +) \):
+          \[
+          E(p,q) := O(p,q) \ltimes (\mathbb{R}^{p+q}, +),
+          \]
+          which means that any isometry can be represented as a composition of a linear transformation from \(O(p,q)\) and a translation.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!---
+<section class="section hero is-custom-normal">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered content-columns">
+      
+      <div class="column text-column">
+        <h2 class="title is-3">Deep Learning</h2>
+        <div class="content has-text-justified">
+          <p>
+            Deep learning has adapted well to the Euclidean space.
+            These days, it is fairly standard practice to process dynamical data as snapshots in time, 
+            treating time as a channel dimension in the input data, 
+            similar to what color channels are in images. While such representation is justified for classical physics, 
+            it is not suitable for data defined on spacetime. As we discussed, here, time is essentially a different dimension,
+            hence it should be modelled as a part of the grid/mesh, not as a channel.
+            Furthermore, we cannot simply take existing architectures, as they are designed to handle Euclidean spaces and 
+            hence will not respect the structure of spacetime.
+          </p>
+          <p>
+            What does it mean for data to be defined on spacetime or any other space?
+            The key concept here is feature vector fields:
+            \[
+            f: \mathbb{R}^{p,q} \to W,
+            \]
+            where \(W\) is a vector space. Basically, it is a function that assigns a feature vector to each point in the space.
+            For example, in case of RGB images, \(p = 0, q = 2\) and \(W = \mathbb{R}^3\) is the color space. 
+            We now want to learn a non-linear map 
+            
+          </p>
+        </div>
+      </div>
+
+      <div class="column image-column">
+        <div style="text-align: center; margin-top: 40px; margin-bottom: 40px; margin-left: 20px;">
+          <img src="../assets/CSCNNs_/static/images/space_examples.png" style="margin-top: 40px; padding: 10px 20px 10px 20px; background-color: white; width: 400px;" alt="pseudo-Euclidean spaces">
+          <p style="margin-top: -15px;"> Euclidean space (left) and Minkowski spacetime (right). 
+            Colors depict different loci of points at the same distance from the origin.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+--->
+
+<section class="section hero is-custom-normal">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered content-columns">
+      
+      <div class="column text-column">
+        <h2 class="title is-3">Equivariant (Steerable) CNNs </h2>
+        <div class="content has-text-justified">
+          Now assume there is a function \(f: \mathbb{R}^{p,q} \to W\) that assigns a feature vector to each point in the space.
+          If we apply a transformation \(g \in E(p,q)\) to the input space \(\mathbb{R}^{p,q}\), 
+          e.g. by rotating it, the feature vector field \(f\) transforms accordingly:
+          
+
+
+
+
+
+          Standard CNNs are already translation equivariant by design, 
+          as the same kernel is applied at each location in the input. 
+
+
+
+
+        translation equivariance -> CNNs
+        arbitrary group equivariance -> Steerable CNNs -> Steerability constraint
+        not solved for O(p,q)
+
+        NEXT SECTION: implicit kernels, end with we need O(p,q)-equivariant MLP nonetheless
+        NEXT NEXT SECTION: Clifford algebra -> relation to O(p,q) -> CEGNN -> equivariant MLP
+        </div>
+      </div>
+
+      <div class="column image-column">
+        <div style="text-align: center; margin-top: 20px; margin-bottom: 0px; margin-left: 20px;">
+          <img src="../assets/CSCNNs_/static/images/opq_transform.png" style="border: 1px solid #000; margin-top: 40px; padding: 10px 20px 10px 20px; background-color: white; width: 400px;" alt="pseudo-Euclidean spaces">
+          <p style="margin-top: -15px;"> Isometry transformations of the Euclidean space (top) and Minkowski spacetime (bottom). 
+            Colors depict different loci of points at the same distance from the origin.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+</body>
+</html>
