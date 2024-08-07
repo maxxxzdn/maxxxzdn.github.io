@@ -224,7 +224,7 @@
         </div>
       </div>
       <div class="column image-column">
-        <img src="../assets/CSCNNs_/static/images/cscnns_main.png" style="padding: 10px 20px 10px 20px; background-color: white; width: 400px;" alt="Title Image" class="teaser-image">
+        <img src="../assets/CSCNNs_/static/images/cscnns_main.png" style="height: 100%;" alt="Title Image" class="teaser-image">
       </div>
     </div>
   </div>
@@ -235,11 +235,11 @@
     <div class="columns is-centered content-columns">
       <div class="column image-column">
         <div style="text-align: center; margin-bottom: 40px;">
-          <img src="../assets/CSCNNs_/static/images/sl6a.png" style="border: 1px solid #000; margin-top: 40px; padding: 10px 20px 10px 20px; background-color: white; width: 400px;" alt="pseudo-Euclidean spaces">
+          <img src="../assets/CSCNNs_/static/images/sl6a.png" style="border: 1px solid #000; margin-top: 40px; padding: 10px 20px 10px 20px; background-color: white; height: 20%;;" alt="pseudo-Euclidean spaces">
           <p style="margin-top: -15px;">Clocks moving with different velocities in a rod.</p>
         </div>
         <div style="text-align: center; margin-bottom: 40px;">
-          <img src="../assets/CSCNNs_/static/images/sl6b.png" style="border: 1px solid #000; padding: 10px 20px 10px 20px; background-color: white; width: 400px;" alt="pseudo-Euclidean spaces">
+          <img src="../assets/CSCNNs_/static/images/sl6b.png" style="border: 1px solid #000; padding: 10px 20px 10px 20px; background-color: white; height: 50%;" alt="pseudo-Euclidean spaces">
           <p style="margin-top: -15px;">Spacetime diagram: where the clocks end up showing the same time. 
             <br> Adapted from <a href="https://sites.pitt.edu/~jdnorton/teaching/HPS_0410/chapters/spacetime/index.html">the blog post</a>.</p>
         </div>
@@ -310,8 +310,8 @@
       </div>
 
       <div class="column image-column">
-        <div style="text-align: center; margin-top: 40px; margin-bottom: 40px; margin-left: 20px;">
-          <img src="../assets/CSCNNs_/static/images/o_pq_orbits.png" style="margin-top: 40px; padding: 10px 20px 10px 20px; background-color: white; width: 400px;" alt="pseudo-Euclidean spaces">
+        <div style="text-align: center;">
+          <img src="../assets/CSCNNs_/static/images/o_pq_orbits.png" style="margin-top: 15%; background-color: white; width: 70%;" alt="pseudo-Euclidean spaces">
           <p style="margin-top: -15px;"> Euclidean space (left) and Minkowski spacetime (right). 
             Colors depict different loci of points at the same distance from the origin.</p>
         </div>
@@ -327,8 +327,8 @@
     <div class="columns is-centered content-columns">
 
       <div class="column image-column">
-        <div style="text-align: center; margin-top: 20px; margin-bottom: 0px; margin-left: 20px;">
-          <img src="../assets/CSCNNs_/static/images/opq_transform.png" style="border: 1px solid #000; margin-top: 40px; padding: 10px 20px 10px 20px; background-color: white; width: 400px;" alt="pseudo-Euclidean spaces">
+        <div style="text-align: center;">
+          <img src="../assets/CSCNNs_/static/images/opq_transform.png" style="border: 1px solid #000; margin-top: 5%; background-color: white; width: 70%;" alt="pseudo-Euclidean spaces">
           <p style="margin-top: -15px;"> Isometry transformations of the Euclidean space (top) and Minkowski spacetime (bottom). 
             Colors depict different loci of points at the same distance from the origin.</p>
         </div>
@@ -363,50 +363,6 @@
   </div>
 </section>
 
-<!---
-<section class="section hero is-custom-normal">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered content-columns">
-      
-      <div class="column text-column">
-        <h2 class="title is-3">Deep Learning</h2>
-        <div class="content has-text-justified">
-          <p>
-            Deep learning has adapted well to the Euclidean space.
-            These days, it is fairly standard practice to process dynamical data as snapshots in time, 
-            treating time as a channel dimension in the input data, 
-            similar to what color channels are in images. While such representation is justified for classical physics, 
-            it is not suitable for data defined on spacetime. As we discussed, here, time is essentially a different dimension,
-            hence it should be modelled as a part of the grid/mesh, not as a channel.
-            Furthermore, we cannot simply take existing architectures, as they are designed to handle Euclidean spaces and 
-            hence will not respect the structure of spacetime.
-          </p>
-          <p>
-            What does it mean for data to be defined on spacetime or any other space?
-            The key concept here is feature vector fields:
-            \[
-            f: \mathbb{R}^{p,q} \to W,
-            \]
-            where \(W\) is a vector space. Basically, it is a function that assigns a feature vector to each point in the space.
-            For example, in case of RGB images, \(p = 0, q = 2\) and \(W = \mathbb{R}^3\) is the color space. 
-            We now want to learn a non-linear map 
-            
-          </p>
-        </div>
-      </div>
-
-      <div class="column image-column">
-        <div style="text-align: center; margin-top: 40px; margin-bottom: 40px; margin-left: 20px;">
-          <img src="../assets/CSCNNs_/static/images/space_examples.png" style="margin-top: 40px; padding: 10px 20px 10px 20px; background-color: white; width: 400px;" alt="pseudo-Euclidean spaces">
-          <p style="margin-top: -15px;"> Euclidean space (left) and Minkowski spacetime (right). 
-            Colors depict different loci of points at the same distance from the origin.</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
---->
 
 <section class="section hero is-custom-normal">
   <div class="container is-wider-desktop">
@@ -443,12 +399,12 @@
 
       <div class="column image-column">
         
-        <div style="text-align: center; margin-top: -50px;">
-          <img src="../assets/CSCNNs_/static/images/cat_space.png" style="margin-top: 10px; padding: 10px 20px 10px 20px; background-color: white; width: 400px;" alt="pseudo-Euclidean spaces">
+        <div style="text-align: center;">
+          <img src="../assets/CSCNNs_/static/images/cat_space.png" style="background-color: white; height: 40%;" alt="pseudo-Euclidean spaces">
           <p style="margin-top: -15px;">Group acts on data through group representations.</p>
         </div>
-        <div style="text-align: center; margin-top: 10px;">
-          <img src="../assets/CSCNNs_/static/images/fields.png" style="margin-top: 10px; padding: 10px 20px 10px 20px; background-color: white; width: 400px;" alt="pseudo-Euclidean spaces">
+        <div style="text-align: center;">
+          <img src="../assets/CSCNNs_/static/images/fields.png" style="margin-top: 5%; background-color: white; height: 50%;" alt="pseudo-Euclidean spaces">
           <p style="margin-top: -15px;">Different types of feature fields: scalar and vector. 
             <br> Source: <a href="https://github.com/QUVA-Lab/escnn">escnn</a>.
             </p>
@@ -465,8 +421,8 @@
     <div class="columns is-centered content-columns">
 
       <div class="column image-column">
-        <div style="text-align: center; margin-top: 20px; margin-bottom: 0px; margin-left: 20px;">
-          <img src="../assets/CSCNNs_/static/images/lizard.png" style="border: 1px solid #000; margin-top: 40px; padding: 10px 20px 10px 20px; background-color: white; width: 500px;" alt="pseudo-Euclidean spaces">
+        <div style="text-align: center;">
+          <img src="../assets/CSCNNs_/static/images/lizard.png" style="border: 1px solid #000; margin-top: 15%; background-color: white; width: 70%;" alt="pseudo-Euclidean spaces">
           <p style="margin-top: -15px;"> Convolution with \(G\)-steerable kernels commutes with group action. 
             <br> Source: <a href="https://maurice-weiler.gitlab.io/#cnn_book">Maurice's book</a>.
           </p>
@@ -536,8 +492,8 @@
       </div>
 
       <div class="column image-column">
-        <div style="text-align: center; margin-top: 20px; margin-bottom: 40px; margin-left: 20px;">
-          <img src="../assets/img/publication_preview/imp_kernels.png" style="margin-top: 40px; padding: 10px 20px 10px 20px; background-color: white; width: 400px;" alt="pseudo-Euclidean spaces">
+        <div style="text-align: center;">
+          <img src="../assets/img/publication_preview/imp_kernels.png" style="margin-top: 15%; background-color: white; width: 50%;" alt="pseudo-Euclidean spaces">
           <p style="margin-top: -15px;">
             \(G\)-equivariant MLP computes the kernel matrix for each point of the space. 
             <br> Source: <a href="https://arxiv.org/abs/2212.06096">Implicit Steerable kernels paper</a>.
@@ -554,8 +510,8 @@
     <div class="columns is-centered content-columns">
 
       <div class="column image-column">
-        <div style="text-align: center; margin-top: 20px; margin-bottom: 0px; margin-left: 20px;">
-          <img src="../assets/CSCNNs_/static/images/rho_cl.png" style="border: 1px solid #000; margin-top: 80px; padding: 10px 20px 10px 20px; background-color: white; width: 500px;" alt="pseudo-Euclidean spaces">
+        <div style="text-align: center;">
+          <img src="../assets/CSCNNs_/static/images/rho_cl.png" style="border: 1px solid #000; margin-top: 15%; background-color: white; width:80%;" alt="pseudo-Euclidean spaces">
           <p style="margin-top: -15px;"> CGENNs operate on multivectors in an \(O(p,q)\)-equivariant way. 
             <br> Source: <a href="https://arxiv.org/abs/2305.11141">Clifford Group Equivariant NNs</a>.
           </p>
@@ -617,8 +573,8 @@
       </div>
 
       <div class="column image-column">
-        <div style="text-align: center; margin-top: 20px; margin-bottom: 40px; margin-left: 20px;">
-          <img src="../assets/CSCNNs_/static/images/cscnn_scheme.png" style="margin-top: 40px; padding: 10px 20px 10px 20px; background-color: white; width: 400px;" alt="pseudo-Euclidean spaces">
+        <div style="text-align: center;">
+          <img src="../assets/CSCNNs_/static/images/cscnn_scheme.png" style="margin-top: 10%; background-color: white; width: 60%;" alt="pseudo-Euclidean spaces">
           <p style="margin-top: -15px;">
             Multivector kernels are computed at each point of the grid, and then the geometric product is partially evaluated to yield Clifford-Steerable kernels. 
           </p>
@@ -634,8 +590,8 @@
     <div class="columns is-centered content-columns">
 
       <div class="column image-column">
-        <div style="text-align: center; margin-top: 0px; margin-bottom: 0px; margin-left: 20px;">
-          <img src="../assets/CSCNNs_/static/images/experiments.png" style="border: 1px solid #000; margin-top: 0px; padding: 10px 20px 10px 20px; background-color: white; width: 400px;" alt="pseudo-Euclidean spaces">
+        <div style="text-align: center;">
+          <img src="../assets/CSCNNs_/static/images/experiments.png" style="border: 1px solid #000; margin-top: 5%; background-color: white; width: 70%;" alt="pseudo-Euclidean spaces">
           <p style="margin-top: -15px;"> MSE on different forecasting tasks (one-step loss) as a function of number of training simulations. </p>
         </div>
       </div>
@@ -674,16 +630,16 @@
     <div class="columns is-centered content-columns">
 
       <div class="column image-column">
-        <div style="text-align: center; margin-top: 0px; margin-bottom: 0px; margin-left: 20px;">
-          <img src="../assets/CSCNNs_/static/images/comparison.jpg" style="border: 1px solid #000; margin-top: 50px; padding: 10px 20px 10px 20px; background-color: white; width: 500px;" alt="pseudo-Euclidean spaces">
+        <div style="text-align: center;">
+          <img src="../assets/CSCNNs_/static/images/comparison.jpg" style="border: 1px solid #000; margin-top: 5%; background-color: white; width: 100%;" alt="pseudo-Euclidean spaces">
           <p style="margin-top: -15px;"> Visual comparison of
             target and predicted fields. <br> <em>Left</em>: Navier-Stokes. <em>Right</em>: Relativistic electrodynamics. </p>
         </div>
       </div>
       
       <div class="column image-column">
-        <div style="text-align: center; margin-top: 0px; margin-bottom: 0px; margin-left: 20px;">
-          <img src="../assets/CSCNNs_/static/images/comoving.gif" style="border: 1px solid #000; margin-top: 50px; padding: 0px 0px 0px 0px; background-color: white; width: 390px;" alt="pseudo-Euclidean spaces">
+        <div style="text-align: center;">
+          <img src="../assets/CSCNNs_/static/images/comoving.gif" style="border: 1px solid #000; margin-top: 5%; background-color: white; width: 78%;" alt="pseudo-Euclidean spaces">
           <p style="margin-top: -15px;"> Boost-equivariance: our model produces consistent predictions that are stable when viewed from the comoving frame. 
             ResNet is not boost-equivariant and produces inconsistent predictions. </p>
           </p>
@@ -732,8 +688,8 @@
       </div>
 
       <div class="column image-column">
-        <div style="text-align: center; margin-top: 20px; margin-bottom: 40px; margin-left: 20px;">
-          <img src="../assets/CSCNNs_/static/images/miscel.png" style="margin-top: 150px; padding: 10px 20px 10px 20px; background-color: white; width: 500px;" alt="pseudo-Euclidean spaces">
+        <div style="text-align: center;">
+          <img src="../assets/CSCNNs_/static/images/miscel.png" style="margin-top: 15%; background-color: white; width: 95%;" alt="pseudo-Euclidean spaces">
           <p style="margin-top: -15px;">
             Compared to the <a href="https://arxiv.org/abs/1911.08251">Steerable CNNs</a>, the kernel basis of CS-CNNs 
             misses certain degrees of freedom.
