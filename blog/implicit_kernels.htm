@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="Implicit kernels blog">
+  <meta property="og:title" content="Implicit Convolutional Kernels for Steerable CNNs"/>
+  <meta property="og:description" content="Blog post"/>
+  <meta property="og:url" content="maxxxzdn.github.io"/>
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+  <meta property="og:image" content="../assets/ImplicitSteerableKernels_/static/images/inf_kernels.png" />
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+
+
+  <meta name="twitter:title" content="maxxxzdn">
+  <meta name="twitter:description" content="blog">
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+  <meta name="twitter:image" content="../assets/ImplicitSteerableKernels_/static/images/your_twitter_banner_image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Keywords for your paper to be indexed by-->
+  <meta name="keywords" content="deep learning, machine learning, equivariance, symmetry">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.js">
+  </script>
+
+
+  <title>Implicit Steerable Kernels</title>
+  <link rel="icon" type="image/x-icon" href="../assets/ImplicitSteerableKernels_/static/images/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  rel="stylesheet">
+
+  <link rel="stylesheet" href="../assets/ImplicitSteerableKernels_/static/css/bulma.min.css">
+  <link rel="stylesheet" href="../assets/ImplicitSteerableKernels_/static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="../assets/ImplicitSteerableKernels_/static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="../assets/ImplicitSteerableKernels_/static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="../assets/ImplicitSteerableKernels_/static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="../assets/ImplicitSteerableKernels_/static/js/fontawesome.all.min.js"></script>
+  <script src="../assets/ImplicitSteerableKernels_/static/js/bulma-carousel.min.js"></script>
+  <script src="../assets/ImplicitSteerableKernels_/static/js/bulma-slider.min.js"></script>
+  <script src="../assets/ImplicitSteerableKernels_/static/js/index.js"></script>
+
+  <style>
+
+    .img-container2 {
+        display: flex;
+        align-items: center; 
+        justify-content: space-between;
+        width: 90%;
+        margin-left: 15px;
+    }
+
+    .img-container2 img {
+        height: 220px;
+    }
+
+    .img-container2 img:first-child {
+        height: 220px;
+        margin-right: 50px;
+    }
+
+    .img-container {
+        display: flex;
+        align-items: center; 
+        justify-content: space-between;
+        width: 80%;
+        margin-left: -20px;
+    }
+
+    .img-container img {
+        height: 170px;
+        max-height: 200px;
+    }
+
+    .img-container img:first-child {
+        height: 170px;
+        margin-right: 50px;
+    }
+
+    .theorem-box {
+      border: 2px solid black;  /* Set border around the box */
+      padding: 10px;           /* Space between the text and the border */
+      margin: 20px 0;          /* Vertical space around the box */
+      background-color: #f5f5f5; /* Background color of the box */
+    }
+
+  /* Optional: Styling the 'Theorem:' text */
+  .theorem-box strong {
+      color: darkred;
+  }
+      
+
+  </style>
+</head>
+<body>
+
+
+  <section class="hero is-light">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Implicit Convolutional Kernels for Steerable CNNs</h1>
+            <div class="is-size-5 publication-authors">
+              <!-- Paper authors -->
+              <span class="author-block">
+                <a href="https://maxxxzdn.github.io/" target="_blank">Maksim Zhdanov</a><sup>1</sup>,</span>
+                <span class="author-block">
+                  <a href="" target="_blank">Nico Hoffmann</a><sup>2</sup>,</span>
+                  <span class="https://photon-ai-research.github.io/">
+                    <a href="https://twitter.com/_gabrielecesa_" target="_blank">Gabriele Cesa</a><sup>1,3</sup>
+                  </span>
+                  </div>
+
+                  <div class="is-size-5 publication-authors">
+                    <!-- author affiliations + upperscript number to indicate affiliation -->
+                    <span class="author-block"><sup>1</sup>University of Amsterdam,</span> <sup>2</sup>Helmholtz-Zentrum Dresden-Rossendorf, <sup>3</sup>Qualcomm AI Research
+                  </div>
+
+                  <div class="is-size-5 publication-authors">
+                    <br>NeurIPS 2023</span>
+                  </div>
+
+                  <div class="column has-text-centered">
+                    <div class="publication-links">
+                         <!-- Arxiv PDF link -->
+                      <span class="link-block">
+                        <a href="https://arxiv.org/pdf/2212.06096.pdf" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fas fa-file-pdf"></i>
+                        </span>
+                        <span>Paper</span>
+                      </a>
+                    </span>
+
+                  <!-- Github link -->
+                  <span class="link-block">
+                    <a href="https://github.com/maxxxzdn/implicit-steerable-kernels" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+                <!-- ArXiv abstract Link -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2212.06096" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+
+                <!-- Demo link -->
+                <span class="link-block">
+                  <a href="https://github.com/maxxxzdn/implicit-steerable-kernels/tree/main/examples" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-laptop-code"></i>
+                  </span>
+                  <span>Demo</span>
+                </a>
+              </span>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Teaser video-->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video poster="" id="tree" autoplay controls muted loop height="100%">
+        <!-- Your video here -->
+        <source src="../assets/ImplicitSteerableKernels_/static/videos/movie_inf.mp4"
+        type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        Computing the response of an implicit kernel of a \(G\)-steerable point convolution for the neighbors of the node \(i\) (purple) of a graph with steerable features. The kernel computation is conditioned on the relative position \((x\)<sub>i</sub> - \(x\)<sub>j</sub>\()\) of a neighbor \(j\) and task-specific features. </h2>
+    </div>
+  </div>
+</section>
+<!-- End teaser video -->
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Steerable convolutional neural networks (CNNs) provide a general framework for building neural networks equivariant to translations and other transformations belonging to an origin-preserving group \(G\), such as reflections and rotations. They rely on standard convolutions with \(G\)-steerable kernels obtained by analytically solving the group-specific equivariance constraint imposed onto the kernel space. As the solution is tailored to a particular group \(G\), the implementation of a kernel basis does not generalize to other symmetry transformations, which complicates the development of general group equivariant models. We propose using implicit neural representation via multi-layer perceptrons (MLPs) to parameterize \(G\)-steerable kernels. The resulting framework offers a simple and flexible way to implement Steerable CNNs and generalizes to any group \(G\) for which a \(G\)-equivariant MLP can be built. We prove the effectiveness of our method on multiple tasks, including N-body simulations, point cloud classification and molecular property prediction.          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+<!-- Text body I -->
+<section class="section hero is-normal">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Equivariance and feature fields</h2>
+        <div class="content has-text-justified">
+          <p>
+            From the atomic level to the vast expanse of the universe, symmetry and equivariance are consistently observed.
+            Whether it is the behaviour of molecules or patterns in point clouds, there are often properties 
+            of the system that are preserved under certain transformations.
+            Equivariant deep learning aims to encode these symmetries directly into the learning process, 
+            yielding more efficient and generalizable models. 
+            
+            Such models are able to preserve certain transformations in the input data through to the model's output.
+            Convolutional Neural Networks (CNNs) serve as a classic example, 
+            being equivariant with respect to translations in the input space (try shifting the image before and after a convolutional layer). 
+            However, to capture a broader range of symmetries found in complex systems, 
+            especially in physics and chemistry, <a href="https://uvagedl.github.io/" ><font color="#2874a6"> group equivariant CNNs </font></a>
+            (G-CNNs) have been developed. 
+            
+            <figure>
+              <div class="img-container">
+                  <img src="../assets/ImplicitSteerableKernels_/static/images/equiv.png" alt="Equivariance (translation)">
+                  <img src="../assets/ImplicitSteerableKernels_/static/images/vectorfield.gif" alt="Equivariance (rotation)">
+              </div>
+              <figcaption>Equivariance of a CNN w.r.t translation (left) and rotation (right). 
+                Transforming the image before and after a convolutional layer yields the same result.</figcaption>
+            </figure>
+
+            <!--
+            To be mathematically precise, 
+            a function \( \phi \) is equivariant with respect to a group \( G \) if it commutes with the action 
+            of \(g \in G\) on their input, intermediate feature spaces, and output.
+             -->
+            The feature spaces of G-CNNs are described as collections of feature fields.
+            Each field is essentially a feature map that assigns a tensor of values to each point in the input space.
+            Common instances include scalar fields like grey-scale images and temperature distributions and vector fields such as wind velocity or electromagnetic fields. 
+            For example, one can think of feature vectors in standard CNNs as collections of \(N_{channels}\) scalar fields 
+            and generalize them to collections of fields with different types (e.g. \(N\) scalar channels, \(M\) vector channels).
+            <br>
+            <figure style="margin-bottom: 5px;">
+              <img src="../assets/ImplicitSteerableKernels_/static/images/feature_fields.png"/>
+              <figcaption> Examples of fields of different types and their transformation under rotation. </figcaption>
+            </figure>
+            <br>
+            Depending on its type, a field has specific transformation behaviour when subjected to a group element, e.g. a rotation. 
+            This behaviour is described by a group representation, which is a mapping from group elements to linear operators on the field space. 
+            For example, a scalar field is invariant to rotation, and hence, the linear operator is the identity corresponding to the trivial representation.
+            We furthermore must require that the model respects the transformation laws of input, intermediate and output feature fields, 
+            which is essentially the equivariance constraint covered next.
+            
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Steerable CNNs</h2>
+        <div class="content has-text-justified">
+          Steerable CNNs employ a special kind of kernels designed to be equivariant under specific transformations, e.g. rotations or reflections, 
+          creating a more geometrically consistent and powerful modelling tool compared to standard CNNs. It is important to note that 
+          the equivariance to translations is already covered by the convolutional operation itself (same kernel is applied at each point). 
+          Furthermore, one only has to focus on the origin-preserving transformations \(g \in G\) when designing steerable kernels.
+          <br>
+          <br>
+          Generally speaking, the design procedure for Steerable CNNs is as follows. First, one must specify the target group \(G\) 
+          depending on the type of symmetry one wants to capture. 
+          Next, one has to choose representations that describe the transformation behaviour of the input and output feature fields. 
+          Finally, solving the \(G\)-equivariance constraint on the kernel space yields the necessary kernel basis.
+          Unfortunately, the solution derived for one group does not generalize to another group \(G' \neq G \). 
+          Hence, we have to design a new kernel space for each group \(G\) we want to be equivariant to, which might 
+          not be trivial and generally quite cumbersome.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section hero is-normal">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Implicit steerable kernels</h2>
+        <div class="content has-text-justified">
+          To avoid developing a new kernel basis for each group \(G\) from scratch, 
+          we propose an alternative way of building steerable convolutions based on implicit neural kernels, 
+          i.e. convolutional kernels implemented as continuous functions parameterized by MLPs:
+          <br>
+          <figure>
+            <img src="../assets/ImplicitSteerableKernels_/static/images/inf_kernels.png" width="75%"/>
+            <figcaption> Implicit steerable kernels for a point convolution. \(G\)-equivariant MLP takes arbitrary steerable features as input
+              (here: the relative position (vector) and the mass of the central node (scalar)) and outputs a kernel value. </figcaption>
+          </figure>
+          <br>
+          The recipe for a \(G\)-equivariant convolutional layer that maps 
+          between spaces of feature fields with representations \(\rho_{in}(g), \rho_{out}(g)\) is as follows:
+          <ol>
+            <li> Define the kernel input (arbitrary steerable features are supported); let us denote it as \(\rho_{k}\); </li>
+            <li> The output representation of the \(G\)-MLP is \(\rho_{in}(g) \otimes \rho_{out}(g)\); </li>
+            <li> Implement the \(G\)-MLP (for example, using the 
+              <a href="https://quva-lab.github.io/escnn/escnn" ><font color="#2874a6"> <i>escnn</i> </font></a> library) with the input representation \(\rho_{k}\) 
+              and the output representation \(\rho_{in}(g) \otimes \rho_{out}(g)\); </li>
+            <li> Reshape the output of the implicit kernel and convolve it with a convolutional input. </li>
+          </ol>
+          We theoretically prove that if a kernel is parameterized by a \(G\)-equivariant MLP, 
+          then the resulting convolution is equivariant to the same group \(G\).
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Advantages of implicit steerable kernels</h2>
+        <div class="content has-text-justified">
+
+          The resulting framework has two core advantages:
+          <body>
+            <div class="theorem-box">
+                <strong>Generalizability:</strong> It allows one to implement a Steerable CNN that is equivariant to any compact group \(G\) 
+                for which a \(G\)-equivariant MLP can be built.
+            </div>
+          </body>
+            <figure>
+              <img src="../assets/ImplicitSteerableKernels_/static/images/exp2.png" style="border: 1px solid #000; padding: 10px 20px 10px 20px; background-color: white;" width=400px/>
+              <figcaption> Performance comparison of Steerable CNNs with implicit kernels (orange) and non-implicit
+                steerable kernels (<a href="https://openreview.net/forum?id=WE4qe9xlnQw" ><font color="#2874a6"> Cesa et al. </font></a>) (blue) on the rotated ModelNet-40 dataset for different \(G\). 
+                </figcaption>
+            </figure>
+          We found that using implicit kernels significantly improves the performance of Steerable CNNs compared to 
+          the baseline approach (<a href="https://openreview.net/forum?id=WE4qe9xlnQw" ><font color="#2874a6"> Cesa et al. </font></a>), which is
+          based on the group restriction trick.
+          Essentially, the group-restriction trick is a way to build steerable kernels 
+          for a subgroup \(G'\) of a group \(G\) when the kernels for \(G\) are already known. On the other hand, our method does not require
+          any prior knowledge of the kernels for \(G\) and hence is more general.
+          The only cases where we found implicit kernels to be slightly inferior or on par with the baseline approach is when the analytical 
+          (hence, optimal) solution is available, e.g. for \(SO(3)\) and \(O(3)\). However, there might be tasks for 
+          which analytically derived kernels are not expressive enough, which brings us to the next point.    
+          <body>
+            <div class="theorem-box">
+                <strong>Expressiveness:</strong> Contrary to standard steerable kernels, 
+              the framework allows us to inject geometric and physical quantities, 
+              increasing the expressiveness of Steerable CNNs.
+            </div>
+          </body>
+          <figure>
+              <div class="img-container2">
+                  <img src="../assets/ImplicitSteerableKernels_/static/images/animation.gif" style="border: 1px solid #000; background-color: white;"/>
+                  <img src="../assets/ImplicitSteerableKernels_/static/images/exp3.png" style="border: 1px solid #000; padding: 10px 20px 10px 20px; background-color: white;"/>
+              </div>
+              <figcaption>
+                Using implicit kernels instead of standard steerable and injecting them with bond and atom properties 
+              significantly improves the performance of Steerable CNNs on the QM9 dataset.
+              </figcaption>
+            </figure>
+
+          Standard steerable kernels are defined as a function of the relative position \( \vec{r} \). 
+          This might be somewhat limiting in terms of expressivity for specific tasks (imagine if you want to compute the free energy of a molecule,
+          for which you might want to condition your kernels on the type of atoms, their charges, etc.). Furthermore, even if there are 
+          analytically derived kernels for a specific group \(G\), they might not be optimal for a specific task.
+          Neural representation allows us to circumvent this limitation by conditioning the kernel on any task-specific features.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>
+        @inproceedings{
+          anonymous2023implicit,
+          title={Implicit Convolutional Kernels for Steerable {CNN}s},
+          author={Maksim Zhdanov and Nico Hoffmann and Gabriele Cesa},
+          booktitle={Thirty-seventh Conference on Neural Information Processing Systems},
+          year={2023},
+          url={https://openreview.net/forum?id=2YtdxqvdjX}
+          }
+      </code></pre>
+    </div>
+</section>
+<!--End BibTex citation -->
+
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            <i>
+            I am grateful to Jan-Willem van de Meent and Evgenii Egorov for their feedback on the blog post. 
+            This research is the result of a collaboration initiated at the amazing London Geometry and Machine Learning
+            Summer School 2022 (<a href="https://www.logml.ai/" ><font color="#2874a6"> LOGML 2022 </font></a>).
+            I and Gabriele thank Anna Mészáros, Chen Cai and Ahmad Hammoudeh for their help at the initial stage of the project and 
+            Rob Hesselink for his assistance with visualizations.
+            </i>
+          </p>
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" 
+            target="_blank">Academic Project Page Template</a>. Figures 2 and 3 are taken from
+            <a>https://github.com/QUVA-Lab/escnn</a>.
+
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- Statcounter tracking code -->
+  
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+  </body>
+</html>
