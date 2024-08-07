@@ -37,101 +37,102 @@
   <script src="../assets/CSCNNs_/static/js/index.js"></script>
 
   <style>
-    .container.is-wider-desktop {
-      max-width: 1200px !important;
-      width: 90% !important;
-    }
+.container.is-wider-desktop {
+  max-width: 1200px !important;
+  width: 90% !important;
+}
 
-    .img-container2 {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 90%;
-        margin-left: 15px;
-    }
+.hero.is-custom-light {
+  background-color: #FFF5E1;
+}
 
-    .hero.is-custom-light {
-        background-color: #FFF5E1
-    }
+.hero.is-custom-normal {
+  background-color: white;
+}
 
-    .footer {
-        background-color: #f5f5f5;
-        padding: 20px 0;
-    }
+.content-columns {
+  display: flex;
+  flex-wrap: wrap;
+}
 
-    .img-container2 img {
-        height: 220px;
-    }
+.content-column {
+  padding: 20px;
+}
 
-    .img-container2 img:first-child {
-        height: 220px;
-        margin-right: 50px;
-    }
+.text-column {
+  width: 60%;
+  padding-right: 10px;
+}
 
-    .img-container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 80%;
-        margin-left: -20px;
-    }
+.image-column {
+  width: 40%;
+  padding-left: 10px;
+  padding-top: 30px;
+}
 
-    .img-container img {
-        height: 170px;
-        max-height: 200px;
-    }
+.image-column img {
+  width: 60%;
+  height: auto;
+  margin-bottom: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-    .img-container img:first-child {
-        height: 170px;
-        margin-right: 50px;
-    }
+.teaser-image {
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  background-color: white;
+  display: block;
+  margin: 0 auto;
+}
 
-    .teaser-image {
-        width: 100%;
-        max-width: 600px;
-        padding: 20px;
-        background-color: white;
-        display: block;
-        margin: 0 auto;
-    }
+.hero.is-custom-light .image-column img:not(.teaser-image) {
+  border: 1px solid #000;
+  padding: 10px 20px;
+  background-color: white;
+}
 
-    .theorem-box {
-        border: 2px solid black;
-        padding: 10px;
-        margin: 20px 0;
-        background-color: #f5f5f5;
-    }
+@media screen and (max-width: 768px) {
+  .container.is-wider-desktop {
+    width: 95% !important;
+  }
 
-    .theorem-box strong {
-        color: darkred;
-    }
+  .content-columns {
+    flex-direction: column;
+  }
 
-    .content-columns {
-        display: flex;
-        flex-wrap: wrap;
-    }
+  .text-column, .image-column {
+    width: 100%;
+    padding: 10px;
+  }
 
-    .content-column {
-        flex: 1;
-        padding: 20px;
-    }
+  .text-column {
+    order: -1;
+  }
 
-    .text-column {
-        width: 60%;
-        padding-right: 10px;
-    }
+  .image-column {
+    order: 1;
+  }
 
-    .image-column {
-        width: 40%;
-        padding-left: 10px;
-        padding-top: 30px;
-    }
+  .content {
+    font-size: 16px;
+  }
 
-    .image-column img {
-        margin-bottom: 20px;
-        width: 100%;
-        height: auto;
-    }
+  .title.is-3 {
+    font-size: 1.5rem;
+  }
+
+  .hero-body {
+    padding: 2rem 1rem;
+  }
+
+  .image-column img {
+    width: 80%;
+    max-width: 400px;
+  }
+}
 
   </style>
 </head>
