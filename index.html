@@ -151,13 +151,46 @@
           <!-- Social -->
           <div class="social">
             <div class="contact-icons">
-              <a href="mailto:%6D.%7A%68%64%61%6E%6F%76@%75%76%61.%6E%6C" title="email"><i class="fas fa-envelope" style="font-size: 48px;"></i></a>
-            <a href="https://scholar.google.com/citations?user=Llnm6XgAAAAJ&amp;hl=en" title="Google Scholar" rel="external nofollow noopener" target="_blank"><i class="ai ai-google-scholar" style="font-size: 48px;"></i></a>
-            <a href="https://github.com/maxxxzdn" title="GitHub" rel="external nofollow noopener" target="_blank"><i class="fab fa-github" style="font-size: 48px;"></i></a>
-            <a href="https://twitter.com/maxxxzdn" title="Twitter" rel="external nofollow noopener" target="_blank"><i class="fab fa-twitter" style="font-size: 48px;"></i></a>
-            
+              <style>
+  .social-icons {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 10px 0;
+  }
+  .social-icons a {
+    text-decoration: none;
+    color: inherit;
+    flex-shrink: 0;
+  }
+  .social-icons i {
+    font-size: calc(28px + 2vw);
+    transition: font-size 0.3s ease;
+  }
+  @media (max-width: 768px) {
+    .social-icons i {
+      font-size: calc(26px + 1.5vw);
+    }
+  }
+  @media (max-width: 480px) {
+    .social-icons {
+      gap: 15px;
+    }
+    .social-icons i {
+      font-size: calc(24px + 1vw);
+    }
+  }
+</style>
 
-            
+<div class="social-icons">
+<a href="mailto:%6D.%7A%68%64%61%6E%6F%76@%75%76%61.%6E%6C" title="email"><i class="fas fa-envelope"></i></a>
+  <a href="https://scholar.google.com/citations?user=Llnm6XgAAAAJ&amp;hl=en" title="Google Scholar" rel="external nofollow noopener" target="_blank"><i class="ai ai-google-scholar"></i></a>
+  <a href="https://github.com/maxxxzdn" title="GitHub" rel="external nofollow noopener" target="_blank"><i class="fab fa-github"></i></a>
+  <a href="https://twitter.com/maxxxzdn" title="Twitter" rel="external nofollow noopener" target="_blank"><i class="fab fa-twitter"></i></a>
+  
+</div>
             </div>
 
             <div class="contact-note">
