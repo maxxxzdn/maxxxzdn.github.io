@@ -549,7 +549,65 @@
         <h2 class="title is-3">Clifford-Steerable CNNs</h2>
         <div class="content has-text-justified">
           <p>
-            Once we are equipped with \(O(p,q)\)-equivariant MLPs, we can build Clifford-Steerable CNNs. 
+          Let us do a revision of what we have so far. 
+          We learned that we can build \(O(p,q)\)-equivariant CNNs by employing implicit steerable kernels 
+          given we know how to parameterize them. 
+          A possible choice for the parameterization are \(O(p,q)\)-equivariant MLPs taken from the CEGNN framework.
+          This essentially means that we have to work with multivector fields
+          \[
+          f: \mathbb{R}^{p,q} \to \text{Cl}(p,q)
+          \]
+          and convolve them with \(O(p,q)\)-equivariant multivector kernels via the geometric product (see the <a href="https://arxiv.org/abs/2209.04934"> Clifford Neural Layers</a> paper for more details).
+          </p>
+          <p>
+            The key challenge here is to implement the convolution efficiently, 
+            as it does not immediately fit into the standard CNN implementation (due to geometric product instead of matmuls).
+            The issue is solved by partially evaluating the geometric product with the kernel as left input
+            \[
+            \text{GP}(k, f) \rightarrow K \cdot f
+            \]
+            \[
+            K = k \cdot \text{Cayley table}
+            \]
+            where Cayley table essentially says how grades of two input multivectors interact with one another and produce the output multivector.
+            This transformation casts the bilinear operation (geometric product) into a linear one (matmul), which is exactly what traditional CNNs use.
+            Now let's look at the implementation in detail.
+          </p>
+        </div>
+      </div>
+
+      <div class="column image-column">
+        <div style="text-align: center;">
+          <img src="../assets/CSCNNs_/static/images/cscnn_scheme.png" style="margin-top: 15%; background-color: white; width: 60%;" alt="pseudo-Euclidean spaces">
+          <p style="margin-top: -15px;">
+            Multivector kernels are computed at each point of the grid, and then the geometric product is partially evaluated to yield Clifford-Steerable kernels. 
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>  
+
+
+
+<section class="section hero is-custom-light">
+  <div class="container is-wider-desktop">
+    <div class="columns is-centered content-columns">
+
+      <div class="column image-column">
+        <div style="text-align: center;">
+          <img src="../assets/CSCNNs_/static/images/implementation.png" style="border: 1px solid #000; margin-top: 10%; background-color: white; width: 100%;" alt="pseudo-Euclidean spaces">
+          <p style="margin-top: -15px;">
+            Simplified pseudocode.
+          </p>
+        </div>
+      </div>
+      
+      <div class="column text-column">
+        <h2 class="title is-3">Implementation</h2>
+        <div class="content has-text-justified">
+          <p>
             The way the implicit kernels works is given below:
             <ol>
               <li>Given kernel size, discretize \([-1,1]^{p+q}\) to compute the grid as relative positions. </li>
@@ -567,82 +625,6 @@
               <li> Reshape the output field to \((B, C_{\text{out}}, X_1, ..., X_{p+q}, 2^{p+q})\).</li>
             </ol>
           </p>
-        <p>
-        </p>
-        </div>
-      </div>
-
-      <div class="column image-column">
-        <div style="text-align: center;">
-          <img src="../assets/CSCNNs_/static/images/cscnn_scheme.png" style="margin-top: 10%; background-color: white; width: 60%;" alt="pseudo-Euclidean spaces">
-          <p style="margin-top: -15px;">
-            Multivector kernels are computed at each point of the grid, and then the geometric product is partially evaluated to yield Clifford-Steerable kernels. 
-          </p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>  
-
-<section class="section hero is-custom-light">
-  <div class="container is-wider-desktop">
-    <div class="columns is-centered content-columns">
-
-      <div class="column image-column">
-        <div style="text-align: center;">
-          <img src="../assets/CSCNNs_/static/images/experiments.png" style="border: 1px solid #000; margin-top: 5%; background-color: white; width: 70%;" alt="pseudo-Euclidean spaces">
-          <p style="margin-top: -15px;"> MSE on different forecasting tasks (one-step loss) as a function of number of training simulations. </p>
-        </div>
-      </div>
-      
-      <div class="column text-column">
-        <h2 class="title is-3">Experiments</h2>
-        <div class="content has-text-justified">
-        <p>
-          We evaluated our model on three forecasting tasks: Navier-Stokes on \(\mathbb{R}^{2}\), 
-          Maxwell's equations on \(\mathbb{R}^{3}\), 
-          and relativistic electrodynamics on \(\mathbb{R}^{1,2}\)
-          (dataset available <a href="https://github.com/maxxxzdn/clifford-group-equivariant-cnns/tree/main/datasets/data/maxwell2d/datagen">here</a>).
-          The primary difference between these tasks is that in the first two, time steps are treated as 
-          feature channels, while in the last one, time is a separate dimension, i.e. part of the grid. 
-          For the first two tasks, a single time step is predicted from 4 previous ones, while for the last one,
-          16 previous time steps are mapped to 16 future ones. All models have similar number of parameters.
-        </p>
-        <p>
-          First thing to notice is the extreme sample complexity of CS-CNNs. Compared to standard CNNs,
-          they need 80x less training simulations to reach the same performance on the Navier-Stokes task.
-          Besides, for the given parameter count, we did not observe non-equivariant models to catch up with CS-CNNs
-          as the number of training simulations increases.
-        </p>
-        <p>
-          Second, CS-CNNs generalize to arbitrary isometries of the base space, hence they work out of the box for 
-          any orientation of the grid. Moreover, in the relativistic case, the boost-equivariance of CS-CNNs 
-          results in more stable feature fields when viewed from the comoving frame.
-        </p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="container is-wider-desktop">
-    <div class="columns is-centered content-columns">
-
-      <div class="column image-column">
-        <div style="text-align: center;">
-          <img src="../assets/CSCNNs_/static/images/comparison.jpg" style="border: 1px solid #000; margin-top: 5%; background-color: white; width: 100%;" alt="pseudo-Euclidean spaces">
-          <p style="margin-top: -15px;"> Visual comparison of
-            target and predicted fields. <br> <em>Left</em>: Navier-Stokes. <em>Right</em>: Relativistic electrodynamics. </p>
-        </div>
-      </div>
-      
-      <div class="column image-column">
-        <div style="text-align: center;">
-          <img src="../assets/CSCNNs_/static/images/comoving.gif" style="border: 1px solid #000; margin-top: 5%; background-color: white; width: 78%;" alt="pseudo-Euclidean spaces">
-          <p style="margin-top: -15px;"> Boost-equivariance: our model produces consistent predictions that are stable when viewed from the comoving frame. 
-            ResNet is not boost-equivariant and produces inconsistent predictions. </p>
-          </p>
         </div>
       </div>
 
@@ -650,59 +632,128 @@
   </div>
 </section>
 
-<section class="section hero is-custom-normal">
-  <div class="container is-wider-desktop">
-    <div class="columns is-centered content-columns">
-      
-      <div class="column text-column">
-        <h2 class="title is-3">Miscellaneous</h2>
-        <div class="content has-text-justified">
-          Theoretically, there is a gap between CS-CNNs and Steerable CNNs in terms of the completeness of the kernel basis.
-          Specifically, CS-CNNs do not cover the full space, and there are two main reasons for that:
-          <ol>
-            <li>
-              <b>Multivector representations</b>: multivectors are not able to represent irreps with frequencies higher than 1.
-              This can be illustrated using the (O(3)) group: 
-              the vector/bivector part of a multivector is 3-dimensional, whereas irreps with angular frequency 2 are 5-dimensional.
-              It follows that it is not possible neither to represent such irreps (e.g. a tensor) nor to learn a map that involves them.
-              The latter is precisely the reason why the kernel basis of CS-CNNs is not complete 
-              - vector to vector mapping requires frequency 2 kernels, which are not present in the basis. This issue is, however,
-              alleviated when applying multiple convolutional layers, which recover the missing degrees of freedom (see Appendix B in the paper for proof).
-            </li>
-            <li>
-              <b>Kernel's input</b>: the kernel's input is limited to the relative position and its norm (shell), 
-              which form the 0- and 1-grade components of the input multivector. 
-              With this input, the CEGNN backbone is theoretically not able to learn multivectors with non-zero 2-grade.
-              Precisely, the reason for that is that 2-grade appears from the interaction of two unique 1-grades,
-              which is not possible as only one 1-grade is present in the input. 
-              There are, of course, ways to overcome this limitation,
-              which we did not explore in this work, but I would be happy to chat about it.
-            </li>
-          </ol>
-        <p>
-        Overall, a lot of work can be done to improve the model, both at the high level (improving expressivity of implicit kernels) 
-        and at the low level (developing more expressive basis based on multivectors). 
-        Let me know if you are interested in collaboration or just want to chat about the paper :)
-        </p>
+  <section class="section hero is-custom-normal">
+    <div class="container is-wider-desktop">
+      <div class="columns is-centered content-columns">
+        
+        <div class="column text-column">
+          <h2 class="title is-3">Experiments</h2>
+          <div class="content has-text-justified">
+            <p>
+              We evaluated our model on three forecasting tasks: Navier-Stokes on \(\mathbb{R}^{2}\), 
+              Maxwell's equations on \(\mathbb{R}^{3}\), 
+              and relativistic electrodynamics on \(\mathbb{R}^{1,2}\)
+              (dataset available <a href="https://github.com/maxxxzdn/clifford-group-equivariant-cnns/tree/main/datasets/data/maxwell2d/datagen">here</a>).
+              The primary difference between these tasks is that in the first two, time steps are treated as 
+              feature channels, while in the last one, time is a separate dimension, i.e. part of the grid. 
+              For the first two tasks, a single time step is predicted from 4 previous ones, while for the last one,
+              16 previous time steps are mapped to 16 future ones. All models have similar number of parameters.
+            </p>
+            <p>
+              First thing to notice is the extreme sample complexity of CS-CNNs. Compared to standard CNNs,
+              they need 80x less training simulations to reach the same performance on the Navier-Stokes task.
+              Besides, for the given parameter count, we did not observe non-equivariant models to catch up with CS-CNNs
+              as the number of training simulations increases.
+            </p>
+            <p>
+              Second, CS-CNNs generalize to arbitrary isometries of the base space, hence they work out of the box for 
+              any orientation of the grid. Moreover, in the relativistic case, the boost-equivariance of CS-CNNs 
+              results in more stable feature fields when viewed from the comoving frame.
+            </p>
+          </div>
         </div>
-      </div>
-
-      <div class="column image-column">
-        <div style="text-align: center;">
-          <img src="../assets/CSCNNs_/static/images/miscel.png" style="margin-top: 15%; background-color: white; width: 95%;" alt="pseudo-Euclidean spaces">
-          <p style="margin-top: -15px;">
-            Compared to the <a href="https://arxiv.org/abs/1911.08251">Steerable CNNs</a>, the kernel basis of CS-CNNs 
-            misses certain degrees of freedom.
-          </p>
+  
+        <div class="column image-column">
+          <div style="text-align: center;">
+            <img src="../assets/CSCNNs_/static/images/experiments.png" style="margin-top: 5%; background-color: white; width: 70%;" alt="pseudo-Euclidean spaces">
+            <p style="margin-top: -15px;"> MSE on different forecasting tasks (one-step loss) as a function of number of training simulations. </p>
+          </div>
         </div>
+  
       </div>
-
     </div>
-  </div>
-</section>  
+
+    <div class="container is-wider-desktop">
+      <div class="columns is-centered content-columns">
+  
+        <div class="column image-column">
+          <div style="text-align: center;">
+            <img src="../assets/CSCNNs_/static/images/comparison.jpg" style="margin-top: 5%; background-color: white; width: 100%;" alt="pseudo-Euclidean spaces">
+            <p style="margin-top: -15px;"> Visual comparison of
+              target and predicted fields. <br> <em>Left</em>: Navier-Stokes. <em>Right</em>: Relativistic electrodynamics. </p>
+          </div>
+        </div>
+        
+        <div class="column image-column">
+          <div style="text-align: center;">
+            <img src="../assets/CSCNNs_/static/images/comoving.gif" style="margin-top: 5%; background-color: white; width: 78%;" alt="pseudo-Euclidean spaces">
+            <p style="margin-top: -15px;"> Boost-equivariance: our model produces consistent predictions that are stable when viewed from the comoving frame. 
+              ResNet is not boost-equivariant and produces inconsistent predictions. </p>
+            </p>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+
+  </section> 
 
 
-<section class="section hero is-custom-light">
+
+  <section class="section hero is-custom-light">
+    <div class="container is-wider-desktop">
+      <div class="columns is-centered content-columns">
+  
+        <div class="column image-column">
+          <div style="text-align: center;">
+            <img src="../assets/CSCNNs_/static/images/miscel.png" style="border: 1px solid #000; margin-top: 30%; background-color: white; width: 95%;" alt="pseudo-Euclidean spaces">
+            <p style="margin-top: -15px;">
+              Compared to the <a href="https://arxiv.org/abs/1911.08251">Steerable CNNs</a>, the kernel basis of CS-CNNs 
+              misses certain degrees of freedom.
+            </p>
+          </div>
+        </div>
+        
+        <div class="column text-column">
+          <h2 class="title is-3">Miscellaneous</h2>
+          <div class="content has-text-justified">
+            Theoretically, there is a gap between CS-CNNs and Steerable CNNs in terms of the completeness of the kernel basis.
+            Specifically, CS-CNNs do not cover the full space, and there are two main reasons for that:
+            <ol>
+              <li>
+                <b>Multivector representations</b>: multivectors are not able to represent irreps with frequencies higher than 1.
+                This can be illustrated using the (O(3)) group: 
+                the vector/bivector part of a multivector is 3-dimensional, whereas irreps with angular frequency 2 are 5-dimensional.
+                It follows that it is not possible neither to represent such irreps (e.g. a tensor) nor to learn a map that involves them.
+                The latter is precisely the reason why the kernel basis of CS-CNNs is not complete 
+                - vector to vector mapping requires frequency 2 kernels, which are not present in the basis. This issue is, however,
+                alleviated when applying multiple convolutional layers, which recover the missing degrees of freedom (see Appendix B in the paper for proof).
+              </li>
+              <li>
+                <b>Kernel's input</b>: the kernel's input is limited to the relative position and its norm (shell), 
+                which form the 0- and 1-grade components of the input multivector. 
+                With this input, the CEGNN backbone is theoretically not able to learn multivectors with non-zero 2-grade.
+                Precisely, the reason for that is that 2-grade appears from the interaction of two unique 1-grades,
+                which is not possible as only one 1-grade is present in the input. 
+                There are, of course, ways to overcome this limitation,
+                which we did not explore in this work, but I would be happy to chat about it.
+              </li>
+            </ol>
+          <p>
+          Overall, a lot of work can be done to improve the model, both at the high level (improving expressivity of implicit kernels) 
+          and at the low level (developing more expressive basis based on multivectors). 
+          Let me know if you are interested in collaboration or just want to chat about the paper :)
+          </p>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="section hero is-custom-normal">
   <div class="container">
     <h2 class="title is-3">Poster</h2>
     <div class="columns is-centered">
@@ -717,7 +768,7 @@
   </div>
 </section>
 
-<section class="section" id="BibTeX">
+<section class="section hero is-custom-light" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <pre><code>
