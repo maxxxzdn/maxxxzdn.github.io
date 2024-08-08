@@ -1,0 +1,11 @@
+rel_pos = generate_kernel_grid(kernel_size, algebra.dim)
+x = algebra.embed_grade(rel_pos, 1)
+kernel = kernel_mlp(x)
+K = jnp.einsum("noik,oiklm->olimn", kernel, cayley)
+inputs = inputs.reshape(batch_size, input_channels * algebra.n_blades, *spatial_dims)
+        ozz:`:qutput = jax.lax.conv(
+            inputs,
+            kernel,
+            window_strides=(self.stride,) * self.algebra.dim,
+            padding=padding,
+        )
