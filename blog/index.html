@@ -17,57 +17,58 @@ pagination:
 
 <style>
   .post {
-  margin-left: 0%;
-  width: 100%;
-  max-width: auto;
-}
+    margin-left: 0%;
+    width: 100%;
+    max-width: auto;
+  }
 
-.post-list {
-  display: grid;
-  grid-template-columns: repeat(2, 50%); /* 2 columns for larger screens */
-  grid-gap: 20px;
-}
+  .post-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Changed to 1fr for more flexibility */
+    grid-gap: 20px;
+  }
 
-.post-list li {
-  background-color: var(--global-card-bg-color); /* Sets the individual post background color */
-  border-radius: 10px; /* Rounds the corners of the individual post */
-  padding: 20px; /* Pads the inside of the individual post */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Shadow for individual post */
-}
+  .post-list li {
+    background-color: var(--global-card-bg-color);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
 
-  /* For small screens, switch to a single column */
-  @media (max-width: 360px) {
+  /* Adjusted breakpoint and added a medium screen size breakpoint */
+  @media (max-width: 768px) {
     .post-list {
-      grid-template-columns: 1fr; /* 1 column taking full width */
+      grid-template-columns: 1fr; /* 1 column taking full width for narrow screens */
     }
   }
 
   .post-list li h3 {
-  font-size: 24px; /* This sets the font size to 16 pixels */
-  font-weight: 300; /* This sets the font weight to 300 */
-  text-align: center;
+    font-size: 24px;
+    font-weight: 300;
+    text-align: center;
   }
-
-
-
 
   .image-container {
   display: flex;
-  justify-content: center; /* Centers content horizontally */
-  align-items: center; /* Centers content vertically */
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 200px; /* Fixed height */
+  background-color: white; /* White background for padding */
+  overflow: hidden;
+  border-radius: 10px; /* Moved border-radius here */
+  margin-top: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .post-image {
-  width: auto; /* Allows the width to adjust according to the height */
-  height: 200px; /* Sets a fixed height for the images */
-  border-radius: 10px; /* Optional: if you want to match the border radius of the box */
-  margin-top: 10px; /* Optional: if you want to add space between the image and the text */
-  margin-bottom: 15px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  object-fit: cover; /* Ensures the image covers the fixed height without distortion */
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 0; /* Removed border-radius from image */
 }
-
-  </style>
+</style>
   
   <!-- page.html -->
 <div class="post">
