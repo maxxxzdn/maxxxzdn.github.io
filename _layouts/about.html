@@ -71,11 +71,6 @@ layout: default
         </div>
         
         <div style="margin-top: 40px;"></div>
-        <!-- News -->
-        {% if page.news -%}
-          <h2><a href="{{ '/news/' | relative_url }}" style="color: inherit;">news</a></h2>
-          {%- include news.html %}
-        {%- endif %}
 
         <div style="margin-top: 20px;"></div>
         <!-- Latest posts -->
@@ -90,6 +85,12 @@ layout: default
           <h2><a href="{{ '/publications/' | relative_url }}" style="color: inherit;">selected publications</a></h2>
           {%- include selected_papers.html %}
         {%- endif %}
+
+        <!-- News -->
+        {% if page.news -%}
+        <h2><a href="{{ '/news/' | relative_url }}" style="color: inherit;">news</a></h2>
+        {%- include news.html %}
+      {%- endif %}
       </div>
   </article>
 </body>
