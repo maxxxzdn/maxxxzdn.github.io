@@ -129,9 +129,10 @@ body.sticky-bottom-footer {
  ******************************************************************************/
 body {
   font-family: Consolas, Menlo, "Courier New", monospace;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.6;
   letter-spacing: 0.03em;
+  overflow-x: hidden;
 }
 
 p,
@@ -183,14 +184,14 @@ hr {
 }
 
 table {
-  font-size: 16px;
+  font-size: 14px;
 }
 table td,
 table th {
   color: var(--global-text-color);
 }
 table td {
-  font-size: 1rem;
+  font-size: 14px;
 }
 
 a,
@@ -217,7 +218,7 @@ blockquote {
   border-left: 2px solid var(--global-theme-color);
   margin: 1.5em 10px;
   padding: 0.5em 10px;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .equation {
@@ -350,6 +351,7 @@ blockquote {
     left: 0;
     bottom: auto;
     margin: 0 auto;
+    padding-bottom: 100px; /* Add padding to the bottom */
   }
   .column2 {
     position: relative;
@@ -358,9 +360,19 @@ blockquote {
     left: 0;
     margin-left: 0;
     margin-top: 0;
-    clear: both; /* Add clear property to ensure text appears below column1 */
+    clear: both;
   }
 }
+/* Ensure the social icons are fully visible */
+.social {
+  margin-bottom: 20px;
+}
+
+/* Add some extra space at the bottom of the profile */
+.profile {
+  padding-bottom: 20px;
+}
+
 .rectangle {
   position: absolute; /* Position the rectangle relative to its parent */
   top: -5px; /* Adjust as needed */
