@@ -133,6 +133,7 @@ body {
   line-height: 1.6;
   letter-spacing: 0.03em;
   overflow-x: hidden;
+  overflow-y: auto;
 }
 
 p,
@@ -324,7 +325,7 @@ blockquote {
 
 @media (max-width: 1200px) {
   .column1 {
-    position: fixed;
+    position: absolute; /* Change from fixed to absolute */
     width: 40%;
     max-width: 300px;
     height: auto;
@@ -335,10 +336,17 @@ blockquote {
     margin-top: 0;
   }
   .column2 {
-    position: fixed;
+    position: relative; /* Change from fixed to relative */
     width: calc(100% - 300px - 175px);
-    margin-left: 175px; /* Add 30px margin from column1 */
+    margin-left: 175px;
     margin-top: 0;
+  }
+  /* Add a wrapper to allow scrolling */
+  .columns-wrapper {
+    position: relative;
+    overflow-y: auto;
+    height: 100vh;
+    padding-top: 125px; /* Match the top value of column1 */
   }
 }
 @media (max-width: 800px) {
@@ -351,7 +359,7 @@ blockquote {
     left: 0;
     bottom: auto;
     margin: 0 auto;
-    padding-bottom: 100px; /* Add padding to the bottom */
+    padding-bottom: 100px;
   }
   .column2 {
     position: relative;
@@ -361,6 +369,12 @@ blockquote {
     margin-left: 0;
     margin-top: 0;
     clear: both;
+  }
+  /* Adjust wrapper for mobile view */
+  .columns-wrapper {
+    height: auto;
+    overflow-y: visible;
+    padding-top: 0;
   }
 }
 /* Ensure the social icons are fully visible */
