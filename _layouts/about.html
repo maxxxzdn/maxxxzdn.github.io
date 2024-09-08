@@ -55,6 +55,8 @@ layout: default
               {{ site.contact_note }}
             </div>
 
+            <div style="margin-top: 100px;"></div>
+
           </div>
           {%- endif %}
 
@@ -75,20 +77,20 @@ layout: default
         <div style="margin-top: 20px;"></div>
         <!-- Latest posts -->
         {% if page.latest_posts -%}
-          <h2><a href="{{ '/blog/' | relative_url }}" style="color: inherit;">latest posts</a></h2>
+          <h3><a href="{{ '/blog/' | relative_url }}" style="color: inherit;">latest posts</a></h3>
           {%- include latest_posts.html %}
         {%- endif %}
 
         <div style="margin-top: 20px;"></div>
         <!-- Selected papers -->
         {% if page.selected_papers -%}
-          <h2><a href="{{ '/publications/' | relative_url }}" style="color: inherit;">selected publications</a></h2>
+          <h3><a href="{{ '/publications/' | relative_url }}" style="color: inherit;">selected publications</a></h3>
           {%- include selected_papers.html %}
         {%- endif %}
 
         <!-- News -->
         {% if page.news -%}
-        <h2><a href="{{ '/news/' | relative_url }}" style="color: inherit;">news</a></h2>
+        <h3><a href="{{ '/news/' | relative_url }}" style="color: inherit;">news</a></h3>
         {%- include news.html %}
       {%- endif %}
       </div>
