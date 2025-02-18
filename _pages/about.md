@@ -30,4 +30,4 @@ Hi!
 > ```python
 > >>> print(self.research_interests)
 > ```
->physics-inspired deep learning, geometric deep learning
+>scalable architectures for large-scale simulations, hierarchical representations, geometric deep learning
