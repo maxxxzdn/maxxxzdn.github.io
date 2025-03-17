@@ -374,7 +374,7 @@ blockquote {
 
 .post-description {
   margin-bottom: 2rem;
-  font-size: 1rem;
+  font-size: 0.875rem;
 }
 .post-description a {
   color: inherit;
@@ -501,7 +501,7 @@ blockquote {
   color: var(--global-theme-color);
 }
 .social .contact-note {
-  font-size: 1rem;
+  font-size: 0.8rem;
 }
 
 footer.fixed-bottom {
