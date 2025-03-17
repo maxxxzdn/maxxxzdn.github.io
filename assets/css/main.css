@@ -502,7 +502,7 @@ blockquote {
   color: var(--global-theme-color);
 }
 .social .contact-note {
-  font-size: medium;
+  font-size: 1rem;
 }
 
 footer.fixed-bottom {
