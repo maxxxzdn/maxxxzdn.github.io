@@ -1,6 +1,8 @@
 ---
 ---
 @misc{zhdanov2025erwintreebasedhierarchicaltransformer,
+      journal={preprint},
+      abbr = {preprint},
       title={Erwin: A Tree-based Hierarchical Transformer for Large-scale Physical Systems}, 
       author={Maksim Zhdanov and Max Welling and Jan-Willem {van de Meent}},
       abstract={Large-scale physical systems defined on irregular grids pose significant scalability challenges for deep learning methods, especially in the presence of long-range interactions and multi-scale coupling. Traditional approaches that compute all pairwise interactions, such as attention, become computationally prohibitive as they scale quadratically with the number of nodes. We present Erwin, a hierarchical transformer inspired by methods from computational many-body physics, which combines the efficiency of tree-based algorithms with the expressivity of attention mechanisms. Erwin employs ball tree partitioning to organize computation, which enables linear-time attention by processing nodes in parallel within local neighborhoods of fixed size. Through progressive coarsening and refinement of the ball tree structure, complemented by a novel cross-ball interaction mechanism, it captures both fine-grained local details and global features. We demonstrate Erwin's effectiveness across multiple domains, including cosmology, molecular dynamics, and particle fluid dynamics, where it consistently outperforms baseline methods both in accuracy and computational efficiency.},
@@ -9,14 +11,14 @@
       pdf={https://arxiv.org/pdf/2502.17019.pdf},
       code = {https://github.com/maxxxzdn/erwin},
       arxiv = {2502.17019},
-      journal={preprint},
-      abbr = {preprint},
       preview = {erwin.png},
       year_ = 2025,
 }
 
 
 @misc{zhdanov2025adsgnn,
+      abbr={ICLR},
+      journal={ICLR 2025 Workshop MLMP},
       title={AdS-{GNN} - a Conformally Equivariant Graph Neural Network},
       author={Maksim Zhdanov and Nabil Iqbal and Erik J Bekkers and Patrick Forr{\'e}},
       abstract={Conformal symmetries, i.e. coordinate transformations that preserve angles, play a key role in many fields, including physics, mathematics, computer vision and (geometric) machine learning. Here we build a neural network that is equivariant under general conformal transformations. To achieve this, we lift data from flat Euclidean space to Anti de Sitter (AdS) space. This allows us to exploit a known correspondence between conformal transformations of flat space and isometric transformations on the Anti de Sitter space. We then build upon the fact that such isometric transformations have been extensively studied on general geometries in the geometric deep learning literature. In particular, we then employ message-passing layers conditioned on the proper distance, yielding a computationally efficient framework. We validate our model on point cloud classification (SuperPixel MNIST) and semantic segmentation (PascalVOC-SP).},
@@ -24,8 +26,6 @@
       url={https://openreview.net/forum?id=8aTDqamK5u}, 
       pdf={https://openreview.net/pdf?id=8aTDqamK5u},
       code = {https://github.com/maxxxzdn/adsgnn},
-      journal={ICLR 2025 (MLMP workshop)},
-      abbr={ICLR (MLMP workshop)},
       preview = {adsgnn.png},
       year_ = 2025,
 }
