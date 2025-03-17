@@ -503,7 +503,7 @@ blockquote {
   color: var(--global-theme-color);
 }
 .social .contact-note {
-  font-size: 1rem;
+  font-size: 0.8rem;
 }
 
 footer.fixed-bottom {
