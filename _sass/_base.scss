@@ -171,6 +171,7 @@ blockquote {
     margin-top: 5px;
     align-items: center;
     font-family: monospace;
+    font-size: medium;
 
     p {
       display: inline-block;
@@ -279,7 +280,7 @@ blockquote {
 
 .post-description {
   margin-bottom: 2rem;
-  font-size: 0.875rem;
+  font-size: medium;
 
   a {
     color: inherit;
@@ -450,7 +451,7 @@ blockquote {
   }
 
   .contact-note {
-    font-size: 0.8rem;
+    font-size: medium;
   }
 }
 
