@@ -275,6 +275,7 @@ blockquote {
   margin-top: 5px;
   align-items: center;
   font-family: monospace;
+  font-size: 1.2rem;
 }
 .profile .contact-info p {
   display: inline-block;
