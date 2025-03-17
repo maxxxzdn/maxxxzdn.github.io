@@ -275,7 +275,7 @@ blockquote {
   margin-top: 5px;
   align-items: center;
   font-family: monospace;
-  font-size: 1.2rem;
+  font-size: 1.125rem;
 }
 .profile .contact-info p {
   display: inline-block;
@@ -285,7 +285,7 @@ blockquote {
   margin-bottom: 0px;
   margin-top: -10px;
   font-family: monospace;
-  font-size: 1.2rem;
+  font-size: 1.125rem;
 }
 .profile .description p {
   display: inline-block;
@@ -503,7 +503,7 @@ blockquote {
   color: var(--global-theme-color);
 }
 .social .contact-note {
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 
 footer.fixed-bottom {
