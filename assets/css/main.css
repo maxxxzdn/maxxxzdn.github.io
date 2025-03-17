@@ -275,7 +275,6 @@ blockquote {
   margin-top: 5px;
   align-items: center;
   font-family: monospace;
-  font-size: medium;
 }
 .profile .contact-info p {
   display: inline-block;
@@ -375,7 +374,7 @@ blockquote {
 
 .post-description {
   margin-bottom: 2rem;
-  font-size: medium;
+  font-size: 1rem;
 }
 .post-description a {
   color: inherit;
