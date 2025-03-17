@@ -34,12 +34,11 @@ layout: default
             {{ site.last_name }} {{ site.first_name }}
           {%- endif -%}
         </p>
+        <p style="font-size: 24px;">
         {%- if page.profile.description %}
-        <p style="font-size: 20px;">
           <div class="description">
             {{ page.profile.description }}
           </div>
-      </p>
         {%- endif %}
         <div class="contact-info">
           <i class="fa fa-envelope"></i>
@@ -61,6 +60,7 @@ layout: default
           {%- endif %}
 
       </div>
+      </p>
     {%- endif %}
     </div>
     <div class="column2">
