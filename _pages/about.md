@@ -22,7 +22,7 @@ Hi!
 > ```python
 > >>> print(self.status)
 > ```
->2nd year PhD student at [AMLab](http://amlab.science.uva.nl/)
+>3rd year PhD student at [AMLab](http://amlab.science.uva.nl/)
 > ```python
 > >>> print(self.supervisors)
 > ```
@@ -30,4 +30,4 @@ Hi!
 > ```python
 > >>> print(self.research_interests)
 > ```
->scalable architectures for large-scale simulations, hierarchical representations, geometric deep learning
+>scalable geometric deep learning, physics simulations in latent space, coarse-graining
