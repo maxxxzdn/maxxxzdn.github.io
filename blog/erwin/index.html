@@ -63,9 +63,8 @@
     <style type="text/css">
       figcaption {
     margin-top: 10px;
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
+    text-align: center;
+    padding: 0 10%;
 } figcaption b, figcaption strong {
     font-weight: bold !important;
 } .fake-img {
@@ -357,28 +356,12 @@ table b, table strong {
 
 <div class="l-body" style="display: flex; justify-content: center;">
   <div style="width: 100%; margin: 20px 0;">
-  <p class="large-title" style="text-align: center; margin-bottom: 15px; font-weight: bold;">
-    Sparse attention exploits locality in regular data
-  </p>
+    <p class="large-title" style="text-align: center; margin-bottom: 15px; font-weight: bold;">
+      Sparse attention exploits locality in regular data
+    </p>
     <div style="width: 100%; display: flex; gap: 3%; align-items: flex-start;">
-      <figure style="width: 20%; margin: 0;">
-        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/sparse_attention/text.svg" alt="Text input" style="width: 100%; height: auto;">
-      </figure>
-      <figure style="width: 20%; margin: 0;">
-        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/sparse_attention/full.svg" alt="Full attention" style="width: 100%; height: auto;">
-        <figcaption style="font-size: 1.0em; text-align: center;">Full attention</figcaption>
-      </figure>
-      <figure style="width: 20%; margin: 0;">
-        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/sparse_attention/sliding.svg" alt="Sliding window attention" style="width: 100%; height: auto;">
-        <figcaption style="font-size: 1.0em; text-align: center;">Sliding window</figcaption>
-      </figure>
-      <figure style="width: 20%; margin: 0;">
-        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/sparse_attention/block.svg" alt="Block attention" style="width: 100%; height: auto;">
-        <figcaption style="font-size: 1.0em; text-align: center;">Block attention</figcaption>
-      </figure>
-      <figure style="width: 20%; margin: 0;">
-        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/sparse_attention/random.svg" alt="Random attention" style="width: 100%; height: auto;">
-        <figcaption style="font-size: 1.0em; text-align: center;">Random attention</figcaption>
+      <figure style="width: 100%; margin: 0;">
+        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/sparse_attention.svg" alt="Text input" style="width: 100%; height: auto;">
       </figure>
     </div>
   </div>
@@ -389,28 +372,12 @@ table b, table strong {
 
 <div class="l-body" style="display: flex; justify-content: center;">
   <div style="width: 100%; margin: 20px 0;">
-    <p class="large-title" style="text-align: center; margin-bottom: 15px; font-size: 1.2em; font-weight: bold;">
+    <p class="large-title" style="text-align: center; margin-bottom: 15px; font-weight: bold;">
       Sparse attention breaks locality in irregular data
     </p>
     <div style="width: 100%; display: flex; gap: 3%; align-items: flex-start;">
-      <figure style="width: 20%; margin: 0;">
-        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/point_attention_car/text.svg" alt="Point cloud input" style="width: 100%; height: auto;">
-      </figure>
-      <figure style="width: 20%; margin: 0;">
-        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/point_attention_car/full.svg" alt="Full attention" style="width: 100%; height: auto;">
-        <figcaption style="font-size: 1.0em; text-align: center;">Full attention</figcaption>
-      </figure>
-      <figure style="width: 20%; margin: 0;">
-        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/point_attention_car/sliding.svg" alt="Sliding window attention" style="width: 100%; height: auto;">
-        <figcaption style="font-size: 1.0em; text-align: center;">Sliding window</figcaption>
-      </figure>
-      <figure style="width: 20%; margin: 0;">
-        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/point_attention_car/block.svg" alt="Block attention" style="width: 100%; height: auto;">
-        <figcaption style="font-size: 1.0em; text-align: center;">Block attention</figcaption>
-      </figure>
-      <figure style="width: 20%; margin: 0;">
-        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/point_attention_car/random.svg" alt="Random attention" style="width: 100%; height: auto;">
-        <figcaption style="font-size: 1.0em; text-align: center;">Random attention</figcaption>
+      <figure style="width: 100%; margin: 0;">
+        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/point_attention.svg" alt="Text input" style="width: 100%; height: auto;">
       </figure>
     </div>
   </div>
@@ -420,47 +387,14 @@ table b, table strong {
 <p>This solution is, however, unrealistic in physical modelling - the field I am interested in - for two reasons: A) all the GPUs are taken by LLM folks, B) the number of points might reach well beyond 1 million. Furthermore, there is clearly a need for sparse attention for large scale physical systems, despite the limited number of solutions available. The most popular approach so far involves pooling to latent tokens/supernodes (Transolver<a href="#ref2">[2]</a>, UPT<a href="#ref3">[3]</a>), which makes the total cost sub-linear. Alternatively, one can project irregular data onto a regular domain, as one has full control over the latent node arrangement. This was done in Aurora<a href="#ref4">[4]</a> (and later in Appa<a href="#ref5">[5]</a>), which first uses Perceiver<a href="#ref6">[6]</a> for projection and then Swin Transformer<a href="#ref7">[7]</a> for handling attention over the latent regular grid, thus bringing the complexity down to log-linear. In between, there are solutions that have linear complexity and are based on turning a point cloud into a 1D sequence, e.g., via tree traversal (Octformer<a href="#ref8">[8]</a>) or space-filling curves (PointTransformer v3<a href="#ref9">[9]</a>).</p>
 
 <div class="l-body" style="display: flex; justify-content: center;">
-  <div style="width: 80%; max-width: 1000px; margin: 20px 0;">
-    <!-- Main title -->
-    <p class="large-title" style="text-align: center; margin-bottom: 15px; font-size: 1.2em; font-weight: bold; color: #333;">
+  <div style="width: 100%; margin: 20px 0;">
+    <p class="large-title" style="text-align: center; margin-bottom: 15px; font-weight: bold;">
       Sub-quadratic attention for irregular data
-    </p> 
-    <!-- Main figure with voxelization label -->
-    <div style="width: 100%; position: relative; margin-bottom: 15px;">
-      <figure style="width: 100%; margin: 0;">
-        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/phys_attention.svg" alt="Physical attention methods" style="width: 100%; height: auto;">
+    </p>
+    <div style="width: 100%; display: flex; gap: 3%; align-items: flex-start;">
+      <figure style="width: 70%; margin: 0 auto;">
+        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/phys_attention.svg" alt="Text input" style="width: 100%; height: auto;">
       </figure>
-      <!-- Voxelization label on the image -->
-      <div style="position: absolute; right: -2%; top: 5%; font-size: 0.75em; color: #666; text-align: center; line-height: 1.1; background: rgba(255, 255, 255, 0.8); padding: 2px 4px; border-radius: 3px;">
-        voxelization<br>+<br>Hilbert curve
-      </div>
-    </div>
-    <!-- Labels section -->
-    <div style="position: relative; width: 100%;">
-      <!-- Method names -->
-      <div style="display: grid; grid-template-columns: 1fr 1fr 2fr; gap: 20px; margin-bottom: -5px;">
-        <div style="text-align: center; font-size: 1.0em; font-weight: bold; color: #333; margin-left: -10%;">
-          UPT/Transolver
-        </div>
-        <div style="text-align: center; font-size: 1.0em; font-weight: bold; color: #333;">
-          Aurora
-        </div>
-        <div style="text-align: center; font-size: 1.0em; font-weight: bold; color: #333; margin-right: -15%;">
-          PointTransformer v3
-        </div>
-      </div>
-      <!-- Descriptions -->
-      <div style="display: grid; grid-template-columns: 1fr 1fr 2fr; gap: 20px; margin-bottom: 0px;">
-        <div style="text-align: center; font-size: 1.0em; color: #666; margin-left: -10%;">
-          supernodes
-        </div>
-        <div style="text-align: center; font-size: 1.0em; color: #666;">
-          regular grid
-        </div>
-        <div style="text-align: center; font-size: 1.0em; color: #666; margin-right: -15%;">
-          1D sequence
-        </div>
-      </div>
     </div>
   </div>
 </div>
@@ -471,41 +405,12 @@ table b, table strong {
 <p>Therefore, the goal for the project was to find a solution that would allow operation on the original full-scale representation of a system, capture long-range interactions, but avoid quadratic scaling of full attention. This problem traces back to 1980s many-body physics, where physicists needed to simulate particle systems with long-range interactions (electrostatic/gravitational potentials) at the scale of tens of millions of nodes. To avoid computing all-to-all pairwise interactions ($\approx 10^{12}$ for 1M nodes), one can resort to approximations (e.g. <a href="https://arborjs.org/docs/barnes-hut" rel="external nofollow noopener" target="_blank">Barnes-Hut algorithm</a>). Specifically, if there are many particles far away from a single node, one can treat those particles as a cluster and compute cluster-node interaction instead of pairwise interactions. This can be done at multiple scales, thus extending the range of captured interactions and their resolution. The computation is typically structured using hierarchical trees. For mode detils, check out the fantastic <a href="https://andyljones.com/posts/multipole-methods.html" rel="external nofollow noopener" target="_blank">blog by Andy Jones</a> on the Fast Multipole Method, who also implemented it in PyTorch - well worth a read.</p>
 
 <div class="l-body" style="display: flex; justify-content: center;">
-  <div class="large-title" style="width: 80%; max-width: 800px; margin: 20px 0 40px 0;">
-    <!-- Header section with titles and complexity notations -->
-    <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 20px; margin-bottom: 10px;">
-      <div style="text-align: center; margin-left: -15%;">
-        <div style="font-size: 1.1em; font-weight: bold; color: #333; margin-bottom: 0px; font-family: inherit;">
-          Direct computation
-        </div>
-        <div style="font-size: 1em; color: #666; font-family: inherit;">
-          \(N^{2}\) computations
-        </div>
-      </div>
-      <div style="text-align: center; margin-right: -10%;">
-        <div style="font-size: 1.1em; font-weight: bold; color: #333; margin-bottom: 0px; font-family: inherit;">
-          Tree-based computation
-        </div>
-        <div style="font-size: 1em; color: #666; font-family: inherit;">
-          \(N \log(N)\) computations
-        </div>
-      </div>
+  <div style="width: 100%; margin: 20px 0;">
+    <div style="width: 100%; display: flex; gap: 3%; align-items: flex-start;">
+      <figure style="width: 90%; margin: 0 auto;">
+        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/many_body_tree.svg" alt="Text input" style="width: 100%; height: auto;">
+      </figure>
     </div>
-  <!-- Main figure -->
-  <div style="width: 100%; position: relative;">
-    <figure style="width: 100%; margin: 0;">
-      <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/many_body_tree.svg" alt="Many body with hierarchical trees" style="width: 100%; height: auto;">
-    </figure>
-  </div>
-  <!-- Footer section with example labels -->
-  <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 0px; margin-top: 0px;">
-    <div style="text-align: center; font-size: 1em; color: #666; font-family: inherit; margin-left: -15%;">
-      2D example
-    </div>
-    <div style="text-align: center; font-size: 1em; color: #666; font-family: inherit; margin-right: -60%;">
-      Quadtree
-    </div>
-  </div>
   </div>
 </div>
 
@@ -709,8 +614,8 @@ table b, table strong {
 <div class="l-body" style="display: flex; justify-content: center;">
   <div style="width: 100%; margin: 20px 0;">
       <figure style="width: 100%; margin: 0; text-align: center;">
-        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/scaling_and_rf.svg" alt="Scaling of Erwin + receptive field" style="width: 80%; height: auto;">
-        <figcaption style="font-size: 1.0em; text-align: left;">
+        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/scaling_and_rf.svg" alt="Molecular dynamics experiment" style="width: 70%; height: auto;">
+        <figcaption style="text-align: left;">
         <b>Left</b>: Computational cost of Erwin. We split the total
         runtime into building a ball tree and running a model. The input
         is a batch of 16 point clouds, each of size n. We fit a power law
@@ -729,8 +634,8 @@ table b, table strong {
 <div class="l-body" style="display: flex; justify-content: center;">
   <div style="width: 100%; margin: 20px 0;">
       <figure style="width: 100%; margin: 0; text-align: center;">
-        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/md.svg" alt="Molecular dynamics experiment" style="width: 60%; height: auto;">
-        <figcaption style="font-size: 1.0em; text-align: left;">
+        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/md.svg" alt="Molecular dynamics experiment" style="width: 70%; height: auto;">
+        <figcaption style="text-align: left;">
         Test negative log-likelihood (NLL) of the predicted acceleration distribution for the molecular dynamics task (averaged
         over 3 runs). The baseline MPNN is taken from (Fu et al., 2022).
         The size of the markers reflects the number of parameters.
@@ -878,8 +783,8 @@ table b, table strong {
 <div class="l-body" style="display: flex; justify-content: center;">
   <div style="width: 100%; margin: 20px 0;">
       <figure style="width: 100%; margin: 0; text-align: center;">
-        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/eagle.svg" alt="EAGLE predictions by Erwin" style="width: 60%; height: auto;">
-        <figcaption style="font-size: 1.0em; text-align: left;">
+        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/eagle.svg" alt="Molecular dynamics experiment" style="width: 70%; height: auto;">
+        <figcaption style="text-align: left;">
         The norm of the velocity field at different steps of the rollout trajectories.
         </figcaption>
       </figure>
@@ -892,13 +797,11 @@ table b, table strong {
   <h4>RMSE on velocity V and pressure P fields across different prediction horizons</h4>
   <table style="width: 100%; border-collapse: collapse; font-size: 0.9em;">
     <thead>
-      <tr style="border-bottom: 2px solid #333;">
         <th rowspan="2" style="text-align: left; padding: 8px; border-right: 1px solid #ddd;">Model</th>
         <th colspan="2" style="text-align: center; padding: 8px; border-right: 1px solid #ddd;">\(+\Delta t \)</th>
         <th colspan="2" style="text-align: center; padding: 8px; border-right: 1px solid #ddd;">\(+50\Delta t \)</th>
         <th rowspan="2" style="text-align: center; padding: 8px; border-right: 1px solid #ddd;">Time<br>(ms)</th>
         <th rowspan="2" style="text-align: center; padding: 8px;">Mem.<br>(GB)</th>
-      </tr>
       <tr style="border-bottom: 2px solid #333;">
         <th style="text-align: center; padding: 8px;">V</th>
         <th style="text-align: center; padding: 8px; border-right: 1px solid #ddd;">P</th>
@@ -965,8 +868,8 @@ table b, table strong {
 <div class="l-body" style="display: flex; justify-content: center;">
   <div style="width: 100%; margin: 20px 0;">
       <figure style="width: 100%; margin: 0; text-align: center;">
-        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/bsa.svg" alt="Ball Sparse Attention scheme" style="width: 60%; height: auto;">
-        <figcaption style="font-size: 1.0em; text-align: left;">
+        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/bsa.svg" alt="Molecular dynamics experiment" style="width: 60%; height: auto;">
+        <figcaption style="text-align: left;">
         Ball Sparse Attention (BSA). A ball tree imposes spatial locality, then three sparse-attention branches—grouping (block clustering), compression (MLP-based token pooling), and selection (top-k block retrieval) operate alongside fine-grained ball attention. A learnable gate fuses their outputs into the final attention.
         </figcaption>
       </figure>
@@ -980,8 +883,8 @@ table b, table strong {
 <div class="l-body" style="display: flex; justify-content: center;">
   <div style="width: 100%; margin: 20px 0;">
       <figure style="width: 100%; margin: 0; text-align: center;">
-        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/haet.jpg" alt="Ball Sparse Attention scheme" style="width: 60%; height: auto;">
-        <figcaption style="font-size: 1.0em; text-align: left;">
+        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/haet.jpg" alt="Molecular dynamics experiment" style="width: 60%; height: auto;">
+        <figcaption style="text-align: left;">
         To process industrial scale systems, we use the slicing approach of Transolver and then process them with Ball Tree attention.
         </figcaption>
       </figure>
