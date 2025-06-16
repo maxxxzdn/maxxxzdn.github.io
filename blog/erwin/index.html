@@ -95,7 +95,12 @@
 table b, table strong {
     font-weight: bold !important;
 }
-@media (max-width: 768px) {
+/* Responsive tables - ADD THIS SECTION */ @media (max-width: 768px) {
+  .l-body[style*="display: flex"] {
+    flex-direction: column !important;
+    gap: 30px !important;
+  }
+  
   .l-body > div {
     width: 85% !important;
   }
@@ -127,6 +132,21 @@ table b, table strong {
   }
 }
 @media (max-width: 480px) {
+  .l-body[style*="display: flex"] {
+    flex-direction: column !important;
+    gap: 20px !important;
+    margin: 10px 0 !important;
+  }
+  
+  .l-body table {
+    font-size: 0.75em !important;
+  }
+  
+  .l-body th,
+  .l-body td {
+    padding: 4px 2px !important;
+  }
+  
   .l-body > div {
     width: 88% !important;
   }
@@ -646,7 +666,7 @@ table b, table strong {
 <h3 id="standard-pde-benchmarks">Standard PDE Benchmarks</h3>
 <p>Next, we benchmarked on a couple of PDE-related datasets - ShapeNet and datasets that people refer to as standard PDE benchmarks (specifically the ones that are not on regular grids, hence no Navier-Stokes or Darcy flow). Erwin shows incredibly strong performance on the majority of tasks but, interestingly, it fails on Airfoil - something that must be related to the structure of the mesh, where the density of points is decreasing moving away from the geometric center. We think this creates ball partitions with radically different densities, which complicates training. That being said, we never had issues with other non-uniform meshes. Another interesting finding was on the ShapeNet car dataset, where the strongest performance was achieved by models that did not involve any sort of pooling. That is, Erwin following a flat transformer structure (no coarse-graining of the tree) demonstrates state-of-the-art performance (for a sparse transformer, at least). This contrasts with other baselines that do involve pooling: GNO, UPT, Transolver. We attribute this to the sensitivity of the task to resolution - apparently one needs to work at full fidelity to capture all the necessary details.</p>
 
-<div class="l-body" style="display: flex; justify-content: space-between; gap: 40px; margin: 20px 0;">
+<div class="table-container l-body" style="display: flex; justify-content: space-between; gap: 40px; margin: 20px 0;">
   <div style="flex: 1;">
     <h4>Standard PDE benchmarks</h4>
     <table style="width: 100%; border-collapse: collapse; font-size: 0.85em;">
