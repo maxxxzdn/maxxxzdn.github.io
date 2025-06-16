@@ -2,95 +2,92 @@
 layout: default
 ---
 
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- REMOVED: Duplicate MathJax scripts (already loaded in default.html) -->
 
 <!-- about.html -->
-<body>
-  <article>
-    <div class="column1">
-    {% if page.profile -%}
-      <div class="profile float-{%- if page.profile.align == 'left' -%}left{%- else -%}right{%- endif -%}">
-        {%- if page.profile.image %}
-          {%- assign profile_image_path = page.profile.image | prepend: 'assets/img/' -%}
+<article>
+  <div class="column1">
+  {% if page.profile -%}
+    <div class="profile float-{%- if page.profile.align == 'left' -%}left{%- else -%}right{%- endif -%}">
+      {%- if page.profile.image %}
+        {%- assign profile_image_path = page.profile.image | prepend: 'assets/img/' -%}
 
-          {% if page.profile.image_circular %}
-            {%- assign profile_image_class = "img-fluid z-depth-1 rounded-circle" -%}
-          {% else %}
-            {%- assign profile_image_class = "img-fluid z-depth-1 rounded" -%}
-          {% endif %}
+        {% if page.profile.image_circular %}
+          {%- assign profile_image_class = "img-fluid z-depth-1 rounded-circle" -%}
+        {% else %}
+          {%- assign profile_image_class = "img-fluid z-depth-1 rounded" -%}
+        {% endif %}
 
-          {% include figure.html
-          path=profile_image_path
-          class=profile_image_class
-          alt=page.profile.image -%}
-        {% endif -%}
-        <div class="rectangle"></div>
-        <div style="margin-top: 10px;"></div>
-        <p style="font-size: 32px;">
-          {% if page.profile.align == 'left' -%}
-            <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }} {{ site.last_name }}
-          {% else -%}
-            {{ site.last_name }} {{ site.first_name }}
-          {%- endif -%}
-        </p>
-        {%- if page.profile.description %}
-        <div class="description">
-          {{ page.profile.description }}
+        {% include figure.html
+        path=profile_image_path
+        class=profile_image_class
+        alt=page.profile.image -%}
+      {% endif -%}
+      <div class="rectangle"></div>
+      <div style="margin-top: 10px;"></div>
+      <p style="font-size: 32px;">
+        {% if page.profile.align == 'left' -%}
+          <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }} {{ site.last_name }}
+        {% else -%}
+          {{ site.last_name }} {{ site.first_name }}
+        {%- endif -%}
+      </p>
+      {%- if page.profile.description %}
+      <div class="description">
+        {{ page.profile.description }}
+      </div>
+      {%- endif %}
+      <div class="contact-info">
+        <i class="fa fa-envelope"></i>
+        <a href="mailto:{{ page.profile.email }}">{{ page.profile.email }}</a>
+      </div>
+
+        <!-- Social -->
+        {%- if page.social %}
+        <div class="social">
+          <div class="contact-icons">
+            {% include social.html %}
+          </div>
+
+          <div class="contact-note">
+            {{ site.contact_note }}
+          </div>
+
         </div>
         {%- endif %}
-        <div class="contact-info">
-          <i class="fa fa-envelope"></i>
-          <a href="mailto:{{ page.profile.email }}">{{ page.profile.email }}</a>
-        </div>
 
-          <!-- Social -->
-          {%- if page.social %}
-          <div class="social">
-            <div class="contact-icons">
-              {% include social.html %}
-            </div>
-
-            <div class="contact-note">
-              {{ site.contact_note }}
-            </div>
-
+    </div>
+  {%- endif %}
+  </div>
+  <div class="column2">
+    <div class="scrollable-content">
+      <div class="clearfix">
+        {% if page.profile.align == 'left' -%}
+            {{ content }}
           </div>
-          {%- endif %}
-
+        {% endif -%}
       </div>
+      
+      <div style="margin-top: 40px;"></div>
+
+      <div style="margin-top: 20px;"></div>
+      <!-- Latest posts -->
+      {% if page.latest_posts -%}
+        <h3><a href="{{ '/blog/' | relative_url }}" style="color: inherit;">latest posts</a></h3>
+        {%- include latest_posts.html %}
+      {%- endif %}
+
+      <div style="margin-top: 20px;"></div>
+      <!-- Selected papers -->
+      {% if page.selected_papers -%}
+        <h3><a href="{{ '/publications/' | relative_url }}" style="color: inherit;">selected publications</a></h3>
+        {%- include selected_papers.html %}
+      {%- endif %}
+
+      <!-- News -->
+      {% if page.news -%}
+      <h3><a href="{{ '/news/' | relative_url }}" style="color: inherit;">news</a></h3>
+      {%- include news.html %}
     {%- endif %}
     </div>
-    <div class="column2">
-      <div class="scrollable-content">
-        <div class="clearfix">
-          {% if page.profile.align == 'left' -%}
-              {{ content }}
-            </div>
-          {% endif -%}
-        </div>
-        
-        <div style="margin-top: 40px;"></div>
-
-        <div style="margin-top: 20px;"></div>
-        <!-- Latest posts -->
-        {% if page.latest_posts -%}
-          <h3><a href="{{ '/blog/' | relative_url }}" style="color: inherit;">latest posts</a></h3>
-          {%- include latest_posts.html %}
-        {%- endif %}
-
-        <div style="margin-top: 20px;"></div>
-        <!-- Selected papers -->
-        {% if page.selected_papers -%}
-          <h3><a href="{{ '/publications/' | relative_url }}" style="color: inherit;">selected publications</a></h3>
-          {%- include selected_papers.html %}
-        {%- endif %}
-
-        <!-- News -->
-        {% if page.news -%}
-        <h3><a href="{{ '/news/' | relative_url }}" style="color: inherit;">news</a></h3>
-        {%- include news.html %}
-      {%- endif %}
-      </div>
-  </article>
-</body>
+</article>

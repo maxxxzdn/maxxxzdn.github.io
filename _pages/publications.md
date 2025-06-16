@@ -10,9 +10,7 @@ nav_order: 1
 <!-- _pages/publications.md -->
 <div class="publications">
 
-{%- for y in page.years %}
-  <h2 class="year">{{y}}</h2>
-  {% bibliography -f papers -q @*[year_={{y}}]* %}
-{% endfor %}
+<!-- Single bibliography call with year-based ordering -->
+{% bibliography -f papers --group_by year_ --group_order descending %}
 
 </div>
