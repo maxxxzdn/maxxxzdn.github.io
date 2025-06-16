@@ -444,7 +444,7 @@ table b, table strong {
   <img src="https://raw.githubusercontent.com/maxxxzdn/erwin/main/misc/ball_tree_animation.gif" alt="Ball Tree Animation" style="width: 50%; margin-top: -40px; margin-bottom: -30px;">
 </div>
 
-<p>Having built a tree, we can now compute attention within the ball tree partitions. Specifically, one can choose the level of the tree and compute attention (Ball Tree Attention, BTA) within the balls in parallel. This is essentially block attention, but now each block is guaranteed to contain tokens that are close to each other in Euclidean space. This spatial locality is natural for physical systems where interactions typically decay with distance - nearby particles have stronger forces between them, and local features often exhibit spatial coherence. Therefore, by grouping neighbouring points together, BTA aligns with the intuition that the most important interactions are captured within each attention block. This is the attention mechanism we use to capture fine local details in data.</p>
+<p>Having built a tree, we can now compute attention within the ball tree partitions. Specifically, one can choose the level of the tree and compute attention (<em>Ball Tree Attention</em>, BTA) within the balls in parallel. This is essentially block attention, but now each block is guaranteed to contain tokens that are close to each other in Euclidean space. This spatial locality is natural for physical systems where interactions typically decay with distance - nearby particles have stronger forces between them, and local features often exhibit spatial coherence. Therefore, by grouping neighbouring points together, BTA aligns with the intuition that the most important interactions are captured within each attention block. This is the attention mechanism we use to capture fine local details in data.</p>
 
 <div class="l-body" style="display: flex; justify-content: center;">
   <div style="width: 70%; margin: 0px 0;">
@@ -629,7 +629,7 @@ table b, table strong {
 </div>
 
 <h3 id="molecular-dynamics">Molecular Dynamics</h3>
-<p>When we first started the project, I had large molecular systems in mind as a primary application. So this is exactly where I started: with the dataset from Xie et al., which contains dynamics of relatively large (coarse-grained, CG) polypeptides. The goal is to predict forces acting on each CG bead. As the main baseline we chose MPNN, which after some tuning turned out to be very tough to beat. In hindsight, this is not surprising as the dataset doesn’t have any charges, hence all the interactions are local. The experiment also confirmed to me just how good MPNNs are at picking up local interactions. In fact, we had to put a small MPNN before attention blocks to capture very fine local features - something that transformer alone wasn’t able to do (I wrote a <a href="https://twitter.com/maxxxzdn/status/1918303348177899992" rel="external nofollow noopener" target="_blank">recent thread</a> about this on Twitter). Nonetheless, Erwin does push the Pareto frontier, mainly because of how fast it is at the scale of this dataset.</p>
+<p>When we first started the project, I had large molecular systems in mind as a primary application. So this is exactly where I started: with the dataset from Fu et al.<a href="#ref11">[11]</a>, which contains dynamics of relatively large (coarse-grained, CG) polypeptides. The goal is to predict forces acting on each CG bead. As the main baseline we chose MPNN, which after some tuning turned out to be very tough to beat. In hindsight, this is not surprising as the dataset doesn’t have any charges, hence all the interactions are local. The experiment also confirmed to me just how good MPNNs are at picking up local interactions. In fact, we had to put a small MPNN before attention blocks to capture very fine local features - something that transformer alone wasn’t able to do (I wrote a <a href="https://twitter.com/maxxxzdn/status/1918303348177899992" rel="external nofollow noopener" target="_blank">recent thread</a> about this on Twitter). Nonetheless, Erwin does push the Pareto frontier, mainly because of how fast it is at the scale of this dataset.</p>
 
 <div class="l-body" style="display: flex; justify-content: center;">
   <div style="width: 100%; margin: 20px 0;">
@@ -637,8 +637,7 @@ table b, table strong {
         <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/md.svg" alt="Molecular dynamics experiment" style="width: 70%; height: auto;">
         <figcaption style="text-align: left;">
         Test negative log-likelihood (NLL) of the predicted acceleration distribution for the molecular dynamics task (averaged
-        over 3 runs). The baseline MPNN is taken from (Fu et al., 2022).
-        The size of the markers reflects the number of parameters.
+        over 3 runs). The size of the markers reflects the number of parameters.
         </figcaption>
       </figure>
   </div>
@@ -791,7 +790,7 @@ table b, table strong {
   </div>
 </div>
 
-<p>The final experiment is the EAGLE dataset, which is a large-scale collection of turbulent fluid dynamics trajectories on irregular meshes of different shapes, approximately 3.5k nodes on average. There is nothing really interesting to say except for just how well a good model can learn and for how long it can unroll seemingly complex trajectories autoregressively. It was very impressive to see, and even better to see Erwin do it the best :).</p>
+<p>The final experiment is the EAGLE dataset<a href="#ref12">[12]</a>, which is a large-scale collection of turbulent fluid dynamics trajectories on irregular meshes of different shapes, approximately 3.5k nodes on average. There is nothing really interesting to say except for just how well a good model can learn and for how long it can unroll seemingly complex trajectories autoregressively. It was very impressive to see, and even better to see Erwin do it the best :).</p>
 
 <div class="l-body" style="margin: 20px 0;">
   <h4>RMSE on velocity V and pressure P fields across different prediction horizons</h4>
@@ -911,6 +910,10 @@ Swin Transformer: Hierarchical Vision Transformer using Shifted Windows. ICCV 20
 Point Transformer V3: Simpler, Faster, Stronger. CVPR 2024</div>
 <div id="ref10">[10] Artidoro Pagnoni, Ram Pasunuru, Pedro Rodríguez, John Nguyen, Benjamin Muller, Margaret Li, Chunting Zhou, Lili Yu, Jason Weston, Luke Zettlemoyer, Gargi Ghosh, Mike Lewis, Ari Holtzman, Srinivasan Iyer:
 Byte Latent Transformer: Patches Scale Better Than Tokens. CoRR abs/2412.09871 (2024)</div>
+<div id="ref11">[11] Xiang Fu, Tian Xie, Nathan J. Rebello, Bradley D. Olsen, Tommi S. Jaakkola:
+Simulate Time-integrated Coarse-grained Molecular Dynamics with Multi-scale Graph Networks. Trans. Mach. Learn. Res. 2023 (2023)</div>
+<div id="ref12">[12] Steeven Janny, Aurélien Béneteau, Madiha Nadri, Julie Digne, Nicolas Thome, Christian Wolf:
+EAGLE: Large-scale Learning of Turbulent Fluid Dynamics with Mesh Transformers. ICLR 2023</div>
 
       </d-article>
 
