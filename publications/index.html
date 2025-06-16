@@ -41,11 +41,6 @@
     
     <!-- Dark Mode -->
     
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/native.css" media="none" id="highlight_theme_dark">
-
-    <script src="/assets/js/theme.js"></script>
-    <script src="/assets/js/dark_mode.js"></script>
-    
 
   
 
@@ -89,14 +84,6 @@
               </li>
               <li class="nav-item ">
                 <a class="nav-link" href="/repositories/">repositories</a>
-              </li>
-
-              <!-- Toogle theme mode -->
-              <li class="toggle-container">
-                <button id="light-toggle" title="Change theme">
-                  <i class="fas fa-moon"></i>
-                  <i class="fas fa-sun"></i>
-                </button>
               </li>
             </ul>
           </div>
@@ -183,6 +170,7 @@
             <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a>
             <a href="http://arxiv.org/abs/2502.17019" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">arXiv</a>
             <a href="https://arxiv.org/pdf/2502.17019.pdf" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">PDF</a>
+            <a href="/blog/erwin/" class="btn btn-sm z-depth-0" role="button">Blog</a>
             <a href="https://github.com/maxxxzdn/erwin" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">Code</a>
           </div>
           
@@ -670,7 +658,11 @@
   <script type="text/javascript">
     window.MathJax = {
       tex: {
-        tags: 'ams'
+        tags: 'ams',
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
       }
     };
   </script>

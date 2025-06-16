@@ -16,7 +16,7 @@
     <title>
         blog | Maksim  Zhdanov</title>
     <meta name="author" content="Maksim  Zhdanov" />
-    <meta name="description" content="a collection of research-related blog posts." />
+    <meta name="description" content="my research, simplified." />
 
 
     <!-- Bootstrap & MDB -->
@@ -39,11 +39,6 @@
     <link rel="canonical" href="https://maxxxzdn.github.io/blog/">
     
     <!-- Dark Mode -->
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/native.css" media="none" id="highlight_theme_dark" />
-
-    <script src="/assets/js/theme.js"></script>
-    <script src="/assets/js/dark_mode.js"></script>
     
 
   </head>
@@ -88,14 +83,6 @@
               <li class="nav-item ">
                 <a class="nav-link" href="/repositories/">repositories</a>
               </li>
-
-              <!-- Toogle theme mode -->
-              <li class="toggle-container">
-                <button id="light-toggle" title="Change theme">
-                  <i class="fas fa-moon"></i>
-                  <i class="fas fa-sun"></i>
-                </button>
-              </li>
             </ul>
           </div>
         </div>
@@ -124,7 +111,7 @@
 
     <header class="post-header">
       <h2 class="post-title">blog</h2>
-      <p class="post-description">a collection of research-related blog posts.</p>
+      <p class="post-description">my research, simplified.</p>
     </header>
 
     <article>
@@ -175,6 +162,17 @@
   object-fit: contain;
   border-radius: 0; /* Removed border-radius from image */
 }
+
+.post-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.post-link:hover {
+  text-decoration: none;
+  color: inherit;
+}
 </style>
   
   <!-- page.html -->
@@ -183,13 +181,68 @@
 
   <ul class="post-list">
     
+      
+      
+      
       <li>
-        <!-- Determine the correct URL for the link -->
+        <!-- Handle different redirect scenarios -->
+        
+          <!-- No redirect - use normal post URL -->
+          <a href="/blog/erwin/" class="post-link">
         
         
-        <!-- Wrap the entire content with an <a> tag -->
-        <a href="/blog/cscnns.html" class="post-link">
-          <h4>Clifford-Steerable CNNs</h4>
+          <h4>
+            Erwin Transformer
+            
+          </h4>
+  
+          
+          <div class="image-container">
+            <img class="post-image" src="/assets/blog_heads/erwin.png" alt="Erwin Transformer">
+          </div>
+          
+  
+          <p>We can organize irregular data (point clouds, meshes) using ball trees to emplot sub-quadratic (sparse) attention. Fast and expressive!</p>
+          <p class="post-meta">
+            10 min read &nbsp; &middot; &nbsp;
+            June 13, 2025
+          </p>
+
+          <p class="post-tags">
+            <a href="/blog/2025">
+              <i class="fas fa-calendar fa-sm"></i> 2025 </a>
+
+            
+              
+              <a href="/blog/tag/attention">
+                <i class="fas fa-hashtag fa-sm"></i> attention</a>
+                
+              <a href="/blog/tag/trees">
+                <i class="fas fa-hashtag fa-sm"></i> trees</a>
+                
+            
+
+            
+          </p>
+        </a>
+      </li>
+    
+      
+      
+      
+      <li>
+        <!-- Handle different redirect scenarios -->
+        
+          
+            <!-- Internal redirect -->
+            <a href="/blog/cscnns.html" class="post-link">
+          
+        
+        
+          <h4>
+            Clifford-Steerable CNNs
+            
+          </h4>
   
           
           <div class="image-container">
@@ -203,34 +256,41 @@
             August 6, 2024
           </p>
 
-      <p class="post-tags">
-        <a href="/blog/">
-          <i class="fas fa-calendar fa-sm"></i>  </a>
+          <p class="post-tags">
+            <a href="/blog/2024">
+              <i class="fas fa-calendar fa-sm"></i> 2024 </a>
 
-          
             
-            <a href="/blog/tag/equivariance">
-              <i class="fas fa-hashtag fa-sm"></i> equivariance</a>
               
-            <a href="/blog/tag/cliffordalgerba">
-              <i class="fas fa-hashtag fa-sm"></i> cliffordalgerba</a>
-              
-          
+              <a href="/blog/tag/equivariance">
+                <i class="fas fa-hashtag fa-sm"></i> equivariance</a>
+                
+              <a href="/blog/tag/cliffordalgerba">
+                <i class="fas fa-hashtag fa-sm"></i> cliffordalgerba</a>
+                
+            
 
-          
             
-          
-        </p>
-      </a>
-    </li>
-  
+          </p>
+        </a>
+      </li>
+    
+      
+      
+      
       <li>
-        <!-- Determine the correct URL for the link -->
+        <!-- Handle different redirect scenarios -->
+        
+          
+            <!-- Internal redirect -->
+            <a href="/blog/implicit_kernels.html" class="post-link">
+          
         
         
-        <!-- Wrap the entire content with an <a> tag -->
-        <a href="/blog/implicit_kernels.html" class="post-link">
-          <h4>Implicit Steerable Kernels</h4>
+          <h4>
+            Implicit Steerable Kernels
+            
+          </h4>
   
           
           <div class="image-container">
@@ -244,33 +304,30 @@
             October 9, 2023
           </p>
 
-      <p class="post-tags">
-        <a href="/blog/">
-          <i class="fas fa-calendar fa-sm"></i>  </a>
+          <p class="post-tags">
+            <a href="/blog/2023">
+              <i class="fas fa-calendar fa-sm"></i> 2023 </a>
 
-          
             
-            <a href="/blog/tag/equivariance">
-              <i class="fas fa-hashtag fa-sm"></i> equivariance</a>
               
-            <a href="/blog/tag/steerablecnns">
-              <i class="fas fa-hashtag fa-sm"></i> steerableCNNs</a>
-              
-          
+              <a href="/blog/tag/equivariance">
+                <i class="fas fa-hashtag fa-sm"></i> equivariance</a>
+                
+              <a href="/blog/tag/steerablecnns">
+                <i class="fas fa-hashtag fa-sm"></i> steerableCNNs</a>
+                
+            
 
-          
             
-          
-        </p>
-      </a>
-    </li>
-  
-</ul>
+          </p>
+        </a>
+      </li>
+    
+  </ul>
 
   
 
 </div>
-
     </article>
 
 </div>
@@ -305,7 +362,11 @@
   <script type="text/javascript">
     window.MathJax = {
       tex: {
-        tags: 'ams'
+        tags: 'ams',
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
       }
     };
   </script>

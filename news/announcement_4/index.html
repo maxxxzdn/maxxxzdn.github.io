@@ -41,11 +41,6 @@
     
     <!-- Dark Mode -->
     
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/native.css" media="none" id="highlight_theme_dark">
-
-    <script src="/assets/js/theme.js"></script>
-    <script src="/assets/js/dark_mode.js"></script>
-    
 
   
 
@@ -89,14 +84,6 @@
               </li>
               <li class="nav-item ">
                 <a class="nav-link" href="/repositories/">repositories</a>
-              </li>
-
-              <!-- Toogle theme mode -->
-              <li class="toggle-container">
-                <button id="light-toggle" title="Change theme">
-                  <i class="fas fa-moon"></i>
-                  <i class="fas fa-sun"></i>
-                </button>
               </li>
             </ul>
           </div>
@@ -146,13 +133,19 @@
   
 
   <li class="my-2">
-    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2024/cscnns/">Clifford-Steerable CNNs</a>
+    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/erwin/">Erwin Transformer</a>
   </li>
 
   
 
   <li class="my-2">
-    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2023/implicit_kernels/">Implicit Steerable Kernels</a>
+    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/cscnns/">Clifford-Steerable CNNs</a>
+  </li>
+
+  
+
+  <li class="my-2">
+    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/implicit_kernels/">Implicit Steerable Kernels</a>
   </li>
 
 </div>
@@ -188,7 +181,11 @@
   <script type="text/javascript">
     window.MathJax = {
       tex: {
-        tags: 'ams'
+        tags: 'ams',
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
       }
     };
   </script>
