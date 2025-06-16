@@ -41,11 +41,6 @@
     
     <!-- Dark Mode -->
     
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/native.css" media="none" id="highlight_theme_dark">
-
-    <script src="/assets/js/theme.js"></script>
-    <script src="/assets/js/dark_mode.js"></script>
-    
 
   
 
@@ -84,16 +79,11 @@
               <li class="nav-item ">
                 <a class="nav-link" href="/publications/">publications</a>
               </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="/assets/pdf/cv.pdf">cv</a>
+              </li>
               <li class="nav-item active">
                 <a class="nav-link" href="/repositories/">repositories<span class="sr-only">(current)</span></a>
-              </li>
-
-              <!-- Toogle theme mode -->
-              <li class="toggle-container">
-                <button id="light-toggle" title="Change theme">
-                  <i class="fas fa-moon"></i>
-                  <i class="fas fa-sun"></i>
-                </button>
               </li>
             </ul>
           </div>
@@ -130,6 +120,9 @@
       
 <div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
   
+      
+
+
 
 <div class="repo p-2 text-center">
   <a href="https://github.com/maxxxzdn/erwin" rel="external nofollow noopener" target="_blank">
@@ -138,6 +131,10 @@
   </a>
 </div>
 
+  
+      
+
+
 
 <div class="repo p-2 text-center">
   <a href="https://github.com/maxxxzdn/clifford-group-equivariant-cnns" rel="external nofollow noopener" target="_blank">
@@ -145,6 +142,10 @@
     <img class="repo-img-dark w-100" alt="maxxxzdn/clifford-group-equivariant-cnns" src="https://github-readme-stats.vercel.app/api/pin/?username=maxxxzdn&amp;repo=clifford-group-equivariant-cnns&amp;theme=dark&amp;show_owner=false">
   </a>
 </div>
+
+  
+      
+
 
 
 <div class="repo p-2 text-center">
@@ -155,6 +156,10 @@
 </div>
 
   
+      
+
+
+
 <div class="repo p-2 text-center">
   <a href="https://github.com/maxxxzdn/jax-geometric" rel="external nofollow noopener" target="_blank">
     <img class="repo-img-light w-100" alt="maxxxzdn/jax-geometric" src="https://github-readme-stats.vercel.app/api/pin/?username=maxxxzdn&amp;repo=jax-geometric&amp;theme=default&amp;show_owner=false">
@@ -163,6 +168,10 @@
 </div>
 
   
+      
+
+
+
 <div class="repo p-2 text-center">
   <a href="https://github.com/Photon-AI-Research/NeuralSolvers" rel="external nofollow noopener" target="_blank">
     <img class="repo-img-light w-100" alt="Photon-AI-Research/NeuralSolvers" src="https://github-readme-stats.vercel.app/api/pin/?username=Photon-AI-Research&amp;repo=NeuralSolvers&amp;theme=default&amp;show_owner=true">
@@ -210,7 +219,11 @@
   <script type="text/javascript">
     window.MathJax = {
       tex: {
-        tags: 'ams'
+        tags: 'ams',
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
       }
     };
   </script>
