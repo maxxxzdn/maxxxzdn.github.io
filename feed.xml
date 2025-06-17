@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://maxxxzdn.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://maxxxzdn.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-06-16T21:14:32+00:00</updated><id>https://maxxxzdn.github.io/feed.xml</id><title type="html">blank</title><entry><title type="html">Erwin Transformer</title><link href="https://maxxxzdn.github.io/blog/erwin/" rel="alternate" type="text/html" title="Erwin Transformer" /><published>2025-06-13T00:00:00+00:00</published><updated>2025-06-13T00:00:00+00:00</updated><id>https://maxxxzdn.github.io/blog/erwin</id><content type="html" xml:base="https://maxxxzdn.github.io/blog/erwin/"><![CDATA[<div class="intro-gif">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://maxxxzdn.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://maxxxzdn.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-06-17T09:04:13+00:00</updated><id>https://maxxxzdn.github.io/feed.xml</id><title type="html">blank</title><entry><title type="html">Erwin Transformer</title><link href="https://maxxxzdn.github.io/blog/erwin/" rel="alternate" type="text/html" title="Erwin Transformer" /><published>2025-06-13T00:00:00+00:00</published><updated>2025-06-13T00:00:00+00:00</updated><id>https://maxxxzdn.github.io/blog/erwin</id><content type="html" xml:base="https://maxxxzdn.github.io/blog/erwin/"><![CDATA[<div class="intro-gif">
   <video controls="" loop="" muted="" playsinline="" preload="metadata" poster="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/kino_poster.jpg">
     <source src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/kino.mp4" type="video/mp4" alt="Short video presentation of the paper." />
   </video>
@@ -7,14 +7,15 @@
 <h2 id="introduction">Introduction</h2>
 <p>Since attention<a href="#ref1">[1]</a> was introduced in 2017, a natural scientific instinct was to try to address its most obvious drawback - quadratic complexity. Many approaches emerged, specifically in the context of text and images. The main reason why numerous solutions exist for text and images is the regular structure of data. That is, if I tell you to look at position/column $j$, you know exactly where to look. Same with relative positions - there is no ambiguity when it comes to computing distance between two tokens in a sequence or two pixels in an image. Therefore, one can exploit this structure and derive a fixed attention pattern that is guaranteed to respect the geometry of the domain.</p>
 
-<div class="l-body" style="display: flex; justify-content: center;">
-  <div style="width: 100%; margin: 20px 0;">
-    <p class="large-title" style="text-align: center; margin-bottom: 15px; font-weight: bold;">
-      Sparse attention exploits locality in regular data
-    </p>
-    <div style="width: 100%; display: flex; gap: 3%; align-items: flex-start;">
-      <figure style="width: 100%; margin: 0;">
-        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/sparse_attention.svg" alt="Text input" style="width: 100%; height: auto;" />
+<div class="l-body">
+  <div class="content-section">
+    <h3 class="section-title">Sparse attention exploits locality in regular data</h3>
+    <div class="figure-container">
+      <figure class="main-figure">
+        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/sparse_attention.svg" alt="Sparse attention patterns comparison" class="responsive-image" />
+        <figcaption class="figure-caption">
+        Sparse attention patterns reduce computational complexity by limiting which tokens can attend to each other.
+        </figcaption>
       </figure>
     </div>
   </div>
@@ -23,14 +24,15 @@
 <h3 id="sparse-attention-on-irregular-data">Sparse Attention on Irregular Data</h3>
 <p>Now, when it comes to irregular structures such as point clouds or unstructured meshes, the task becomes harder since data do not have an inherent ordering. This means that $i$-th and $j$-th elements are never guaranteed to be at the same distance from one another across different data points. As we cannot rely on regularity anymore, there is seemingly nothing to exploit - and the only solution would be to buckle up, make GPUs go brr and compute full attention.</p>
 
-<div class="l-body" style="display: flex; justify-content: center;">
-  <div style="width: 100%; margin: 20px 0;">
-    <p class="large-title" style="text-align: center; margin-bottom: 15px; font-weight: bold;">
-      Sparse attention breaks locality in irregular data
-    </p>
-    <div style="width: 100%; display: flex; gap: 3%; align-items: flex-start;">
-      <figure style="width: 100%; margin: 0;">
-        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/point_attention.svg" alt="Text input" style="width: 100%; height: auto;" />
+<div class="l-body">
+  <div class="content-section">
+    <h3 class="section-title">Sparse attention breaks locality in irregular data</h3>
+    <div class="figure-container">
+      <figure class="main-figure">
+        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/point_attention.svg" alt="Point attention patterns comparison" class="responsive-image" />
+        <figcaption class="figure-caption">
+        Applied to unordered sets, sparse attention breaks down as spatial relationships are not preserved in the data ordering.
+        </figcaption>
       </figure>
     </div>
   </div>
@@ -39,14 +41,15 @@
 <h3 id="current-solutions-in-physical-modelling">Current Solutions in Physical Modelling</h3>
 <p>This solution is, however, unrealistic in physical modelling - the field I am interested in - for two reasons: A) all the GPUs are taken by LLM folks, B) the number of points might reach well beyond 1 million. Furthermore, there is clearly a need for sparse attention for large scale physical systems, despite the limited number of solutions available. The most popular approach so far involves pooling to latent tokens/supernodes (Transolver<a href="#ref2">[2]</a>, UPT<a href="#ref3">[3]</a>), which makes the total cost sub-linear. Alternatively, one can project irregular data onto a regular domain, as one has full control over the latent node arrangement. This was done in Aurora<a href="#ref4">[4]</a> (and later in Appa<a href="#ref5">[5]</a>), which first uses Perceiver<a href="#ref6">[6]</a> for projection and then Swin Transformer<a href="#ref7">[7]</a> for handling attention over the latent regular grid, thus bringing the complexity down to log-linear. In between, there are solutions that have linear complexity and are based on turning a point cloud into a 1D sequence, e.g., via tree traversal (Octformer<a href="#ref8">[8]</a>) or space-filling curves (PointTransformer v3<a href="#ref9">[9]</a>).</p>
 
-<div class="l-body" style="display: flex; justify-content: center;">
-  <div style="width: 100%; margin: 20px 0;">
-    <p class="large-title" style="text-align: center; margin-bottom: 15px; font-weight: bold;">
-      Sub-quadratic attention for irregular data
-    </p>
-    <div style="width: 100%; display: flex; gap: 3%; align-items: flex-start;">
-      <figure style="width: 70%; margin: 0 auto;">
-        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/phys_attention.svg" alt="Text input" style="width: 100%; height: auto;" />
+<div class="l-body">
+  <div class="content-section">
+    <h3 class="section-title">Sub-quadratic attention for irregular data</h3>
+    <div class="figure-container">
+      <figure class="main-figure smaller-width">
+        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/phys_attention.svg" alt="Sub-quadratic attention for irregular data" class="responsive-image" />
+        <figcaption class="figure-caption">
+        Multiple solutions exist that avoid quadratic cost of attention by changing either data representation or data structure.
+        </figcaption>
       </figure>
     </div>
   </div>
@@ -57,11 +60,15 @@
 <h2 id="tree-based-attention">Tree-based Attention</h2>
 <p>Therefore, the goal for the project was to find a solution that would allow operation on the original full-scale representation of a system, capture long-range interactions, but avoid quadratic scaling of full attention. This problem traces back to 1980s many-body physics, where physicists needed to simulate particle systems with long-range interactions (electrostatic/gravitational potentials) at the scale of tens of millions of nodes. To avoid computing all-to-all pairwise interactions ($\approx 10^{12}$ for 1M nodes), one can resort to approximations (e.g. <a href="https://arborjs.org/docs/barnes-hut">Barnes-Hut algorithm</a>). Specifically, if there are many particles far away from a single node, one can treat those particles as a cluster and compute cluster-node interaction instead of pairwise interactions. This can be done at multiple scales, thus extending the range of captured interactions and their resolution. The computation is typically structured using hierarchical trees. For mode detils, check out the fantastic <a href="https://andyljones.com/posts/multipole-methods.html">blog by Andy Jones</a> on the Fast Multipole Method, who also implemented it in PyTorch - well worth a read.</p>
 
-<div class="l-body" style="display: flex; justify-content: center;">
-  <div style="width: 100%; margin: 20px 0;">
-    <div style="width: 100%; display: flex; gap: 3%; align-items: flex-start;">
-      <figure style="width: 90%; margin: 0 auto;">
-        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/many_body_tree.svg" alt="Text input" style="width: 100%; height: auto;" />
+<div class="l-body">
+  <div class="content-section">
+   <h3 class="section-title">Many-body tree methods</h3>
+    <div class="figure-container">
+      <figure class="main-figure">
+        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/many_body_tree.svg" alt="Hierarchical trees for many body problems" class="responsive-image" />
+        <figcaption class="figure-caption">
+        To avoid computing all pairwise interactions, a hierarchical tree is built on top a point cloud to guide when to compute an interaction directly, and when to approximate it.
+        </figcaption>
       </figure>
     </div>
   </div>
@@ -69,23 +76,16 @@
 
 <p>This is the main idea behind Erwin - use hierarchical trees to impose regular structure on otherwise irregular data, then exploit this structure to organize attention and yield sub-quadratic complexity. Our first question was which tree to use. Traditionally, in many-body physics, octrees are used. These are built by recursively subdividing the cubic domain into sub-domains until each box contains at most a specified number of particles. This tree structure has even proved useful in the context of point cloud attention (see Octformer<a href="#ref8">[8]</a>, which traverses the tree to turn the underlying point cloud into a sequence suitable for sparse attention). However, we did not pursue octrees as the partitions they form might be highly unbalanced when particles cluster. This is particularly apparent when working with molecular dynamics, as shown in the figure below.</p>
 
-<div class="l-body" style="display: flex; justify-content: center;">
-  <div style="width: 70%; margin: 0px auto;">
-    <p class="large-title" style="text-align: center; margin-bottom: 20px; font-size: 1.2em; font-weight: bold;">
-      Data-driven domain partitioning with trees
-    </p>
-    <div style="width: 70%; display: flex; justify-content: center; margin: 0 auto;">
-      <figure style="width: 100%; margin: 0;">
-        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/octree_vs_btree.svg" alt="Tree comparison" style="width: 100%; height: auto;" />
+<div class="l-body">
+  <div class="content-section">
+    <h3 class="section-title">Data-driven domain partitioning with trees</h3>
+    <div class="figure-container">
+      <figure class="main-figure three-quarter-width">
+        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/octree_vs_btree.svg" alt="Tree comparison" class="responsive-image" />
+        <figcaption class="figure-caption">
+        Examples of hierarchical trees with different partitioning strategies.
+        </figcaption>
       </figure>
-    </div>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 0px;">
-      <div style="text-align: center; font-size: 1.0em; color: #666; margin-right: -20%">
-        Quadtree
-      </div>
-      <div style="text-align: center; font-size: 1.0em; color: #666; margin-right: 20%">
-        Ball Tree
-      </div>
     </div>
   </div>
 </div>
@@ -93,29 +93,32 @@
 <h3 id="ball-trees">Ball Trees</h3>
 <p>On the contrary, ball trees, which we chose in the end, do not have this issue and are generally more robust to varying densities (although definitely not perfect, as we will see in the experiments later). Intuitively, the algorithm takes a bunch of points and covers them with a ball. Then, half of the points are covered with a smaller ball, and the remaining half with another ball such that no point belongs to both balls. The procedure is repeated until the smallest balls contain at most two points. You can now see why we chose to work with ball trees: they do not require covering the entire domain, only the points themselves, and at each tree level, the nodes are (often) associated with the same scale. This, in our opinion, makes ball trees an excellent candidate for handling irregular data, and we can now look at how they can be used to organize attention.</p>
 
-<div class="intro-gif"> 
-  <img src="https://raw.githubusercontent.com/maxxxzdn/erwin/main/misc/ball_tree_animation.gif" alt="Ball Tree Animation" style="width: 50%; margin-top: -40px; margin-bottom: -30px;" />
+<div class="l-body">
+  <div class="content-section">
+    <h3 class="section-title">Iterative construction of Ball Tree</h3>
+    <div class="figure-container">
+      <figure class="main-figure three-quarter-width">
+        <img src="https://raw.githubusercontent.com/maxxxzdn/erwin/main/misc/ball_tree_animation.gif" alt="Ball Tree Animation" class="responsive-image" style="margin-top: -5% !important;" />
+        <figcaption class="figure-caption">
+        Ball Tree is built on top of a point cloud by iteratively splitting ball partitions in half.
+        </figcaption>
+      </figure>
+    </div>
+  </div>
 </div>
 
 <p>Having built a tree, we can now compute attention within the ball tree partitions. Specifically, one can choose the level of the tree and compute attention (<em>Ball Tree Attention</em>, BTA) within the balls in parallel. This is essentially block attention, but now each block is guaranteed to contain tokens that are close to each other in Euclidean space. This spatial locality is natural for physical systems where interactions typically decay with distance - nearby particles have stronger forces between them, and local features often exhibit spatial coherence. Therefore, by grouping neighbouring points together, BTA aligns with the intuition that the most important interactions are captured within each attention block. This is the attention mechanism we use to capture fine local details in data.</p>
 
-<div class="l-body" style="display: flex; justify-content: center;">
-  <div style="width: 70%; margin: 0px 0;">
-    <p class="large-title" style="text-align: center; margin-bottom: 0px; font-size: 1.2em; font-weight: bold;">
-      Attention is computed within ball partitions
-    </p>
-    <div style="width: 100%; display: flex; gap: 3%; align-items: flex-start;">
-      <figure style="width: 100%; margin: 0;">
-        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/bta.svg" alt="Ball Tree attention" style="width: 100%; height: auto;" />
+<div class="l-body">
+  <div class="content-section">
+    <h3 class="section-title">Attention is computed within ball partitions</h3>
+    <div class="figure-container">
+      <figure class="main-figure three-quarter-width">
+        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/bta.svg" alt="Ball Tree Attention" class="responsive-image" />
+        <figcaption class="figure-caption">
+        Ball Tree Attention reduces complexity to linear by restricting attention to local partitions of fixed size.
+        </figcaption>
       </figure>
-    </div>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 0px;">
-      <div style="text-align: center; font-size: 1.0em; color: #666; margin-left: -10%;">
-        Full Attention: \( \mathcal{O}(N)^2 \)
-      </div>
-      <div style="text-align: center; font-size: 1.0em; color: #666; margin-right: -30%;">
-        Ball Tree Attention: \( \mathcal{O}(N) \)
-      </div>
     </div>
   </div>
 </div>
@@ -123,24 +126,15 @@
 <h3 id="capturing-long-range-interactions">Capturing Long-range Interactions</h3>
 <p>Now, obviously, block attention comes with a huge drawback - tokens cannot propagate information outside of their own blocks. This, of course, is unacceptable - we want to capture long-range interactions and hence have to introduce a mechanism for information to flow from one ball to another. We were inspired by Swin Transformer, which follows a very similar principle (the name Erwin is itself an homage to Swin Transformer, shifted windows $\rightarrow$ rotated windows). Specifically, while Swin uses sliding windows - essentially fixing the data and shifting the grid - we adapt the trick to irregular data. Specifically, we rotate the point cloud and build a second tree, exploiting the fact that ball tree construction is not rotation invariant, hence the new partitions will cover different groupings of points. By alternating between these two configurations in consecutive layers, we achieve information propagation beyond the original partitions.</p>
 
-<div class="l-body" style="display: flex; justify-content: center;">
-  <div style="width: 60%; margin: 20px 0;">
-    <p class="large-title" style="text-align: center; margin-bottom: 0px; font-size: 1.2em; font-weight: bold;">
-      Alternating between ball trees
-    </p>
-    <!-- Move captions to top -->
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 0px;">
-      <div style="text-align: center; font-size: 1.0em; color: #666; margin-left: -10%;">
-        layer \( i \), tree 1
-      </div>
-      <div style="text-align: center; font-size: 1.0em; color: #666; margin-right: -15%;">
-        layer \( i+1 \), tree 2
-      </div>
-    </div>
-    <!-- Figure comes after captions -->
-    <div style="width: 100%; display: flex; gap: 3%; align-items: flex-start; margin-bottom: 20px;">
-      <figure style="width: 100%; margin: 0;">
-        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/tree_rot_alt.svg" alt="Alternating trees in Erwin" style="width: 100%; height: auto;" />
+<div class="l-body">
+  <div class="content-section">
+    <h3 class="section-title">Alternating between ball trees</h3>
+    <div class="figure-container">
+      <figure class="main-figure three-quarter-width">
+        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/tree_rot_alt.svg" alt="Alternating trees in Erwin" class="responsive-image" />
+        <figcaption class="figure-caption">
+        Signal from a single point travels from one partition to another by iterating between ball trees in different layers.
+        </figcaption>
       </figure>
     </div>
   </div>
@@ -148,25 +142,15 @@
 
 <p>For large particle systems, however, this strategy still has limited receptive field and might be prone to problems arising in message passing - oversmoothing and oversquashing. Therefore, to capture very long-range interactions, we coarsen the tree and implement the model UNet-style. This is done trivially by simply pooling points in leaf balls to their center of mass, which halves the number of nodes. A nice property of ball trees is that the pooled nodes will still be contained in the original partitions all the way up to the root, hence we do not have to rebuild it.</p>
 
-<div class="l-body" style="display: flex; justify-content: center;">
-  <div style="width: 64%; margin: 20px 0;">
-    <p class="large-title" style="text-align: center; margin-bottom: 0px; font-size: 1.2em; font-weight: bold;">
-      Information propagation via coarsening
-    </p>
-    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-bottom: 0px;">
-    <div style="text-align: center; font-size: 1.0em; color: #666; margin-top: 5%; line-height: 1.5;">
-      encoder<br />num nodes: 64
-    </div>
-      <div style="text-align: center; font-size: 1.0em; color: #666; margin-top: 5%; line-height: 1.5;">
-        bottleneck <br /> num nodes: 16
-      </div>
-      <div style="text-align: center; font-size: 1.0em; color: #666; margin-top: 5%; line-height: 1.5;">
-        decoder <br /> num nodes: 64
-      </div>
-    </div>
-    <div style="width: 100%; display: flex; gap: 3%; align-items: flex-start; margin-bottom: 20px;">
-      <figure style="width: 100%; margin: 0;">
-        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/coarsening.svg" alt="Coarsening for information propagation" style="width: 100%; height: auto;" />
+<div class="l-body">
+  <div class="content-section">
+    <h3 class="section-title">Information propagation via coarsening</h3>
+    <div class="figure-container">
+      <figure class="main-figure three-quarter-width">
+        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/coarsening.svg" alt="Coarsening" class="responsive-image" />
+        <figcaption class="figure-caption">
+        Signal from a single point travels from one partition to a distant one by coarsening the original points and computing attention over coarser nodes followed by unpooling.
+        </figcaption>
       </figure>
     </div>
   </div>
@@ -175,41 +159,16 @@
 <h3 id="memory-layout-of-erwin">Memory Layout of Erwin</h3>
 <p>Perhaps the nicest property of ball trees is how they are stored in memory. The memory layout is contiguous and nested, meaning that smaller partitions within the same ball are stored next to each other. This makes all the operations related to tree handling extremely efficient: to build balls, you simply reshape the data tensor, and to pool, you simply call the mean operation. With the computational overhead minimized, it really boils down to the attention operation and tree building, both of which have to be optimized.</p>
 
-<div class="l-body" style="display: flex; justify-content: center;">
-  <div style="width: 100%; max-width: 1000px; margin: 20px 0;">
-    <!-- Main title -->
-    <p class="large-title" style="text-align: center; margin-bottom: 15px; font-size: 1.2em; font-weight: bold; color: #333;">
-      Ball tree is stored in memory contiguously
-    </p> 
-    <!-- Main figure with voxelization label -->
-    <div style="width: 100%; display: flex; gap: 7%; align-items: flex-start;">
-      <figure style="width: 38%; margin: 0;">
-        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/mem_layout.svg" alt="Memory layout in Erwin" style="width: 100%; height: auto;" />
+<div class="l-body">
+  <div class="content-section">
+    <h3 class="section-title">Ball tree is stored in memory contiguously</h3>
+    <div class="figure-container">
+      <figure class="main-figure">
+        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/mem_layout.svg" alt="Memory layout in Erwin" class="responsive-image" />
+        <figcaption class="figure-caption">
+        The contiguous storage property, combined with the fixed size of balls at each level, enables efficient implementation through tensor operations.
+        </figcaption>
       </figure>
-      <figure style="width: 62%; margin: 0;">
-        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/code.png" alt="Erwin pseudocode" style="width: 100%; height: auto;" />
-      </figure>
-    </div>
-    <!-- Labels section -->
-    <div style="position: relative; width: 100%;">
-      <!-- Method names -->
-      <div style="display: grid; grid-template-columns: 1fr 3fr; gap: 20px; margin-top: 15px; margin-bottom: -5px;">
-        <div style="text-align: center; font-size: 1.0em; font-weight: bold; color: #333; margin-left: 10%;">
-          Erwin Transformer
-        </div>
-        <div style="text-align: center; font-size: 1.0em; font-weight: bold; color: #333; margin-right: -15%;">
-          Erwin pseudocode
-        </div>
-      </div>
-      <!-- Descriptions -->
-      <div style="display: grid; grid-template-columns: 1fr 3fr; gap: 20px; margin-bottom: 0px;">
-        <div style="text-align: center; font-size: 1.0em; color: #666; margin-left: 10%;">
-          ball tree
-        </div>
-        <div style="text-align: center; font-size: 1.0em; color: #666; margin-right: -15%;">
-          partitioning is done via reshaping
-        </div>
-      </div>
     </div>
   </div>
 </div>
@@ -217,8 +176,9 @@
 <h3 id="efficient-ball-tree-implementation">Efficient Ball Tree implementation</h3>
 <p>Luckily for us, there are plenty of extremely smart people working on the latter, so we focused on optimizing ball tree construction. Let’s be honest, if we claimed that our sparse attention is faster than full attention, but it takes seconds to organize the data, no one would be impressed. So, to impress people, we had to rewrite the implementation of scikit-learn which, while very efficient due to being written in C, does not allow handling batches, i.e., you have to build a tree for each element sequentially. To overcome this limitation, we (with great help from Claude, frankly speaking) implemented the construction in C++ and OpenMP such that the construction is parallelized over CPU cores and we can handle batches all in parallel, even with different point cloud sizes within the batch. This greatly reduces the runtime by a factor of 6 to 20 depending on the size of point clouds:</p>
 
-<div class="l-body" style="display: flex; justify-content: space-between; gap: 40px; margin: 20px 0;">
-  <div style="flex: 1;">
+<div class="l-body">
+  <div class="content-section">
+    <h4>Benchmarking Ball Tree construction</h4>
     <table style="width: 100%; border-collapse: collapse; font-size: 0.85em;">
       <thead>
         <tr style="border-bottom: 2px solid #333;">
@@ -264,35 +224,39 @@
 
 <p>Now, for the fun part - experiments. Before we present tables with bold numbers, let’s highlight some technical details about Erwin’s key properties: efficiency and global receptive field. Tree building consistently accounts for only a minor fraction of total computation time and can be precomputed before training for static geometries. To address the most frequently asked question: yes, you need to rebuild the tree at each time step when points move, but this is manageable because (A) our optimized implementation is fast, and (B) all layers share the same tree, amortizing the construction cost.</p>
 
-<div class="l-body" style="display: flex; justify-content: center;">
-  <div style="width: 100%; margin: 20px 0;">
-      <figure style="width: 100%; margin: 0; text-align: center;">
-        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/scaling_and_rf.svg" alt="Molecular dynamics experiment" style="width: 70%; height: auto;" />
-        <figcaption style="text-align: left;">
-        <b>Left</b>: Computational cost of Erwin. We split the total
-        runtime into building a ball tree and running a model. The input
-        is a batch of 16 point clouds, each of size n. We fit a power law
-        which indicates close to linear scaling. <b>Right</b>: Receptive field
-        of MPNN vs Erwin, \(N\) = 800. A node is in the receptive field
-        if changing its features affects the target node's output. MPNN
-        consists of 6 layers, each node connected to 16 nearest neighbours.
+<div class="l-body">
+  <div class="content-section">
+    <div class="figure-container">
+      <figure class="main-figure">
+        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/scaling_and_rf.svg" alt="Scaling and receptive field" class="responsive-image" />
+        <figcaption class="figure-caption">
+          <b>Left</b>: Computational cost of Erwin. We split the total
+          runtime into building a ball tree and running a model. The input
+          is a batch of 16 point clouds, each of size n. We fit a power law
+          which indicates close to linear scaling. <b>Right</b>: Receptive field
+          of MPNN vs Erwin, \(N\) = 800. A node is in the receptive field
+          if changing its features affects the target node's output. MPNN
+          consists of 6 layers, each node connected to 16 nearest neighbours.
         </figcaption>
       </figure>
+    </div>
   </div>
 </div>
 
 <h3 id="molecular-dynamics">Molecular Dynamics</h3>
 <p>When we first started the project, I had large molecular systems in mind as a primary application. So this is exactly where I started: with the dataset from Fu et al.<a href="#ref11">[11]</a>, which contains dynamics of relatively large (coarse-grained, CG) polypeptides. The goal is to predict forces acting on each CG bead. As the main baseline we chose MPNN, which after some tuning turned out to be very tough to beat. In hindsight, this is not surprising as the dataset doesn’t have any charges, hence all the interactions are local. The experiment also confirmed to me just how good MPNNs are at picking up local interactions. In fact, we had to put a small MPNN before attention blocks to capture very fine local features - something that transformer alone wasn’t able to do (I wrote a <a href="https://twitter.com/maxxxzdn/status/1918303348177899992">recent thread</a> about this on Twitter). Nonetheless, Erwin does push the Pareto frontier, mainly because of how fast it is at the scale of this dataset.</p>
 
-<div class="l-body" style="display: flex; justify-content: center;">
-  <div style="width: 100%; margin: 20px 0;">
-      <figure style="width: 100%; margin: 0; text-align: center;">
-        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/md.svg" alt="Molecular dynamics experiment" style="width: 70%; height: auto;" />
-        <figcaption style="text-align: left;">
+<div class="l-body">
+  <div class="content-section">
+    <div class="figure-container">
+      <figure class="main-figure smaller-width">
+        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/md.svg" alt="Molecular dynamics experiment" class="responsive-image" />
+        <figcaption class="figure-caption">
         Test negative log-likelihood (NLL) of the predicted acceleration distribution for the molecular dynamics task (averaged
         over 3 runs). The size of the markers reflects the number of parameters.
         </figcaption>
       </figure>
+    </div>
   </div>
 </div>
 
@@ -351,14 +315,16 @@
 
 <h3 id="turbulent-fluid-dynamics">Turbulent Fluid Dynamics</h3>
 
-<div class="l-body" style="display: flex; justify-content: center;">
-  <div style="width: 100%; margin: 20px 0;">
-      <figure style="width: 100%; margin: 0; text-align: center;">
-        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/eagle.svg" alt="Molecular dynamics experiment" style="width: 70%; height: auto;" />
-        <figcaption style="text-align: left;">
+<div class="l-body">
+  <div class="content-section">
+    <div class="figure-container">
+      <figure class="main-figure smaller-width">
+        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/eagle.svg" alt="Turbulent fluid dynamics experiment" class="responsive-image" />
+        <figcaption class="figure-caption">
         The norm of the velocity field at different steps of the rollout trajectories.
         </figcaption>
       </figure>
+    </div>
   </div>
 </div>
 
@@ -396,56 +362,63 @@
 
 <h3 id="erwin-meets-native-sparse-attention">Erwin Meets Native Sparse Attention</h3>
 
-<div class="l-body" style="display: flex; justify-content: center;">
-  <div style="width: 100%; margin: 20px 0;">
-      <figure style="width: 100%; margin: 0; text-align: center;">
-        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/bsa.svg" alt="Molecular dynamics experiment" style="width: 60%; height: auto;" />
-        <figcaption style="text-align: left;">
+<div class="l-body">
+  <div class="content-section">
+    <div class="figure-container">
+      <figure class="main-figure smaller-width">
+        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/bsa.svg" alt="BSA" class="responsive-image" />
+        <figcaption class="figure-caption">
         Ball Sparse Attention (BSA). A ball tree imposes spatial locality, then three sparse-attention branches—grouping (block clustering), compression (MLP-based token pooling), and selection (top-k block retrieval) operate alongside fine-grained ball attention. A learnable gate fuses their outputs into the final attention.
         </figcaption>
       </figure>
+    </div>
   </div>
 </div>
 
-<p>To improve the processing of long-range informaition while keeping the cost sub-quadratic, we combine the ball tree with Native Sparse Attention (NSA) from DeepSeek, which align naturally with each other. Specifically, NSA allows Erwin to learn for each leaf node to which partitions to attend in the tree in a data-driven manner, thus extending interactions beyond fixed balls. We already have some promising results that I will be presenting at ICML 2025 Workshop on Long-Context Foundation Models, see <a href="https://openreview.net/forum?id=VbPd9V6Wm0">the paper</a> and <a href="https://github.com/britacatalin/bsa">the code</a>.</p>
+<p>To improve the processing of long-range informaition while keeping the cost sub-quadratic, we combine the ball tree with Native Sparse Attention (NSA) from DeepSeek, which align naturally with each other. Specifically, NSA allows Erwin to learn for each leaf node to which partitions to attend in the tree in a data-driven manner, thus extending interactions beyond fixed balls. We already have some promising results that I will be presenting at ICML 2025 Workshop on Long-Context Foundation Models, see <a href="https://arxiv.org/abs/2506.12541">the paper</a> and <a href="https://github.com/britacatalin/bsa">the code</a>.</p>
 
 <h3 id="erwin-for-industrial-scale-applications">Erwin for Industrial Scale Applications</h3>
 
-<div class="l-body" style="display: flex; justify-content: center;">
-  <div style="width: 100%; margin: 20px 0;">
-      <figure style="width: 100%; margin: 0; text-align: center;">
-        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/haet.jpg" alt="Molecular dynamics experiment" style="width: 60%; height: auto;" />
-        <figcaption style="text-align: left;">
+<div class="l-body">
+  <div class="content-section">
+    <div class="figure-container">
+      <figure class="main-figure smaller-width">
+        <img src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/haet.jpg" alt="HAET" class="responsive-image" />
+        <figcaption class="figure-caption">
         To process industrial scale systems, we use the slicing approach of Transolver and then process them with Ball Tree attention.
         </figcaption>
       </figure>
+    </div>
   </div>
 </div>
 
 <p>Despite its linear complexity, applications involving simulations with tens of millions of particles currently remain beyond Erwin’s reach. To address this, we are exploring a hybrid approach: combining Transolver with Erwin by applying ball tree attention over latent tokens. The key insight is that by using Erwin to process these supernodes, we can afford larger bottleneck sizes (more supernodes) while maintaining efficiency. This allows us to significantly reduce the compression ratio compared to Transolver, preserving more information while keeping computational costs manageable. <a href="https://github.com/pedrocurvo/HAET">Initial results</a> are promising - stay tuned!</p>
 
 <h2 id="references">References</h2>
-<div id="ref1">[1] Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, Illia Polosukhin: Attention is All you Need. NIPS 2017</div>
-<div id="ref2">[2] Haixu Wu, Huakun Luo, Haowen Wang, Jianmin Wang, Mingsheng Long: Transolver: A Fast Transformer Solver for PDEs on General Geometries. ICML 2024</div>
-<div id="ref3">[3] Benedikt Alkin, Andreas Fürst, Simon Schmid, Lukas Gruber, Markus Holzleitner, Johannes Brandstetter:
-Universal Physics Transformers: A Framework For Efficiently Scaling Neural Operators. NeurIPS 2024</div>
-<div id="ref4">[4] Cristian Bodnar, Wessel P. Bruinsma, Ana Lucic, Megan Stanley, Anna Allen, Johannes Brandstetter, Patrick Garvan, Maik Riechert, Jonathan A. Weyn, Haiyu Dong, Jayesh K. Gupta, Kit Thambiratnam, Alexander T. Archibald, Chun-Chieh Wu, Elizabeth Heider, Max Welling, Richard E. Turner, Paris Perdikaris:
-A foundation model for the Earth system. Nature 641(8065): 1180-1187 (2025)</div>
-<div id="ref5">[5] Gérôme Andry, François Rozet, Sacha Lewin, Omer Rochman Sharabi, Victor Mangeleer, Matthias Pirlet, Elise Faulx, Marilaure Grégoire, Gilles Louppe:
-Appa: Bending Weather Dynamics with Latent Diffusion Models for Global Data Assimilation. CoRR abs/2504.18720 (2025)</div>
-<div id="ref6">[6] Andrew Jaegle, Felix Gimeno, Andy Brock, Oriol Vinyals, Andrew Zisserman, João Carreira:
-Perceiver: General Perception with Iterative Attention. ICML 2021</div>
-<div id="ref7">[7] Ze Liu, Yutong Lin, Yue Cao, Han Hu, Yixuan Wei, Zheng Zhang, Stephen Lin, Baining Guo:
-Swin Transformer: Hierarchical Vision Transformer using Shifted Windows. ICCV 2021</div>
-<div id="ref8">[8] Peng-Shuai Wang: OctFormer: Octree-based Transformers for 3D Point Clouds. SIGGRAPH 2023</div>
-<div id="ref9">[9] 	Xiaoyang Wu, Li Jiang, Peng-Shuai Wang, Zhijian Liu, Xihui Liu, Yu Qiao, Wanli Ouyang, Tong He, Hengshuang Zhao:
-Point Transformer V3: Simpler, Faster, Stronger. CVPR 2024</div>
-<div id="ref10">[10] Artidoro Pagnoni, Ram Pasunuru, Pedro Rodríguez, John Nguyen, Benjamin Muller, Margaret Li, Chunting Zhou, Lili Yu, Jason Weston, Luke Zettlemoyer, Gargi Ghosh, Mike Lewis, Ari Holtzman, Srinivasan Iyer:
-Byte Latent Transformer: Patches Scale Better Than Tokens. CoRR abs/2412.09871 (2024)</div>
-<div id="ref11">[11] Xiang Fu, Tian Xie, Nathan J. Rebello, Bradley D. Olsen, Tommi S. Jaakkola:
-Simulate Time-integrated Coarse-grained Molecular Dynamics with Multi-scale Graph Networks. Trans. Mach. Learn. Res. 2023 (2023)</div>
-<div id="ref12">[12] Steeven Janny, Aurélien Béneteau, Madiha Nadri, Julie Digne, Nicolas Thome, Christian Wolf:
-EAGLE: Large-scale Learning of Turbulent Fluid Dynamics with Mesh Transformers. ICLR 2023</div>]]></content><author><name></name></author><category term="attention" /><category term="trees" /><summary type="html"><![CDATA[We can organize irregular data (point clouds, meshes) using ball trees to emplot sub-quadratic (sparse) attention. Fast and expressive!]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://maxxxzdn.github.io/erwin.jpg" /><media:content medium="image" url="https://maxxxzdn.github.io/erwin.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Clifford-Steerable CNNs</title><link href="https://maxxxzdn.github.io/blog/cscnns/" rel="alternate" type="text/html" title="Clifford-Steerable CNNs" /><published>2024-08-06T23:59:59+00:00</published><updated>2024-08-06T23:59:59+00:00</updated><id>https://maxxxzdn.github.io/blog/cscnns</id><content type="html" xml:base="https://maxxxzdn.github.io/blog/cscnns/"><![CDATA[<p>Redirecting…</p>
+
+<div id="ref1">[1] Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, Illia Polosukhin. <strong>Attention is All you Need.</strong> <em>NIPS 2017</em></div>
+
+<div id="ref2">[2] Haixu Wu, Huakun Luo, Haowen Wang, Jianmin Wang, Mingsheng Long. <strong>Transolver: A Fast Transformer Solver for PDEs on General Geometries.</strong> <em>ICML 2024</em></div>
+
+<div id="ref3">[3] Benedikt Alkin, Andreas Fürst, Simon Schmid, Lukas Gruber, Markus Holzleitner, Johannes Brandstetter. <strong>Universal Physics Transformers: A Framework For Efficiently Scaling Neural Operators.</strong> <em>NeurIPS 2024</em></div>
+
+<div id="ref4">[4] Cristian Bodnar, Wessel P. Bruinsma, Ana Lucic, Megan Stanley, Anna Allen, Johannes Brandstetter, Patrick Garvan, Maik Riechert, Jonathan A. Weyn, Haiyu Dong, Jayesh K. Gupta, Kit Thambiratnam, Alexander T. Archibald, Chun-Chieh Wu, Elizabeth Heider, Max Welling, Richard E. Turner, Paris Perdikaris. <strong>A foundation model for the Earth system.</strong> <em>Nature 641(8065): 1180-1187 (2025)</em></div>
+
+<div id="ref5">[5] Gérôme Andry, François Rozet, Sacha Lewin, Omer Rochman Sharabi, Victor Mangeleer, Matthias Pirlet, Elise Faulx, Marilaure Grégoire, Gilles Louppe. <strong>Appa: Bending Weather Dynamics with Latent Diffusion Models for Global Data Assimilation.</strong> <em>CoRR abs/2504.18720 (2025)</em></div>
+
+<div id="ref6">[6] Andrew Jaegle, Felix Gimeno, Andy Brock, Oriol Vinyals, Andrew Zisserman, João Carreira. <strong>Perceiver: General Perception with Iterative Attention.</strong> <em>ICML 2021</em></div>
+
+<div id="ref7">[7] Ze Liu, Yutong Lin, Yue Cao, Han Hu, Yixuan Wei, Zheng Zhang, Stephen Lin, Baining Guo. <strong>Swin Transformer: Hierarchical Vision Transformer using Shifted Windows.</strong> <em>ICCV 2021</em></div>
+
+<div id="ref8">[8] Peng-Shuai Wang. <strong>OctFormer: Octree-based Transformers for 3D Point Clouds.</strong> <em>SIGGRAPH 2023</em></div>
+
+<div id="ref9">[9] Xiaoyang Wu, Li Jiang, Peng-Shuai Wang, Zhijian Liu, Xihui Liu, Yu Qiao, Wanli Ouyang, Tong He, Hengshuang Zhao. <strong>Point Transformer V3: Simpler, Faster, Stronger.</strong> <em>CVPR 2024</em></div>
+
+<div id="ref10">[10] Artidoro Pagnoni, Ram Pasunuru, Pedro Rodríguez, John Nguyen, Benjamin Muller, Margaret Li, Chunting Zhou, Lili Yu, Jason Weston, Luke Zettlemoyer, Gargi Ghosh, Mike Lewis, Ari Holtzman, Srinivasan Iyer. <strong>Byte Latent Transformer: Patches Scale Better Than Tokens.</strong> <em>CoRR abs/2412.09871 (2024)</em></div>
+
+<div id="ref11">[11] Xiang Fu, Tian Xie, Nathan J. Rebello, Bradley D. Olsen, Tommi S. Jaakkola. <strong>Simulate Time-integrated Coarse-grained Molecular Dynamics with Multi-scale Graph Networks.</strong> <em>Trans. Mach. Learn. Res. 2023 (2023)</em></div>
+
+<div id="ref12">[12] Steeven Janny, Aurélien Béneteau, Madiha Nadri, Julie Digne, Nicolas Thome, Christian Wolf. <strong>EAGLE: Large-scale Learning of Turbulent Fluid Dynamics with Mesh Transformers.</strong> <em>ICLR 2023</em></div>]]></content><author><name></name></author><category term="attention" /><category term="trees" /><summary type="html"><![CDATA[We can organize irregular data (point clouds, meshes) using ball trees to emplot sub-quadratic (sparse) attention. Fast and expressive!]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://maxxxzdn.github.io/erwin.jpg" /><media:content medium="image" url="https://maxxxzdn.github.io/erwin.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Clifford-Steerable CNNs</title><link href="https://maxxxzdn.github.io/blog/cscnns/" rel="alternate" type="text/html" title="Clifford-Steerable CNNs" /><published>2024-08-06T23:59:59+00:00</published><updated>2024-08-06T23:59:59+00:00</updated><id>https://maxxxzdn.github.io/blog/cscnns</id><content type="html" xml:base="https://maxxxzdn.github.io/blog/cscnns/"><![CDATA[<p>Redirecting…</p>
 
 <script>
     window.location.href = "/blog/cscnns.html";
