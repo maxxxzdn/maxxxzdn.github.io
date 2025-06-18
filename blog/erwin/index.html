@@ -350,7 +350,8 @@ d-article l-body b, d-article l-body strong, d-article b, d-article strong, l-bo
               <li><a href="#erwin-for-industrial-scale-applications">Erwin for Industrial Scale Applications</a></li>
               
             </ul>
-<div><a href="#references">References</a></div>
+<div><a href="#bibtex">BibTeX</a></div>
+            <div><a href="#references">References</a></div>
             
           </nav>
         </d-contents>
@@ -871,6 +872,16 @@ d-article l-body b, d-article l-body strong, d-article b, d-article strong, l-bo
 </div>
 
 <p>Despite its linear complexity, applications involving simulations with tens of millions of particles currently remain beyond Erwin’s reach. To address this, we are exploring a hybrid approach: combining Transolver with Erwin by applying ball tree attention over latent tokens. The key insight is that by using Erwin to process these supernodes, we can afford larger bottleneck sizes (more supernodes) while maintaining efficiency. This allows us to significantly reduce the compression ratio compared to Transolver, preserving more information while keeping computational costs manageable. <a href="https://github.com/pedrocurvo/HAET" rel="external nofollow noopener" target="_blank">Initial results</a> are promising - stay tuned!</p>
+
+<h2 id="bibtex">BibTeX</h2>
+<p>If you find our work relevant to your research or found it otherwise useful, please consider citing us :)</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@inproceedings{zhdanov2025erwin,
+    title={Erwin: A Tree-based Hierarchical Transformer for Large-scale Physical Systems}, 
+    author={Maksim Zhdanov and Max Welling and Jan-Willem van de Meent},
+    booktitle = {International {Conference} on {Machine} {Learning} ({ICML})},
+    year = {2025},
+}
+</code></pre></div></div>
 
 <h2 id="references">References</h2>
 

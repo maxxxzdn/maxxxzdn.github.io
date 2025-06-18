@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://maxxxzdn.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://maxxxzdn.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-06-17T09:11:28+00:00</updated><id>https://maxxxzdn.github.io/feed.xml</id><title type="html">blank</title><entry><title type="html">Erwin Transformer</title><link href="https://maxxxzdn.github.io/blog/erwin/" rel="alternate" type="text/html" title="Erwin Transformer" /><published>2025-06-13T00:00:00+00:00</published><updated>2025-06-13T00:00:00+00:00</updated><id>https://maxxxzdn.github.io/blog/erwin</id><content type="html" xml:base="https://maxxxzdn.github.io/blog/erwin/"><![CDATA[<div class="intro-gif">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://maxxxzdn.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://maxxxzdn.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-06-18T07:03:53+00:00</updated><id>https://maxxxzdn.github.io/feed.xml</id><title type="html">blank</title><entry><title type="html">Erwin Transformer</title><link href="https://maxxxzdn.github.io/blog/erwin/" rel="alternate" type="text/html" title="Erwin Transformer" /><published>2025-06-13T00:00:00+00:00</published><updated>2025-06-13T00:00:00+00:00</updated><id>https://maxxxzdn.github.io/blog/erwin</id><content type="html" xml:base="https://maxxxzdn.github.io/blog/erwin/"><![CDATA[<div class="intro-gif">
   <video controls="" loop="" muted="" playsinline="" preload="metadata" poster="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/kino_poster.jpg">
     <source src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/kino.mp4" type="video/mp4" alt="Short video presentation of the paper." />
   </video>
@@ -393,6 +393,16 @@
 </div>
 
 <p>Despite its linear complexity, applications involving simulations with tens of millions of particles currently remain beyond Erwin’s reach. To address this, we are exploring a hybrid approach: combining Transolver with Erwin by applying ball tree attention over latent tokens. The key insight is that by using Erwin to process these supernodes, we can afford larger bottleneck sizes (more supernodes) while maintaining efficiency. This allows us to significantly reduce the compression ratio compared to Transolver, preserving more information while keeping computational costs manageable. <a href="https://github.com/pedrocurvo/HAET">Initial results</a> are promising - stay tuned!</p>
+
+<h2 id="bibtex">BibTeX</h2>
+<p>If you find our work relevant to your research or found it otherwise useful, please consider citing us :)</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@inproceedings{zhdanov2025erwin,
+    title={Erwin: A Tree-based Hierarchical Transformer for Large-scale Physical Systems}, 
+    author={Maksim Zhdanov and Max Welling and Jan-Willem van de Meent},
+    booktitle = {International {Conference} on {Machine} {Learning} ({ICML})},
+    year = {2025},
+}
+</code></pre></div></div>
 
 <h2 id="references">References</h2>
 
