@@ -30,4 +30,4 @@ Hi!
 > ```python
 > >>> print(self.research_interests)
 > ```
->scalable geometric deep learning, physics simulations in latent space, coarse-graining
+>hierarchical models, sub-quadratic architectures, scalable geometric deep learning
