@@ -819,8 +819,6 @@ pre {
   background-color: var(--global-code-bg-color);
   border-radius: 6px;
   padding: 8px 12px; /* Adjust padding to your preference */
-  position: relative;
-  /* Copy code to clipboard button */
 }
 pre pre,
 pre code {
@@ -829,6 +827,10 @@ pre code {
   margin-bottom: 0;
   padding: 0;
   font-size: 14px; /* Ensure nested code has the same font size */
+}
+pre {
+  position: relative;
+  /* Copy code to clipboard button */
 }
 pre .copy {
   background: var(--global-card-bg-color);
