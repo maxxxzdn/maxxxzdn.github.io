@@ -1,4 +1,5 @@
 github_repos:
+  - maxxxzdn/flash-clifford
   - maxxxzdn/erwin
   - maxxxzdn/clifford-group-equivariant-cnns
   - maxxxzdn/implicit-steerable-kernels
