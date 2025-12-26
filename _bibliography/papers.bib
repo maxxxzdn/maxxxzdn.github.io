@@ -1,6 +1,37 @@
 ---
 ---
 
+@article{pedro2025mspt,
+      abbr={preprint},
+      journal={preprint},
+      title={MSPT: Efficient Large-Scale Physical Modeling via Parallelized Multi-Scale Attention}, 
+      author={Pedro Curvo and Jan-Willem van de Meent and Maksim Zhdanov},
+      abstract={A key scalability challenge in neural solvers for industrial-scale physics simulations is efficiently capturing both fine-grained local interactions and long-range global dependencies across millions of spatial elements. We introduce the Multi-Scale Patch Transformer (MSPT), an architecture that combines local point attention within patches with global attention to coarse patch-level representations. To partition the input domain into spatially-coherent patches, we employ ball trees, which handle irregular geometries efficiently. This dual-scale design enables MSPT to scale to millions of points on a single GPU. We validate our method on standard PDE benchmarks (elasticity, plasticity, fluid dynamics, porous flow) and large-scale aerodynamic datasets (ShapeNet-Car, Ahmed-ML), achieving state-of-the-art accuracy with substantially lower memory footprint and computational cost.},
+      url={https://arxiv.org/abs/2512.01738}, 
+      pdf={https://arxiv.org/pdf/2512.01738},
+      arxiv = {2512.01738},
+      preview = {mspt.png},
+      year_ = 2025,
+      selected = {false},
+}
+
+
+@article{winfried2025adaquant,
+      abbr={TMLR},
+      journal={AI4Science Workshop @ NeurIPS 2025},
+      title={Adaptive Mesh Quantization for Neural PDE Solvers}, 
+      author={Winfried van den Dool and Maksim Zhdanov and Yuki Asano and Max Welling},
+      abstract={Physical systems commonly exhibit spatially varying complexity, presenting a significant challenge for neural PDE solvers. While Graph Neural Networks can handle the irregular meshes required for complex geometries and boundary conditions, they still apply uniform computational effort across all nodes regardless of the underlying physics complexity. This leads to inefficient resource allocation where computationally simple regions receive the same treatment as complex phenomena. We address this challenge by introducing Adaptive Mesh Quantization: spatially adaptive quantization across mesh node, edge and cluster features, dynamically adjusting the bit-width used by a quantized model. We propose an adaptive bit-width allocation strategy driven by a lightweight auxiliary model that identifies high-loss regions in the input mesh. This enables dynamic resource distribution in the main model, where regions of higher difficulty are allocated increased bit-width, optimizing computational resource utilization. We demonstrate our framework's effectiveness by integrating it with two state-of-the-art models, MP-PDE and GraphViT, to evaluate performance across multiple tasks: 2D Darcy flow, large-scale unsteady fluid dynamics in 2D, steady-state Navier–Stokes simulations in 3D, and a 2D hyper-elasticity problem. Our framework demonstrates consistent Pareto improvements over uniformly quantized baselines, yielding up to 50\% improvements in performance at the same cost.},
+      url={https://openreview.net/forum?id=NN17y897WG}, 
+      pdf={https://openreview.net/pdf?id=NN17y897WG},
+      arxiv = {2511.18474},
+      code = {https://github.com/Winfriedvdd/AMQ},
+      preview = {adaquant.png},
+      year_ = 2025,
+      selected = {false},
+}
+
+
 @article{balint2025csccns,
       abbr={AI4Science @ NeurIPS},
       journal={AI4Science Workshop @ NeurIPS 2025},
