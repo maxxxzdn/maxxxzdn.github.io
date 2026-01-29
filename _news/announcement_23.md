@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-[🥳 Paper accepted] [AdS-GNN](https://arxiv.org/abs/2512.01738) was `accepted` to ICLR 2026! See you all in Rio 🇧🇷!
+[🥳 Paper accepted] [AdS-GNN](https://arxiv.org/abs/2505.12880) was `accepted` to ICLR 2026! See you all in Rio 🇧🇷!
