@@ -1,5 +1,16 @@
 ---
 ---
+@article{mosaic,
+      abbr={preprint},
+      journal={preprint},
+      title={(Sparse) Attention to the Details: Preserving Spectral Fidelity in ML-based Weather Forecasting Models}, 
+      author={Maksim Zhdanov and Ana Lucic and Max Welling and Jan-Willem {van de Meent}},
+      abstract={We introduce \textsc{Mosaic}, a probabilistic weather forecasting model that addresses two sources of spectral degradation in ML-based weather prediction: (1) training to predict the ensemble mean deterministically and (2) compressive encoding creating an information bottleneck. \textsc{Mosaic} combines learned functional perturbations for ensemble forecasting with block-sparse attention, a hardware-aligned formulation that shares keys and values across spatially adjacent queries, enabling each block to dynamically attend to the most relevant regions. By capturing arbitrarily long-range dependencies at linear cost, \textsc{Mosaic} processes high-resolution weather data without compression. \textsc{Mosaic} at 1.5° resolution matches or outperforms models trained on 0.25° data, with individual ensemble members exhibiting near-perfect spectral alignment across all resolved frequencies.},
+      preview = {mosaic.png},
+      year_ = 2026,
+      selected = {true},
+}
+
 
 @article{pedro2025mspt,
       abbr={preprint},
@@ -80,8 +91,8 @@
 }
 
 @article{zhdanov2025adsgnn,
-      abbr={preprint},
-      journal={preprint},
+      abbr={ICLR},
+      journal={ICLR 2026},
       title={AdS-{GNN} - a Conformally Equivariant Graph Neural Network},
       author={Maksim Zhdanov and Nabil Iqbal and Erik J Bekkers and Patrick Forr{\'e}},
       abstract={Conformal symmetries, i.e.\ coordinate transformations that preserve angles, play a key role in many fields, including physics, mathematics, computer vision and (geometric) machine learning. Here we build a neural network that is equivariant under general conformal transformations. To achieve this, we lift data from flat Euclidean space to Anti de Sitter (AdS) space. This allows us to exploit a known correspondence between conformal transformations of flat space and isometric transformations on the AdS space. We then build upon the fact that such isometric transformations have been extensively studied on general geometries in the geometric deep learning literature. We employ message-passing layers conditioned on the proper distance, yielding a computationally efficient framework. We validate our model on tasks from computer vision and statistical physics, demonstrating strong performance, improved generalization capacities, and the ability to extract conformal data such as scaling dimensions from the trained network.},
