@@ -259,6 +259,78 @@
 
   <picture>
     
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/publication_preview/mosaic-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/publication_preview/mosaic-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/publication_preview/mosaic-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/publication_preview/mosaic.png" class="preview z-depth-1 rounded" width="auto" height="auto" alt="mosaic.png" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+</div>
+
+        <!-- Entry bib key -->
+        <div id="mosaic" class="col-sm-8">
+        <!-- Title -->
+        <div class="title">(Sparse) Attention to the Details: Preserving Spectral Fidelity in ML-based Weather Forecasting Models</div>
+        <!-- Author -->
+        <div class="author">
+        
+
+        <em>Maksim Zhdanov</em>, Ana Lucic, Max Welling, and
+          <span class="more-authors" title="click to view 1 more author" onclick="
+                var element = $(this);
+                element.attr('title', '');
+                var more_authors_text = element.text() == '1 more author' ? 'Jan-Willem van de Meent' : '1 more author';
+                var cursorPosition = 0;
+                var textAdder = setInterval(function(){
+                  element.text(more_authors_text.substring(0, cursorPosition + 1));
+                  if (++cursorPosition == more_authors_text.length){
+                    clearInterval(textAdder);
+                  }
+              }, '10');
+              ">1 more author</span>
+</div>
+
+        <!-- Journal/Book title and date -->
+        
+        
+        <div class="periodical">
+          <em>preprint</em>
+        </div>
+        <div class="periodical">
+          
+        </div>
+
+          <!-- Links/Buttons -->
+          <div class="links">
+            <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a>
+          </div>
+          
+          <div class="badges">
+          </div>
+
+          <!-- Hidden abstract block -->
+          <div class="abstract hidden">
+            <p>We introduce \textscMosaic, a probabilistic weather forecasting model that addresses two sources of spectral degradation in ML-based weather prediction: (1) training to predict the ensemble mean deterministically and (2) compressive encoding creating an information bottleneck. \textscMosaic combines learned functional perturbations for ensemble forecasting with block-sparse attention, a hardware-aligned formulation that shares keys and values across spatially adjacent queries, enabling each block to dynamically attend to the most relevant regions. By capturing arbitrarily long-range dependencies at linear cost, \textscMosaic processes high-resolution weather data without compression. \textscMosaic at 1.5° resolution matches or outperforms models trained on 0.25° data, with individual ensemble members exhibiting near-perfect spectral alignment across all resolved frequencies.</p>
+          </div>
+        </div>
+      </div>
+</li>
+<li>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<!-- _layouts/bib.html -->
+      <div class="row">
+        <div class="col-sm-2 preview">
+<figure>
+
+  <picture>
+    
     <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/publication_preview/erwin-480.webp"></source>
     <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/publication_preview/erwin-800.webp"></source>
     <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/publication_preview/erwin-1400.webp"></source>
@@ -362,7 +434,7 @@
         
         
         <div class="periodical">
-          <em>preprint</em>
+          <em>ICLR 2026</em>
         </div>
         <div class="periodical">
           
@@ -471,6 +543,13 @@
             <div class="table-responsive">
               <table class="table table-sm table-borderless">
                 <tr>
+                  <th scope="row">Jan 2026</th>
+                  <td>
+                    [🥳 Paper accepted] <a href="https://arxiv.org/abs/2512.01738" rel="external nofollow noopener" target="_blank">AdS-GNN</a> was <code class="language-plaintext highlighter-rouge">accepted</code> to ICLR 2026! See you all in Rio 🇧🇷!
+
+                  </td>
+                </tr>
+                <tr>
                   <th scope="row">Dec 2025</th>
                   <td>
                     [🚨 New paper] We depeloped <a href="https://arxiv.org/abs/2512.01738" rel="external nofollow noopener" target="_blank">MSPT</a> - parallelized multi-scale attention method based on hierarchical partitioning of data. It is incredibly fast and achieves SOTA performance on multiple PDE tasks.
@@ -481,13 +560,6 @@
                   <th scope="row">Dec 2025</th>
                   <td>
                     [🥳 Paper accepted] Our submission <a href="https://openreview.net/forum?id=NN17y897WG" rel="external nofollow noopener" target="_blank">Adaptive Mesh Quantization for Neural PDE Solvers</a> was accepted to TMLR! We suggest a data-driven way of quantizing message-passing neural networks inspired by speculative decoding.
-
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">Oct 2025</th>
-                  <td>
-                    [🚨 Workshop paper] We introduce <a href="https://arxiv.org/abs/2510.14007" rel="external nofollow noopener" target="_blank">Conditional Clifford-Steerable convolution</a>, where we condition the convolutional operator with auxiliary information, achieving highly expressive, equivariant, and efficient framework which we apply to PDE modelling. Accepted to AI4Science Workshop at NeurIPS 2025.
 
                   </td>
                 </tr>
