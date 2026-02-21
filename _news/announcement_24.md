@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-[🥳 Paper accepted] [MSPT](https://arxiv.org/abs/2512.01738) was accepted to CVPR 2026!
+[🥳 Paper accepted] [MSPT](https://arxiv.org/abs/2512.01738) was `accepted` to CVPR 2026!

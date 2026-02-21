@@ -22,12 +22,12 @@ Hi!
 > ```python
 > >>> print(self.status)
 > ```
->3rd year PhD student at [AMLab](http://amlab.science.uva.nl/)
+> interning at [CuspAI](https://www.cusp.ai/); 3rd year PhD student at [AMLab](http://amlab.science.uva.nl/)
 > ```python
 > >>> print(self.supervisors)
 > ```
->Max Welling, Jan-Willem van de Meent, and Alfons Hoekstra
+>Max Welling and Jan-Willem van de Meent
 > ```python
 > >>> print(self.research_interests)
 > ```
->hierarchical models, sub-quadratic architectures, scalable geometric deep learning
+>long context in physics; hardware aligned architectures; weather forecasting
