@@ -30,4 +30,4 @@ Hi!
 > ```python
 > >>> print(self.research_interests)
 > ```
->long context in physics; hardware aligned architectures; weather forecasting
+> AI for scientific problems at scale; agentic search for material discovery
