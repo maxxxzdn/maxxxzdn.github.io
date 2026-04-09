@@ -305,6 +305,7 @@
           <!-- Links/Buttons -->
           <div class="links">
             <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a>
+            <a href="https://openreview.net/pdf?id=u0KcfOaRc7" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">PDF</a>
           </div>
           
           <div class="badges">
@@ -313,6 +314,69 @@
           <!-- Hidden abstract block -->
           <div class="abstract hidden">
             <p>We introduce Mosaic, a probabilistic weather forecasting model that addresses two sources of spectral degradation in ML-based weather prediction: (1) training to predict the ensemble mean deterministically and (2) compressive encoding creating an information bottleneck. Mosaic combines learned functional perturbations for ensemble forecasting with block-sparse attention, a hardware-aligned formulation that shares keys and values across spatially adjacent queries, enabling each block to dynamically attend to the most relevant regions. By capturing arbitrarily long-range dependencies at linear cost, Mosaic processes high-resolution weather data without compression. Mosaic at 1.5° resolution matches or outperforms models trained on 0.25° data, with individual ensemble members exhibiting near-perfect spectral alignment across all resolved frequencies.</p>
+          </div>
+        </div>
+      </div>
+</li>
+<li>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<!-- _layouts/bib.html -->
+      <div class="row">
+        <div class="col-sm-2 preview">
+<figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/publication_preview/mspt-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/publication_preview/mspt-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/publication_preview/mspt-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/publication_preview/mspt.png" class="preview z-depth-1 rounded" width="auto" height="auto" alt="mspt.png" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+</div>
+
+        <!-- Entry bib key -->
+        <div id="pedro2025mspt" class="col-sm-8">
+        <!-- Title -->
+        <div class="title">MSPT: Efficient Large-Scale Physical Modeling via Parallelized Multi-Scale Attention</div>
+        <!-- Author -->
+        <div class="author">
+        
+
+        Pedro Curvo, Jan-Willem van de Meent, and <em>Maksim Zhdanov</em>
+</div>
+
+        <!-- Journal/Book title and date -->
+        
+        
+        <div class="periodical">
+          <em>CVPR 2026 (highlight)</em>
+        </div>
+        <div class="periodical">
+          
+        </div>
+
+          <!-- Links/Buttons -->
+          <div class="links">
+            <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a>
+            <a href="http://arxiv.org/abs/2512.01738" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">arXiv</a>
+            <a href="https://arxiv.org/pdf/2512.01738" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">PDF</a>
+            <a href="https://github.com/pedrocurvo/mspt" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">Code</a>
+          </div>
+          
+          <div class="badges">
+          </div>
+
+          <!-- Hidden abstract block -->
+          <div class="abstract hidden">
+            <p>A key scalability challenge in neural solvers for industrial-scale physics simulations is efficiently capturing both fine-grained local interactions and long-range global dependencies across millions of spatial elements. We introduce the Multi-Scale Patch Transformer (MSPT), an architecture that combines local point attention within patches with global attention to coarse patch-level representations. To partition the input domain into spatially-coherent patches, we employ ball trees, which handle irregular geometries efficiently. This dual-scale design enables MSPT to scale to millions of points on a single GPU. We validate our method on standard PDE benchmarks (elasticity, plasticity, fluid dynamics, porous flow) and large-scale aerodynamic datasets (ShapeNet-Car, Ahmed-ML), achieving state-of-the-art accuracy with substantially lower memory footprint and computational cost.</p>
           </div>
         </div>
       </div>
