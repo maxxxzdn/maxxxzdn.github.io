@@ -17,6 +17,17 @@
             class="preview z-depth-1 rounded"
             alt=entry.preview -%}
           {%- endif -%}
+          {%- if entry.abbr -%}
+            {%- if site.data.venues[entry.abbr] -%}
+              {%- assign venue_style = nil -%}
+              {%- if site.data.venues[entry.abbr].color != blank -%}
+                {%- assign venue_style = site.data.venues[entry.abbr].color | prepend: 'style="background-color:' | append: '"' -%}
+              {%- endif -%}
+              <abbr class="badge preview-badge" {% if venue_style %}{{venue_style}}{% endif %}><a href="{{site.data.venues[entry.abbr].url}}">{{entry.abbr}}</a></abbr>
+            {%- else -%}
+              <abbr class="badge preview-badge">{{entry.abbr}}</abbr>
+            {%- endif -%}
+          {%- endif -%}
         {%- elsif entry.abbr -%}
           {%- if site.data.venues[entry.abbr] -%}
             {%- assign venue_style = nil -%}
