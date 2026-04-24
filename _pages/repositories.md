@@ -3,8 +3,8 @@ layout: page
 permalink: /repositories/
 title: repositories
 description: a list of relevant repositories which I have contributed to.
-nav: false
-nav_order: 3
+nav: true
+nav_order: 2
 ---
 
 {% if site.data.repositories.github_repos %}

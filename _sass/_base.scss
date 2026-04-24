@@ -358,6 +358,13 @@ blockquote {
     }
   }
 
+  .navbar-nav .nav-item-separator {
+    border-left: 1px solid var(--global-divider-color);
+    margin: 0.25rem 0.25rem;
+    padding: 0;
+    pointer-events: none;
+  }
+
   .navbar-brand.social {
     padding-bottom: 0;
     padding-top: 0;

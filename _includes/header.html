@@ -80,6 +80,7 @@
             </div>
           </li>
           {%- else %}
+          {%- if p.title == 'cv' %}<li class="nav-item nav-item-separator"></li>{%- endif %}
           <li class="nav-item {% if page.title == p.title %}active{% endif %}">
             <a class="nav-link" href="{{ p.url | relative_url }}">{{ p.title }}
               {%- if page.title == p.title -%}
