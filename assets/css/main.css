@@ -435,6 +435,12 @@ blockquote {
 .navbar.navbar-light .navbar-nav .nav-item.active > .nav-link:hover {
   color: var(--global-hover-color);
 }
+.navbar.navbar-light .navbar-nav .nav-item-separator {
+  border-left: 1px solid var(--global-divider-color);
+  margin: 0.25rem 0.25rem;
+  padding: 0;
+  pointer-events: none;
+}
 .navbar.navbar-light .navbar-brand.social {
   padding-bottom: 0;
   padding-top: 0;
@@ -705,6 +711,23 @@ footer.sticky-bottom {
   min-width: 180px;
   max-width: 300px;
   margin-right: 10px;
+  position: relative;
+}
+.publications ol.bibliography li .preview abbr.preview-badge {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  display: inline-block;
+  background-color: var(--global-theme-color);
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  z-index: 1;
+}
+.publications ol.bibliography li .preview abbr.preview-badge a {
+  color: white;
+}
+.publications ol.bibliography li .preview abbr.preview-badge a:hover {
+  text-decoration: none;
 }
 .publications ol.bibliography li .abbr {
   height: 2rem;
