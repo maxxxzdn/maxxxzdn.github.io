@@ -1,13 +1,14 @@
 ---
 ---
 @article{mosaic,
-      abbr={FM4S @ NeurIPS 2025 (Oral)},
-      journal={FM4S @ NeurIPS 2025 (Oral)},
+      abbr={ICML},
+      journal={ICML 2026, FM4S @ NeurIPS 2025 (Runner-up Best Paper Award)},
       title={(Sparse) Attention to the Details: Preserving Spectral Fidelity in ML-based Weather Forecasting Models}, 
       author={Maksim Zhdanov and Ana Lucic and Max Welling and Jan-Willem {van de Meent}},
       abstract={We introduce Mosaic, a probabilistic weather forecasting model that addresses two sources of spectral degradation in ML-based weather prediction: (1) training to predict the ensemble mean deterministically and (2) compressive encoding creating an information bottleneck. Mosaic combines learned functional perturbations for ensemble forecasting with block-sparse attention, a hardware-aligned formulation that shares keys and values across spatially adjacent queries, enabling each block to dynamically attend to the most relevant regions. By capturing arbitrarily long-range dependencies at linear cost, Mosaic processes high-resolution weather data without compression. Mosaic at 1.5° resolution matches or outperforms models trained on 0.25° data, with individual ensemble members exhibiting near-perfect spectral alignment across all resolved frequencies.},
       url={https://arxiv.org/abs/2604.16429}, 
       pdf={https://arxiv.org/pdf/2604.16429},
+      arxiv = {2604.16429},
       preview = {mosaic.png},
       year_ = 2026,
       selected = {true},
@@ -47,8 +48,8 @@
 
 
 @article{balint2025csccns,
-      abbr={AI4Science @ NeurIPS},
-      journal={AI4Science Workshop @ NeurIPS 2025},
+      abbr={ICML},
+      journal={ICML 2026, AI4Science @ NeurIPS 2025},
       title={Conditional Clifford-Steerable CNNs with Complete Kernel Basis for PDE Modeling}, 
       author={Bálint László Szarvas and Maksim Zhdanov},
       abstract={Clifford-Steerable CNNs (CSCNNs) provide a unified framework that allows incorporating equivariance to arbitrary pseudo-Euclidean groups, including isometries of Euclidean space and Minkowski spacetime. In this work, we demonstrate that the kernel basis of CSCNNs is not complete, thus limiting the model expressivity. To address this issue, we propose Conditional Clifford-Steerable Kernels, which augment the kernels with equivariant representations computed from the input feature field. We derive the equivariance constraint for these input-dependent kernels and show how it can be solved efficiently via implicit parameterization. We empirically demonstrate an improved expressivity of the resulting framework on multiple PDE forecasting tasks, including fluid dynamics and relativistic electrodynamics, where our method consistently outperforms baseline methods.},
@@ -95,7 +96,7 @@
 
 @article{zhdanov2025adsgnn,
       abbr={ICLR},
-      journal={ICLR 2026},
+      journal={ICLR 2026, ML4PS @ ICLR 2025},
       title={AdS-{GNN} - a Conformally Equivariant Graph Neural Network},
       author={Maksim Zhdanov and Nabil Iqbal and Erik J Bekkers and Patrick Forr{\'e}},
       abstract={Conformal symmetries, i.e.\ coordinate transformations that preserve angles, play a key role in many fields, including physics, mathematics, computer vision and (geometric) machine learning. Here we build a neural network that is equivariant under general conformal transformations. To achieve this, we lift data from flat Euclidean space to Anti de Sitter (AdS) space. This allows us to exploit a known correspondence between conformal transformations of flat space and isometric transformations on the AdS space. We then build upon the fact that such isometric transformations have been extensively studied on general geometries in the geometric deep learning literature. We employ message-passing layers conditioned on the proper distance, yielding a computationally efficient framework. We validate our model on tasks from computer vision and statistical physics, demonstrating strong performance, improved generalization capacities, and the ability to extract conformal data such as scaling dimensions from the trained network.},
