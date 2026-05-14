@@ -338,6 +338,7 @@ blockquote {
 
   .navbar-brand {
     color: var(--global-text-color);
+    white-space: nowrap;
   }
 
   .navbar-nav .nav-item .nav-link {
@@ -489,7 +490,7 @@ footer.sticky-bottom {
   border-top: 1px solid var(--global-divider-color);
   padding-top: 40px;
   padding-bottom: 40px;
-  font-size: 0.9rem;
+  font-size: 0.5rem;
 }
 
 // CV
