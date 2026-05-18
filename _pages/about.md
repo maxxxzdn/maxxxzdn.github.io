@@ -17,12 +17,12 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-Hi!
+Hi! I am Maksim (for friends Max), welcome to my page :)
 
 > ```python
 > >>> print(self.status)
 > ```
-> interning at [CuspAI](https://www.cusp.ai/); 3rd year PhD student at [AMLab](http://amlab.science.uva.nl/)
+> interning at [CuspAI](https://www.cusp.ai/); 4th year PhD student at [AMLab](http://amlab.science.uva.nl/)
 > ```python
 > >>> print(self.supervisors)
 > ```
