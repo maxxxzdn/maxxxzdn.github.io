@@ -3,8 +3,7 @@
 
   <!-- Head -->
   <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="refresh" content="3; url=/">    <!-- Metadata, OpenGraph and Schema.org -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    <!-- Metadata, OpenGraph and Schema.org -->
     
 
     <!-- Standard metadata -->
@@ -103,6 +102,161 @@
     <!-- Content -->
     <div class="container mt-5">
       <!-- _layouts/post.html -->
+<!-- Page/Post style -->
+<style type="text/css">
+  /* ── Hide post metadata ───────────────────────────────────── */ .post-meta, .post-tags { display: none; } .post-header { position: relative; top: -1.5rem; } .post-content { margin-top: 0.5rem; }
+/* ── Breakout wrapper ─────────────────────────────────────── */ .slideshow-outer {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  width: min(80vw, 1400px);
+  position: relative;
+  left: calc(37.5% - min(40vw, 700px));
+  margin-bottom: 2rem;
+}
+/* ── Chapter nav ──────────────────────────────────────────── */ .slide-nav {
+  width: 230px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 72px;
+  padding: 0.75rem 0;
+} .slide-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+} .slide-nav li {
+  font-size: 0.875rem;
+  line-height: 1.4;
+  padding: 0.45rem 0.65rem;
+  border-left: 2px solid var(--global-divider-color);
+  color: var(--global-text-color-light);
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+  margin-bottom: 0.15rem;
+} .slide-nav li:hover {
+  color: var(--global-text-color);
+  border-left-color: var(--global-text-color-light);
+} .slide-nav li.active {
+  color: var(--global-theme-color);
+  border-left-color: var(--global-theme-color);
+  font-weight: 600;
+} .slide-nav .nav-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--global-text-color-light);
+  padding: 0 0.65rem 0.5rem;
+  opacity: 0.6;
+}
+/* ── Slideshow ────────────────────────────────────────────── */ .slideshow-wrap {
+  flex: 1;
+  min-width: 0;
+  user-select: none;
+} .slide-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #0d0d0d;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+  cursor: pointer;
+} .slide-stage img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+} .slide-stage img.active { opacity: 1; } .slide-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} .slide-spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid rgba(255,255,255,0.15);
+  border-top-color: rgba(255,255,255,0.7);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+} @keyframes spin { to { transform: rotate(360deg); } } .slide-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.65rem;
+  gap: 1rem;
+} .slide-btn {
+  background: none;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 6px;
+  color: var(--global-text-color);
+  padding: 0.35rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  flex-shrink: 0;
+} .slide-btn:hover:not(:disabled) {
+  background: var(--global-divider-color);
+  border-color: var(--global-text-color-light);
+} .slide-btn:disabled { opacity: 0.3; cursor: default; } .slide-progress-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  min-width: 0;
+} .slide-counter {
+  font-size: 0.82rem;
+  color: var(--global-text-color-light);
+  letter-spacing: 0.03em;
+} .slide-progress {
+  width: 100%;
+  height: 3px;
+  background: var(--global-divider-color);
+  border-radius: 2px;
+  overflow: hidden;
+} .slide-progress-bar {
+  height: 100%;
+  background: var(--global-theme-color);
+  border-radius: 2px;
+  transition: width 0.15s ease;
+} .slide-hint {
+  text-align: center;
+  font-size: 0.72rem;
+  color: var(--global-text-color-light);
+  margin-top: 0.35rem;
+  opacity: 0.6;
+}
+/* ── Mobile: stack nav above ──────────────────────────────── */ @media (max-width: 768px) {
+  .slideshow-outer {
+    flex-direction: column;
+    width: 100%;
+    position: static;
+    left: auto;
+  }
+  .slide-nav {
+    width: 100%;
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    padding: 0;
+  }
+  .slide-nav .nav-label { display: none; }
+  .slide-nav ul { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+  .slide-nav li {
+    border-left: none;
+    border-bottom: 2px solid var(--global-divider-color);
+    padding: 0.3rem 0.5rem;
+  }
+  .slide-nav li.active { border-bottom-color: var(--global-theme-color); }
+}
+
+</style>
+
 
 <div class="post">
 
@@ -124,42 +278,153 @@
   </header>
 
   <article class="post-content">
-    <script>
-    window.location.href = "https://drive.proton.me/urls/KR7E1X2J80#3f5Lb7gdEtyN";
+    <div class="slideshow-outer" id="slideshow-outer">
+
+  <!-- Chapter navigation -->
+  <nav class="slide-nav" id="slide-nav">
+    <div class="nav-label">Contents</div>
+    <ul>
+      <li data-slide="1" class="active">Introduction</li>
+      <li data-slide="2">Why Triton?</li>
+      <li data-slide="15">Part I — GPU Basics</li>
+      <li data-slide="55">Part II — Optimisation</li>
+      <li data-slide="93">Part III — Triton</li>
+      <li data-slide="139">Part IV — Flash Attention</li>
+      <li data-slide="181">Part V — FA in Triton</li>
+    </ul>
+  </nav>
+
+  <!-- Slideshow -->
+  <div class="slideshow-wrap">
+    <div class="slide-stage" id="slide-stage">
+      <div class="slide-placeholder" id="slide-placeholder">
+        <div class="slide-spinner"></div>
+      </div>
+    </div>
+    <div class="slide-controls">
+      <button class="slide-btn" id="btn-prev" disabled>←</button>
+      <div class="slide-progress-wrap">
+        <span class="slide-counter" id="slide-counter">1 / 219</span>
+        <div class="slide-progress">
+          <div class="slide-progress-bar" id="progress-bar" style="width:0.46%"></div>
+        </div>
+      </div>
+      <button class="slide-btn" id="btn-next">→</button>
+    </div>
+    <p class="slide-hint">← → arrow keys  ·  click slide to advance</p>
+  </div>
+
+</div>
+
+<script>
+(function () {
+  var TOTAL  = 219;
+  var PRELOAD = 2;
+  var BASE   = "/assets/img/triton-tutorial/slide-";
+
+  // Chapter boundaries: [startSlide, navItem]
+  var CHAPTERS = [
+    { start: 1,   el: null },
+    { start: 2,   el: null },
+    { start: 15,  el: null },
+    { start: 55,  el: null },
+    { start: 93,  el: null },
+    { start: 139, el: null },
+    { start: 181, el: null },
+  ];
+
+  var current = 1;
+  var images  = {};
+
+  var stage       = document.getElementById('slide-stage');
+  var counter     = document.getElementById('slide-counter');
+  var bar         = document.getElementById('progress-bar');
+  var btnPrev     = document.getElementById('btn-prev');
+  var btnNext     = document.getElementById('btn-next');
+  var placeholder = document.getElementById('slide-placeholder');
+  var navItems    = document.querySelectorAll('#slide-nav li');
+
+  // Wire chapter nav elements
+  navItems.forEach(function (li, i) {
+    CHAPTERS[i].el = li;
+    li.addEventListener('click', function () {
+      showSlide(CHAPTERS[i].start);
+    });
+  });
+
+  function pad(n) { return String(n).padStart(3, '0'); }
+
+  function loadSlide(n) {
+    if (n < 1 || n > TOTAL || images[n]) return;
+    var img = document.createElement('img');
+    img.alt = 'Slide ' + n;
+    img.src = BASE + pad(n) + '.jpg';
+    images[n] = img;
+    stage.appendChild(img);
+  }
+
+  function activeChapterFor(n) {
+    var idx = 0;
+    for (var i = 0; i < CHAPTERS.length; i++) {
+      if (n >= CHAPTERS[i].start) idx = i;
+    }
+    return idx;
+  }
+
+  function updateNav(n) {
+    var active = activeChapterFor(n);
+    navItems.forEach(function (li, i) {
+      li.classList.toggle('active', i === active);
+    });
+  }
+
+  function showSlide(n) {
+    if (images[current]) images[current].classList.remove('active');
+
+    current = n;
+    loadSlide(current);
+    for (var i = 1; i <= PRELOAD; i++) {
+      loadSlide(current + i);
+      loadSlide(current - i);
+    }
+
+    var img = images[current];
+    if (img.complete && img.naturalWidth > 0) {
+      placeholder.style.display = 'none';
+      img.classList.add('active');
+    } else {
+      placeholder.style.display = 'flex';
+      img.onload = function () {
+        placeholder.style.display = 'none';
+        img.classList.add('active');
+      };
+    }
+
+    counter.textContent = current + ' / ' + TOTAL;
+    bar.style.width = (current / TOTAL * 100).toFixed(2) + '%';
+    btnPrev.disabled = current === 1;
+    btnNext.disabled = current === TOTAL;
+    updateNav(current);
+  }
+
+  btnPrev.addEventListener('click', function () { if (current > 1) showSlide(current - 1); });
+  btnNext.addEventListener('click', function () { if (current < TOTAL) showSlide(current + 1); });
+  stage.addEventListener('click',   function () { if (current < TOTAL) showSlide(current + 1); });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+      if (current < TOTAL) showSlide(current + 1);
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      if (current > 1) showSlide(current - 1);
+    }
+  });
+
+  showSlide(1);
+})();
 </script>
 
 
   </article>
-
-
-  
-    
-    <br>
-    <hr>
-    <br>
-    <ul class="list-disc pl-8"></ul>
-
-    <!-- Adds related posts to the end of an article -->
-    <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2>
-    <p class="mb-2">Here are some more articles you might like to read next:</p>
-  
-
-  <li class="my-2">
-    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/erwin/">Erwin Transformer</a>
-  </li>
-
-  
-
-  <li class="my-2">
-    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/cscnns/">Clifford-Steerable CNNs</a>
-  </li>
-
-  
-
-  <li class="my-2">
-    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/implicit_kernels/">Implicit Steerable Kernels</a>
-  </li>
-
 </div>
 
     </div>

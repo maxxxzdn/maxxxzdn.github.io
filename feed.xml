@@ -1,5 +1,146 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://maxxxzdn.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://maxxxzdn.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-05-14T10:38:15+00:00</updated><id>https://maxxxzdn.github.io/feed.xml</id><title type="html">blank</title><entry><title type="html">Introduction to Triton</title><link href="https://maxxxzdn.github.io/blog/triton/" rel="alternate" type="text/html" title="Introduction to Triton" /><published>2026-05-14T00:00:00+00:00</published><updated>2026-05-14T00:00:00+00:00</updated><id>https://maxxxzdn.github.io/blog/triton</id><content type="html" xml:base="https://maxxxzdn.github.io/blog/triton/"><![CDATA[<script>
-    window.location.href = "https://drive.proton.me/urls/KR7E1X2J80#3f5Lb7gdEtyN";
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://maxxxzdn.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://maxxxzdn.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-05-18T10:37:37+00:00</updated><id>https://maxxxzdn.github.io/feed.xml</id><title type="html">blank</title><entry><title type="html">Introduction to Triton</title><link href="https://maxxxzdn.github.io/blog/triton/" rel="alternate" type="text/html" title="Introduction to Triton" /><published>2026-05-14T00:00:00+00:00</published><updated>2026-05-14T00:00:00+00:00</updated><id>https://maxxxzdn.github.io/blog/triton</id><content type="html" xml:base="https://maxxxzdn.github.io/blog/triton/"><![CDATA[<div class="slideshow-outer" id="slideshow-outer">
+
+  <!-- Chapter navigation -->
+  <nav class="slide-nav" id="slide-nav">
+    <div class="nav-label">Contents</div>
+    <ul>
+      <li data-slide="1" class="active">Introduction</li>
+      <li data-slide="2">Why Triton?</li>
+      <li data-slide="15">Part I — GPU Basics</li>
+      <li data-slide="55">Part II — Optimisation</li>
+      <li data-slide="93">Part III — Triton</li>
+      <li data-slide="139">Part IV — Flash Attention</li>
+      <li data-slide="181">Part V — FA in Triton</li>
+    </ul>
+  </nav>
+
+  <!-- Slideshow -->
+  <div class="slideshow-wrap">
+    <div class="slide-stage" id="slide-stage">
+      <div class="slide-placeholder" id="slide-placeholder">
+        <div class="slide-spinner"></div>
+      </div>
+    </div>
+    <div class="slide-controls">
+      <button class="slide-btn" id="btn-prev" disabled="">&#8592;</button>
+      <div class="slide-progress-wrap">
+        <span class="slide-counter" id="slide-counter">1 / 219</span>
+        <div class="slide-progress">
+          <div class="slide-progress-bar" id="progress-bar" style="width:0.46%"></div>
+        </div>
+      </div>
+      <button class="slide-btn" id="btn-next">&#8594;</button>
+    </div>
+    <p class="slide-hint">&#8592; &#8594; arrow keys &nbsp;&middot;&nbsp; click slide to advance</p>
+  </div>
+
+</div>
+
+<script>
+(function () {
+  var TOTAL  = 219;
+  var PRELOAD = 2;
+  var BASE   = "/assets/img/triton-tutorial/slide-";
+
+  // Chapter boundaries: [startSlide, navItem]
+  var CHAPTERS = [
+    { start: 1,   el: null },
+    { start: 2,   el: null },
+    { start: 15,  el: null },
+    { start: 55,  el: null },
+    { start: 93,  el: null },
+    { start: 139, el: null },
+    { start: 181, el: null },
+  ];
+
+  var current = 1;
+  var images  = {};
+
+  var stage       = document.getElementById('slide-stage');
+  var counter     = document.getElementById('slide-counter');
+  var bar         = document.getElementById('progress-bar');
+  var btnPrev     = document.getElementById('btn-prev');
+  var btnNext     = document.getElementById('btn-next');
+  var placeholder = document.getElementById('slide-placeholder');
+  var navItems    = document.querySelectorAll('#slide-nav li');
+
+  // Wire chapter nav elements
+  navItems.forEach(function (li, i) {
+    CHAPTERS[i].el = li;
+    li.addEventListener('click', function () {
+      showSlide(CHAPTERS[i].start);
+    });
+  });
+
+  function pad(n) { return String(n).padStart(3, '0'); }
+
+  function loadSlide(n) {
+    if (n < 1 || n > TOTAL || images[n]) return;
+    var img = document.createElement('img');
+    img.alt = 'Slide ' + n;
+    img.src = BASE + pad(n) + '.jpg';
+    images[n] = img;
+    stage.appendChild(img);
+  }
+
+  function activeChapterFor(n) {
+    var idx = 0;
+    for (var i = 0; i < CHAPTERS.length; i++) {
+      if (n >= CHAPTERS[i].start) idx = i;
+    }
+    return idx;
+  }
+
+  function updateNav(n) {
+    var active = activeChapterFor(n);
+    navItems.forEach(function (li, i) {
+      li.classList.toggle('active', i === active);
+    });
+  }
+
+  function showSlide(n) {
+    if (images[current]) images[current].classList.remove('active');
+
+    current = n;
+    loadSlide(current);
+    for (var i = 1; i <= PRELOAD; i++) {
+      loadSlide(current + i);
+      loadSlide(current - i);
+    }
+
+    var img = images[current];
+    if (img.complete && img.naturalWidth > 0) {
+      placeholder.style.display = 'none';
+      img.classList.add('active');
+    } else {
+      placeholder.style.display = 'flex';
+      img.onload = function () {
+        placeholder.style.display = 'none';
+        img.classList.add('active');
+      };
+    }
+
+    counter.textContent = current + ' / ' + TOTAL;
+    bar.style.width = (current / TOTAL * 100).toFixed(2) + '%';
+    btnPrev.disabled = current === 1;
+    btnNext.disabled = current === TOTAL;
+    updateNav(current);
+  }
+
+  btnPrev.addEventListener('click', function () { if (current > 1) showSlide(current - 1); });
+  btnNext.addEventListener('click', function () { if (current < TOTAL) showSlide(current + 1); });
+  stage.addEventListener('click',   function () { if (current < TOTAL) showSlide(current + 1); });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+      if (current < TOTAL) showSlide(current + 1);
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      if (current > 1) showSlide(current - 1);
+    }
+  });
+
+  showSlide(1);
+})();
 </script>]]></content><author><name></name></author><category term="triton" /><category term="GPU" /><category term="flash-attention" /><summary type="html"><![CDATA[GPU basics, kernel fusion, and a step-by-step implementation of Flash Attention in Triton.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://maxxxzdn.github.io/triton_header.jpeg" /><media:content medium="image" url="https://maxxxzdn.github.io/triton_header.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Erwin Transformer</title><link href="https://maxxxzdn.github.io/blog/erwin/" rel="alternate" type="text/html" title="Erwin Transformer" /><published>2025-06-13T00:00:00+00:00</published><updated>2025-06-13T00:00:00+00:00</updated><id>https://maxxxzdn.github.io/blog/erwin</id><content type="html" xml:base="https://maxxxzdn.github.io/blog/erwin/"><![CDATA[<div class="intro-gif">
   <video controls="" loop="" muted="" playsinline="" preload="metadata" poster="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/kino_poster.jpg">
     <source src="https://raw.githubusercontent.com/maxxxzdn/_erwin-visuals/main/kino.mp4" type="video/mp4" alt="Short video presentation of the paper." />
