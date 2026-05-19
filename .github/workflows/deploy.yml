@@ -9,6 +9,8 @@ on:
     branches:
       - master
       - main
+  schedule:
+    - cron: '0 9 * * 1'  # every Monday at 9am UTC
   workflow_dispatch:
 
 permissions:
@@ -25,6 +27,10 @@ jobs:
       with:
         ruby-version: '3.2.1'
         bundler-cache: true
+    - name: Update repo stats 📊
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: ruby bin/update_repo_stats
     - name: Install and Build 🔧
       run: |
         npm install -g mermaid.cli

@@ -1,0 +1,81 @@
+#!/usr/bin/env ruby
+# Fetches GitHub repo stats and writes _data/repo_stats.yml.
+# Run manually or via CI before jekyll build.
+# Uses GITHUB_TOKEN env var if set (avoids rate limits).
+
+require 'net/http'
+require 'json'
+require 'yaml'
+
+LANG_COLORS = {
+  'Python'           => '#3572A5',
+  'Ruby'             => '#701516',
+  'JavaScript'       => '#f1e05a',
+  'TypeScript'       => '#3178c6',
+  'Jupyter Notebook' => '#DA5B0B',
+  'Julia'            => '#a270ba',
+  'C++'              => '#f34b7d',
+  'C'                => '#555555',
+  'Go'               => '#00ADD8',
+  'Rust'             => '#dea584',
+  'Shell'            => '#89e051',
+  'HTML'             => '#e34c26',
+  'CSS'              => '#563d7c',
+}.freeze
+
+repos_file = File.join(__dir__, '..', '_data', 'repositories.yml')
+stats_file = File.join(__dir__, '..', '_data', 'repo_stats.yml')
+
+repos = YAML.load_file(repos_file)['github_repos'] || []
+
+existing = File.exist?(stats_file) ? (YAML.load_file(stats_file) || {}) : {}
+
+token = ENV['GITHUB_TOKEN']
+existing_by_repo = {}
+if existing.is_a?(Array)
+  existing.each { |e| existing_by_repo[e['repo']] = e }
+end
+
+stats = []
+
+repos.each do |repo|
+  uri = URI("https://api.github.com/repos/#{repo}")
+  req = Net::HTTP::Get.new(uri)
+  req['Accept'] = 'application/vnd.github.v3+json'
+  req['Authorization'] = "Bearer #{token}" if token && !token.empty?
+
+  begin
+    res = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true, open_timeout: 10, read_timeout: 10) do |http|
+      http.request(req)
+    end
+
+    if res.code == '200'
+      data = JSON.parse(res.body)
+      lang = data['language']
+      desc = (data['description'] || '').gsub(/:[a-z0-9_+-]+:/, '').strip
+      entry = {
+        'repo'           => repo,
+        'description'    => desc.empty? ? nil : desc,
+        'stars'          => data['stargazers_count'],
+        'forks'          => data['forks_count'],
+        'language'       => lang,
+        'language_color' => lang ? LANG_COLORS.fetch(lang, '#8f8f8f') : nil,
+        'updated_at'     => data['pushed_at'],
+      }
+      stats << entry
+      puts "  #{repo}: ★#{entry['stars']}"
+    else
+      warn "  #{repo}: API returned #{res.code}, keeping existing data"
+      stats << existing_by_repo[repo] if existing_by_repo[repo]
+    end
+  rescue => e
+    warn "  #{repo}: #{e.message}, keeping existing data"
+    stats << existing_by_repo[repo] if existing_by_repo[repo]
+  end
+end
+
+stats.sort_by! { |e| e['updated_at'] || '' }
+stats.reverse!
+
+File.write(stats_file, stats.to_yaml)
+puts "Wrote #{stats_file}"

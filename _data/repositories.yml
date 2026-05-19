@@ -5,6 +5,7 @@ github_repos:
   - maxxxzdn/implicit-steerable-kernels
   - maxxxzdn/jax-geometric
   - Photon-AI-Research/NeuralSolvers
+  - maxxxzdn/mosaic
 
 github_users:
   - maxxxzdn

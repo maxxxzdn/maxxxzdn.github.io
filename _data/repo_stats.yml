@@ -1,0 +1,53 @@
+---
+- repo: maxxxzdn/mosaic
+  description: "(Sparse) Attention to the Details: Preserving Spectral Fidelity in
+    ML-based Weather Forecasting Models [ICML'26]"
+  stars: 3
+  forks: 0
+  language: Python
+  language_color: "#3572A5"
+  updated_at: '2026-05-19T14:20:37Z'
+- repo: maxxxzdn/flash-clifford
+  description: "⚡ Triton implementation of Clifford algebra neural networks."
+  stars: 39
+  forks: 3
+  language: Python
+  language_color: "#3572A5"
+  updated_at: '2026-05-02T16:09:39Z'
+- repo: maxxxzdn/erwin
+  description: 'Erwin: A Tree-based Hierarchical Transformer for Large-scale Physical
+    Systems [ICML''25]'
+  stars: 117
+  forks: 12
+  language: Python
+  language_color: "#3572A5"
+  updated_at: '2025-10-11T10:23:57Z'
+- repo: maxxxzdn/clifford-group-equivariant-cnns
+  description: Clifford-Steerable Convolutional Neural Networks [ICML'24]
+  stars: 55
+  forks: 3
+  language: Jupyter Notebook
+  language_color: "#DA5B0B"
+  updated_at: '2025-05-07T16:36:34Z'
+- repo: maxxxzdn/implicit-steerable-kernels
+  description: Implicit Convolutional Kernels for Steerable CNNs [NeurIPS'23]
+  stars: 31
+  forks: 3
+  language: Python
+  language_color: "#3572A5"
+  updated_at: '2025-02-25T16:21:46Z'
+- repo: Photon-AI-Research/NeuralSolvers
+  description: Neural network based solvers for partial differential equations and
+    inverse problems . Implementation of physics-informed neural networks in pytorch.
+  stars: 170
+  forks: 49
+  language: Python
+  language_color: "#3572A5"
+  updated_at: '2025-01-12T16:48:03Z'
+- repo: maxxxzdn/jax-geometric
+  description: Implementation of various equivariant models in JAX
+  stars: 19
+  forks: 0
+  language: Python
+  language_color: "#3572A5"
+  updated_at: '2024-04-12T06:09:21Z'
