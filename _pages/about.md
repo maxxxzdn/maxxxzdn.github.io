@@ -8,7 +8,7 @@ profile:
   align: left
   image: prof_pic.jpeg
   image_circular: false # crops the image to make it circular
-  description: PhD student at AMLab
+  description: intern at Google DeepMind
   email: m.zhdanov@uva.nl
 
 news: true  # includes a list of news items
@@ -22,7 +22,7 @@ Hi! I am Maksim (for friends Max), welcome to my page :)
 > ```python
 > >>> print(self.status)
 > ```
-> interning at [CuspAI](https://www.cusp.ai/); 4th year PhD student at [AMLab](http://amlab.science.uva.nl/)
+> intern at Google DeepMind, prev. intern at CuspAI; 4th year PhD student at AMLab.
 > ```python
 > >>> print(self.supervisors)
 > ```
@@ -30,4 +30,4 @@ Hi! I am Maksim (for friends Max), welcome to my page :)
 > ```python
 > >>> print(self.research_interests)
 > ```
-> AI for scientific problems at scale; agentic search for material discovery
+> sparse attention; long-context modeling; agentic AI for scientific discovery

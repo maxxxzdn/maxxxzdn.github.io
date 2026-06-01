@@ -2,7 +2,7 @@
 layout: page
 permalink: /repositories/
 title: repositories
-description: a list of relevant repositories which I have contributed to.
+description: medium-value tokens for training coding agents
 nav: true
 nav_order: 2
 ---
