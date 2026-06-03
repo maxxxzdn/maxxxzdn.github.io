@@ -21,7 +21,10 @@ layout: default
         {% include figure.html
         path=profile_image_path
         class=profile_image_class
-        alt=page.profile.image -%}
+        alt=page.profile.image
+        loading="eager"
+        fetchpriority="high"
+        sizes="(max-width: 600px) 90vw, 320px" -%}
       {% endif -%}
       <div class="rectangle"></div>
       <div style="margin-top: 10px;"></div>

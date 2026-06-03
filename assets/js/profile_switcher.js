@@ -1,51 +1,33 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const profileImage = document.querySelector('.profile img');
-    
-    if (!profileImage) return;
-    
-    const currentSrc = profileImage.src;
-    let availableImages = [];
-    
-    // Check which images actually exist
-    const possibleImages = [
-        currentSrc,
-        currentSrc.replace('.jpg', '_alt.jpg').replace('.png', '_alt.png').replace('.jpeg', '_alt.jpeg'),
-        currentSrc.replace('.jpg', '_alt2.jpg').replace('.png', '_alt2.png').replace('.jpeg', '_alt2.jpeg')
-    ];
-    
-    // Test each image and build available list
-    let testCount = 0;
-    possibleImages.forEach((src, index) => {
-        const img = new Image();
-        img.onload = function() {
-            if (!availableImages.includes(src)) {
-                availableImages.push(src);
-            }
-            testCount++;
-            if (testCount === possibleImages.length) {
-                setupImageSwitcher();
-            }
-        };
-        img.onerror = function() {
-            testCount++;
-            if (testCount === possibleImages.length) {
-                setupImageSwitcher();
-            }
-        };
-        img.src = src;
+document.addEventListener('DOMContentLoaded', () => {
+  const img = document.querySelector('.profile img');
+  if (!img) return;
+  const picture = img.closest('picture');
+  const source = picture && picture.querySelector('source[type="image/webp"]');
+
+  const toAlt = (url) =>
+    url.replace(/(-\d+)?\.(jpe?g|png|webp)(\?.*)?$/i, '_alt$1.$2$3');
+
+  const origSrc = img.getAttribute('src');
+  const altSrc = toAlt(origSrc);
+  const origSrcset = source ? source.getAttribute('srcset') : '';
+  const altSrcset = origSrcset
+    .split(',')
+    .map((s) => {
+      const [u, d] = s.trim().split(/\s+/);
+      return toAlt(u) + (d ? ' ' + d : '');
+    })
+    .join(', ');
+
+  const probe = new Image();
+  probe.onload = () => {
+    img.style.cursor = 'pointer';
+    img.title = 'click to swap';
+    let alt = false;
+    img.addEventListener('click', () => {
+      alt = !alt;
+      if (source) source.srcset = alt ? altSrcset : origSrcset;
+      img.src = alt ? altSrc : origSrc;
     });
-    
-    let currentIndex = 0;
-    
-    function setupImageSwitcher() {
-        if (availableImages.length <= 1) return; // No switching if only one image
-        
-        profileImage.style.cursor = 'pointer';
-        profileImage.title = 'Click to change profile picture';
-        
-        profileImage.addEventListener('click', function() {
-            currentIndex = (currentIndex + 1) % availableImages.length;
-            profileImage.src = availableImages[currentIndex];
-        });
-    }
+  };
+  probe.src = altSrc;
 });
