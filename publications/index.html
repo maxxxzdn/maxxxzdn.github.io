@@ -121,7 +121,73 @@
 
 <!-- Single bibliography call with year-based ordering -->
 <h2 class="bibliography">2026</h2>
-<ol class="bibliography"><li>
+<ol class="bibliography">
+<li>
+<script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<!-- _layouts/bib.html -->
+      <div class="row">
+        <div class="col-sm-2 preview">
+<figure>
+  <picture>
+    <source type="image/webp" srcset="/assets/img/publication_preview/ftm-480.webp 480w, /assets/img/publication_preview/ftm-800.webp 800w, /assets/img/publication_preview/ftm-1400.webp 1400w" sizes="(max-width: 600px) 90vw, 800px"></source>
+    <img src="/assets/img/publication_preview/ftm.png" class="preview z-depth-1 rounded" alt="ftm.png" loading="lazy" decoding="async">
+  </picture>
+</figure>
+<abbr class="badge preview-badge">arXiv</abbr>
+</div>
+
+        <!-- Entry bib key -->
+        <div id="curvo2026ftm" class="col-sm-8">
+        <!-- Title -->
+        <div class="title">Follow the Mean: Reference-Guided Flow Matching</div>
+        <!-- Author -->
+        <div class="author">
+        
+
+        Pedro M. P. Curvo, <em>Maksim Zhdanov</em>, Floor Eijkelboom, and
+          <span class="more-authors" title="click to view 1 more author" onclick="
+                var element = $(this);
+                element.attr('title', '');
+                var more_authors_text = element.text() == '1 more author' ? 'Jan-Willem van de Meent' : '1 more author';
+                var cursorPosition = 0;
+                var textAdder = setInterval(function(){
+                  element.text(more_authors_text.substring(0, cursorPosition + 1));
+                  if (++cursorPosition == more_authors_text.length){
+                    clearInterval(textAdder);
+                  }
+              }, '10');
+              ">1 more author</span>
+</div>
+
+        <!-- Journal/Book title and date -->
+        
+        
+        <div class="periodical">
+          <em>arXiv preprint</em>
+        </div>
+        <div class="periodical">
+          
+        </div>
+
+          <!-- Links/Buttons -->
+          <div class="links">
+            <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a>
+            <a href="http://arxiv.org/abs/2605.10302" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">arXiv</a>
+            <a href="https://arxiv.org/pdf/2605.10302" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">PDF</a>
+          </div>
+          
+          <div class="badges">
+          </div>
+
+          <!-- Hidden abstract block -->
+          <div class="abstract hidden">
+            <p>We propose a novel control mechanism for generative models based on flow matching that operates through example adaptation rather than fine-tuning. Our key insight is that the velocity field is solely governed by a conditional endpoint mean; shifting this mean shifts the flow itself. We introduce two implementations: (1) Reference-Mean Guidance, a training-free approach that applies closed-form corrections to a frozen FLUX.2-klein model, enabling control over color, identity, style, and structure without modifying prompts, seeds, or weights; and (2) Semi-Parametric Guidance, an amortized version using a learned residual refiner that matches performance benchmarks while allowing runtime reference set swapping. Our work demonstrates that generative models can adapt dynamically through data selection rather than parameter updates, pointing toward a broader paradigm in generative AI development.</p>
+          </div>
+        </div>
+      </div>
+</li>
+<li>
 <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 <!-- _layouts/bib.html -->
@@ -187,7 +253,8 @@
           </div>
         </div>
       </div>
-</li></ol>
+</li>
+</ol>
 <h2 class="bibliography">2025</h2>
 <ol class="bibliography">
 <li>
