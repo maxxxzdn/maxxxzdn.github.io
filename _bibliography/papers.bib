@@ -1,8 +1,23 @@
 ---
 ---
+@article{wessels2026hyenand,
+      abbr={NeurIPS},
+      journal={NeurIPS 2026},
+      title={Native Multi-Dimensional Subquadratic Operators via Input Dependent Long Convolutions},
+      author={David R. Wessels and Farhad Ramezanghorbani and Alireza Moradzadeh and David W. Romero and Olivia Viessmann and Maksim Zhdanov and John St. John and Ken Janik and David M. Knigge and Yucheng Tang and Erik J. Bekkers and Saee Gopal Paliwal},
+      abstract={Subquadratic alternatives to attention require compromises when applied to multi-dimensional data: standard convolutions lack global receptive fields and input dependency, while recurrent models require rasterizing data such as images, volumes, and partial differential equation (PDE) into an ad-hoc 1D scan order that violates their spatial structure. We introduce HyenaND, a subquadratic, global, input-dependent operator that acts directly on the native geometry of multidimensional data through convolutions with implicitly parametrized global, input-dependent multi-dimensional convolutional kernels. Our CUDA implementation, nSubQ, fuses the FFT-convolution path to turn HyenaND's O(L log L) scaling into wall-clock speedups. Across long-context genomics, computer vision, medical imaging, and PDE modeling, pure HyenaND stacks match the accuracy of strong attention baselines, while hybrid configurations that interleave HyenaND and attention layers outperform both pure attention and strong recurrence-based hybrids.},
+      url={https://arxiv.org/abs/2607.19378},
+      pdf={https://arxiv.org/pdf/2607.19378},
+      arxiv = {2607.19378},
+      preview = {hyenaMD.png},
+      year_ = 2026,
+      selected = {false},
+}
+
+
 @article{curvo2026ftm,
-      abbr={arXiv},
-      journal={arXiv preprint},
+      abbr={NeurIPS},
+      journal={NeurIPS 2026},
       title={Follow the Mean: Reference-Guided Flow Matching},
       author={Pedro M. P. Curvo and Maksim Zhdanov and Floor Eijkelboom and Jan-Willem {van de Meent}},
       abstract={We propose a novel control mechanism for generative models based on flow matching that operates through example adaptation rather than fine-tuning. Our key insight is that the velocity field is solely governed by a conditional endpoint mean; shifting this mean shifts the flow itself. We introduce two implementations: (1) Reference-Mean Guidance, a training-free approach that applies closed-form corrections to a frozen FLUX.2-klein model, enabling control over color, identity, style, and structure without modifying prompts, seeds, or weights; and (2) Semi-Parametric Guidance, an amortized version using a learned residual refiner that matches performance benchmarks while allowing runtime reference set swapping. Our work demonstrates that generative models can adapt dynamically through data selection rather than parameter updates, pointing toward a broader paradigm in generative AI development.},
