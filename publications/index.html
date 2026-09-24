@@ -130,11 +130,76 @@
         <div class="col-sm-2 preview">
 <figure>
   <picture>
+    <source type="image/webp" srcset="/assets/img/publication_preview/hyenaMD-480.webp 480w, /assets/img/publication_preview/hyenaMD-800.webp 800w, /assets/img/publication_preview/hyenaMD-1400.webp 1400w" sizes="(max-width: 600px) 90vw, 800px"></source>
+    <img src="/assets/img/publication_preview/hyenaMD.png" class="preview z-depth-1 rounded" alt="hyenaMD.png" loading="lazy" decoding="async">
+  </picture>
+</figure>
+<abbr class="badge preview-badge">NeurIPS</abbr>
+</div>
+
+        <!-- Entry bib key -->
+        <div id="wessels2026hyenand" class="col-sm-8">
+        <!-- Title -->
+        <div class="title">Native Multi-Dimensional Subquadratic Operators via Input Dependent Long Convolutions</div>
+        <!-- Author -->
+        <div class="author">
+        
+
+        David R. Wessels, Farhad Ramezanghorbani, Alireza Moradzadeh, and
+          <span class="more-authors" title="click to view 9 more authors" onclick="
+                var element = $(this);
+                element.attr('title', '');
+                var more_authors_text = element.text() == '9 more authors' ? 'David W. Romero, Olivia Viessmann, Maksim Zhdanov, John St. John, Ken Janik, David M. Knigge, Yucheng Tang, Erik J. Bekkers, Saee Gopal Paliwal' : '9 more authors';
+                var cursorPosition = 0;
+                var textAdder = setInterval(function(){
+                  element.text(more_authors_text.substring(0, cursorPosition + 1));
+                  if (++cursorPosition == more_authors_text.length){
+                    clearInterval(textAdder);
+                  }
+              }, '10');
+              ">9 more authors</span>
+</div>
+
+        <!-- Journal/Book title and date -->
+        
+        
+        <div class="periodical">
+          <em>NeurIPS 2026</em>
+        </div>
+        <div class="periodical">
+          
+        </div>
+
+          <!-- Links/Buttons -->
+          <div class="links">
+            <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a>
+            <a href="http://arxiv.org/abs/2607.19378" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">arXiv</a>
+            <a href="https://arxiv.org/pdf/2607.19378" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">PDF</a>
+          </div>
+          
+          <div class="badges">
+          </div>
+
+          <!-- Hidden abstract block -->
+          <div class="abstract hidden">
+            <p>Subquadratic alternatives to attention require compromises when applied to multi-dimensional data: standard convolutions lack global receptive fields and input dependency, while recurrent models require rasterizing data such as images, volumes, and partial differential equation (PDE) into an ad-hoc 1D scan order that violates their spatial structure. We introduce HyenaND, a subquadratic, global, input-dependent operator that acts directly on the native geometry of multidimensional data through convolutions with implicitly parametrized global, input-dependent multi-dimensional convolutional kernels. Our CUDA implementation, nSubQ, fuses the FFT-convolution path to turn HyenaND’s O(L log L) scaling into wall-clock speedups. Across long-context genomics, computer vision, medical imaging, and PDE modeling, pure HyenaND stacks match the accuracy of strong attention baselines, while hybrid configurations that interleave HyenaND and attention layers outperform both pure attention and strong recurrence-based hybrids.</p>
+          </div>
+        </div>
+      </div>
+</li>
+<li>
+<script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<!-- _layouts/bib.html -->
+      <div class="row">
+        <div class="col-sm-2 preview">
+<figure>
+  <picture>
     <source type="image/webp" srcset="/assets/img/publication_preview/ftm-480.webp 480w, /assets/img/publication_preview/ftm-800.webp 800w, /assets/img/publication_preview/ftm-1400.webp 1400w" sizes="(max-width: 600px) 90vw, 800px"></source>
     <img src="/assets/img/publication_preview/ftm.png" class="preview z-depth-1 rounded" alt="ftm.png" loading="lazy" decoding="async">
   </picture>
 </figure>
-<abbr class="badge preview-badge">arXiv</abbr>
+<abbr class="badge preview-badge">NeurIPS</abbr>
 </div>
 
         <!-- Entry bib key -->
@@ -164,7 +229,7 @@
         
         
         <div class="periodical">
-          <em>arXiv preprint</em>
+          <em>NeurIPS 2026</em>
         </div>
         <div class="periodical">
           
