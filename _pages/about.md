@@ -8,8 +8,8 @@ profile:
   align: left
   image: prof_pic.jpeg
   image_circular: false # crops the image to make it circular
-  description: intern at Google DeepMind
-  email: m.zhdanov@uva.nl
+  description: making sand think
+  email: maxxxzdn@pm.me
 
 news: true  # includes a list of news items
 latest_posts: true  # includes a list of the newest posts
@@ -30,4 +30,4 @@ Hi! I am Maksim (for friends Max), welcome to my page :)
 > ```python
 > >>> print(self.research_interests)
 > ```
-> sparse attention; long-context modeling; agentic AI for scientific discovery
+> sparse attention; long-context modeling; hardware-aligned architectures; large-scale weather forecasting

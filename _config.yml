@@ -6,8 +6,8 @@ title: blank # the website title (if blank, full name will be used instead)
 first_name: Maksim
 middle_name: (Max)
 last_name: Zhdanov
-email: m.zhdanov@uva.nl
-description:
+email: maxxxzdn@pm.me
+description: Maksim (Max) Zhdanov, PhD student at AMLab (University of Amsterdam). Sparse attention, long-context modeling, and hardware-aligned architectures for large-scale weather forecasting.
 footer_text:
 keywords: 
 
@@ -58,9 +58,9 @@ max_width: 1000px
 # Open Graph & Schema.org
 # -----------------------------------------------------------------------------
 # Display links to the page with a preview object on social media.
-serve_og_meta: false # Include Open Graph meta tags in the HTML head
+serve_og_meta: true # Include Open Graph meta tags in the HTML head
 serve_schema_org: false # Include Schema.org in the HTML head
-og_image: # The site-wide (default for all links) Open Graph preview image
+og_image: https://maxxxzdn.github.io/assets/img/prof_pic.jpeg # The site-wide (default for all links) Open Graph preview image
 
 # -----------------------------------------------------------------------------
 # Social integration
@@ -70,7 +70,7 @@ github_username: maxxxzdn # your GitHub user name
 gitlab_username: # your GitLab user name
 twitter_username: maxxxzdn # your Twitter handle
 mastodon_username: # your mastodon instance+username in the format instance.tld/@username
-linkedin_username: # your LinkedIn user name
+linkedin_username: maxxxzdn # your LinkedIn user name
 telegram_username: # your Telegram user name
 scholar_userid: Llnm6XgAAAAJ&hl=en # your Google Scholar ID
 semanticscholar_id: # your Semantic Scholar ID
