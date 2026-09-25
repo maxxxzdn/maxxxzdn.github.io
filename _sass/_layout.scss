@@ -30,14 +30,21 @@ body.sticky-bottom-footer {
 .column1 {
   position: fixed;
   width: 40%;
-  max-width: 300px;
+  max-width: 340px;
   height: auto;
-  top: 125px;
-  left: 150px;
+  top: 90px;
+  left: 110px;
   bottom: auto;
   margin-left: auto;
   margin-top: 0;
   margin-bottom: 30px;
+}
+
+// On short screens let the profile scroll with the page instead of clipping
+@media (max-height: 860px) {
+  .column1 {
+    position: absolute;
+  }
 }
 
 .column2 {
@@ -57,6 +64,9 @@ body.sticky-bottom-footer {
 .profile {
   img {
     width: 100%;
+    aspect-ratio: 17 / 20;
+    object-fit: cover;
+    object-position: center 30%;
   }
 }
 

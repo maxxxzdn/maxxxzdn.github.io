@@ -28,7 +28,7 @@ layout: default
       {% endif -%}
       <div class="rectangle"></div>
       <div style="margin-top: 10px;"></div>
-      <p style="font-size: 24px;">
+      <p class="profile-name">
         {% if page.profile.align == 'left' -%}
           <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }} {{ site.last_name }}
         {% else -%}
@@ -90,7 +90,7 @@ layout: default
       <!-- News -->
       {% if page.news -%}
       <h3><a href="{{ '/news/' | relative_url }}" style="color: inherit;">news</a></h3>
-      {%- include news.html limit=5 %}
+      {%- include news.html limit=3 %}
     {%- endif %}
     </div>
 </article>

@@ -4,9 +4,17 @@
 
 // Typography
 
+// One family, three sizes (matches the CV)
+:root {
+  --fs-small: 16.25px;
+  --fs-base: 18.75px;
+  --fs-title: 25px;
+}
+
 body {
-  font-family: Consolas, Menlo, 'Courier New', monospace;
-  font-size: 14px;
+  font-family: 'Inconsolata', Menlo, Consolas, monospace;
+  font-size: var(--fs-base);
+  font-weight: 400;
   line-height: 1.6;
   letter-spacing: 0.03em;
   overflow-x: hidden;
@@ -63,7 +71,7 @@ hr {
 }
 
 table {
-  font-size: 14px;
+  font-size: var(--fs-base);
 
   td,
   th {
@@ -71,7 +79,7 @@ table {
   }
 
   td {
-    font-size: 14px;
+    font-size: var(--fs-base);
   }
 }
 
@@ -99,7 +107,7 @@ blockquote {
   border-left: 2px solid var(--global-theme-color);
   margin: 1.5em 10px;
   padding: 0.5em 10px;
-  font-size: 14px;
+  font-size: var(--fs-base);
 }
 
 // Math
@@ -158,7 +166,6 @@ blockquote {
   .address {
     margin-bottom: 5px;
     margin-top: 5px;
-    font-family: monospace;
 
     p {
       display: inline-block;
@@ -170,8 +177,7 @@ blockquote {
     display: flex;
     margin-top: 5px;
     align-items: center;
-    font-family: monospace;
-    font-size: 1.125rem;
+    font-size: var(--fs-base);
 
     p {
       display: inline-block;
@@ -181,9 +187,8 @@ blockquote {
   
   .description {
     margin-bottom: 0px;
-    margin-top: -10px;
-    font-family: monospace;
-    font-size: 1.125rem;
+    margin-top: 0;
+    font-size: var(--fs-base);
 
     p {
       display: inline-block;
@@ -273,7 +278,7 @@ blockquote {
   left: 5px; /* Adjust the left offset as needed */
   width: 100%; /* Set width to 100% to match the width of the parent container */
   height: 0; /* Set height to 0 initially */
-  padding-bottom: 134%; /* Use padding to set height to 150% of the width of the parent container */
+  padding-bottom: 118.5%; /* Use padding to set height to 150% of the width of the parent container */
   border-radius: 3px;
   background-color: $blue-color; /* Change the color as desired */
   z-index: -1; /* Set z-index to -1 to position the rectangle behind the image */
@@ -460,7 +465,7 @@ blockquote {
   }
 
   .contact-note {
-    font-size: 0.8rem;
+    font-size: var(--fs-base);
   }
 }
 
@@ -567,24 +572,24 @@ footer.sticky-bottom {
 
     .repo-full-name {
       min-width: 0;
-      word-break: break-all;
+      overflow-wrap: anywhere;
     }
 
     .repo-owner {
       color: var(--global-text-color-light);
-      font-size: 0.85rem;
+      font-size: var(--fs-base);
     }
 
     .repo-name {
       font-weight: 600;
-      font-size: 0.85rem;
+      font-size: var(--fs-base);
       color: var(--global-theme-color);
     }
   }
 
   .repo-description {
     color: var(--global-text-color-light);
-    font-size: 0.78rem;
+    font-size: var(--fs-small);
     line-height: 1.5;
     flex: 1;
     margin-bottom: 0.75rem;
@@ -600,7 +605,7 @@ footer.sticky-bottom {
       display: flex;
       align-items: center;
       gap: 0.25rem;
-      font-size: 0.75rem;
+      font-size: var(--fs-small);
       color: var(--global-text-color-light);
 
       svg {
@@ -986,7 +991,7 @@ pre {
     border-radius: 0;
     margin-bottom: 0;
     padding: 0;
-    font-size: 14px; /* Ensure nested code has the same font size */
+    font-size: var(--fs-base); /* Ensure nested code has the same font size */
   }
 
   position: relative;
@@ -1154,4 +1159,55 @@ pre {
     color: var(--global-hover-color);
     opacity: 1;
   }
+}
+
+// Homepage type scale
+.profile .profile-name {
+  font-size: calc(var(--fs-title) * 1.25);
+  line-height: 1.2;
+  margin-bottom: 0.2rem;
+}
+
+.profile .contact-info {
+  margin-top: 0.2rem;
+}
+
+.column2 {
+  h3 {
+    font-size: var(--fs-title);
+    font-weight: 700;
+  }
+
+  table th,
+  table td,
+  code {
+    font-size: var(--fs-base);
+    font-weight: 400;
+  }
+
+  table th {
+    white-space: nowrap;
+    padding-right: 1.5rem;
+  }
+}
+
+.publications {
+  .abbr abbr,
+  abbr.preview-badge,
+  .badges {
+    font-size: var(--fs-small);
+  }
+
+  ol.bibliography li .links a.btn {
+    font-size: calc(var(--fs-small) / 1.25);
+    padding: 0.2rem 0.8rem;
+  }
+
+  ol.bibliography li .hidden {
+    font-size: var(--fs-base);
+  }
+}
+
+.navbar .nav-link {
+  font-weight: 400;
 }
