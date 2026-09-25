@@ -2,32 +2,19 @@
   .social-icons {
     display: flex;
     flex-wrap: nowrap;
-    justify-content: center;
-    gap: 10%;
-    overflow-x: auto;
+    justify-content: space-between;
+    align-items: center;
     padding: 20px 0;
+    container-type: inline-size;
   }
   .social-icons a {
     text-decoration: none;
     color: inherit;
-    flex-shrink: 0;
+    line-height: 1;
   }
   .social-icons i {
-    font-size: calc(24px + 1.5vw);
-    transition: font-size 0.3s ease;
-  }
-  @media (max-width: 768px) {
-    .social-icons i {
-      font-size: calc(22px + 1.5vw);
-    }
-  }
-  @media (max-width: 480px) {
-    .social-icons {
-      gap: 15px;
-    }
-    .social-icons i {
-      font-size: calc(20px + 1vw);
-    }
+    /* scale with the profile column, never overflow it */
+    font-size: min(2.25rem, 14cqi);
   }
 </style>
 
