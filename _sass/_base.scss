@@ -236,7 +236,7 @@ blockquote {
   .column1 {
     position: relative;
     width: 100%;
-    max-width: 200px;
+    max-width: 280px;
     height: auto;
     top: 0;
     left: 0;
@@ -244,14 +244,42 @@ blockquote {
     padding-bottom: 0px;
   }
 
+  // Stacked layout: no float offset, so the profile centers in its column
+  .profile.float-left,
+  .profile.float-right {
+    float: none !important;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  // Let the flex item shrink below its content width; long code lines scroll
+  // inside their box instead of widening the whole page
+  article {
+    min-width: 0;
+    width: 100%;
+  }
+
   .column2 {
     position: relative;
     width: 100%;
+    min-width: 0;
     margin: 20px 0;
     left: 0;
     margin-left: 0;
     margin-top: 0;
+    padding-left: 0;
+    padding-right: 0;
     clear: both;
+
+    pre {
+      overflow-x: auto;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .column2 pre code {
+    font-size: 0.85em;
   }
 
   /* Adjust wrapper for mobile view */
