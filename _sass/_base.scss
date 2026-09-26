@@ -236,12 +236,17 @@ blockquote {
   .column1 {
     position: relative;
     width: 100%;
-    max-width: 280px;
+    max-width: 300px;
     height: auto;
     top: 0;
     left: 0;
     margin: 0 auto;
     padding-bottom: 0px;
+  }
+
+  .column1 .profile .profile-name {
+    font-size: calc(var(--fs-title) * 1.1);
+    white-space: nowrap;
   }
 
   // Stacked layout: no float offset, so the profile centers in its column
