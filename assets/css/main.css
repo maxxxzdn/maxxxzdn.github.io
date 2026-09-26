@@ -352,6 +352,9 @@ blockquote {
     font-size: calc(var(--fs-title) * 1.1);
     white-space: nowrap;
   }
+  .column1 .social .contact-note {
+    font-size: calc(var(--fs-base) * 0.95);
+  }
   .profile.float-left,
   .profile.float-right {
     float: none !important;
@@ -548,6 +551,7 @@ blockquote {
 }
 .social .contact-note {
   font-size: var(--fs-base);
+  white-space: nowrap;
 }
 
 footer.fixed-bottom {
