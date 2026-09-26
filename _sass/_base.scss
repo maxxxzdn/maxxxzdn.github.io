@@ -249,6 +249,10 @@ blockquote {
     white-space: nowrap;
   }
 
+  .column1 .social .contact-note {
+    font-size: calc(var(--fs-base) * 0.95);
+  }
+
   // Stacked layout: no float offset, so the profile centers in its column
   .profile.float-left,
   .profile.float-right {
@@ -499,6 +503,7 @@ blockquote {
 
   .contact-note {
     font-size: var(--fs-base);
+    white-space: nowrap;
   }
 }
 
